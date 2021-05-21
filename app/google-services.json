@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "612533190892",
+    "project_id": "younghunter-fa1ee",
+    "storage_bucket": "younghunter-fa1ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612533190892:android:d008b86bed478e9007a5c9",
+        "android_client_info": {
+          "package_name": "com.example.younghunter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "612533190892-8ct102arc7cri2d7imtqmcuq5k4gno61.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9n1xMQ7T3HzyadxxLQmEOQ9mtokjVc4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "612533190892-8ct102arc7cri2d7imtqmcuq5k4gno61.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

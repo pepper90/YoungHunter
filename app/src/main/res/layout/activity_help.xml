@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/helpLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backimg_one"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    tools:context=".Help"
+    tools:ignore="RtlCompat">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageButton
+                    android:id="@+id/backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/back"
+                    android:src="@drawable/back_icon"
+                    android:layout_gravity="center_vertical"
+                    android:paddingEnd="16dp"
+                    tools:ignore="RtlSymmetry"
+                    android:paddingRight="16dp"/>
+
+                <TextView
+                    android:id="@+id/tv_help"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/help"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:drawableStartCompat="@drawable/help_icon_activity" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/tv_help_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/help_top"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/help2"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textAlignment="textStart"/>
+
+                <TextView
+                    android:id="@+id/tv_help_text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/help_middle"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/help3"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textAlignment="textStart"/>
+
+                <TextView
+                    android:id="@+id/tv_help_text3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/help_middle"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/help4"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textAlignment="textStart"/>
+
+                <TextView
+                    android:id="@+id/tv_help_text4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/help_middle"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/help5"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textAlignment="textStart"/>
+
+                <TextView
+                    android:id="@+id/tv_help_text5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/help_middle"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/help6"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textAlignment="textStart"/>
+
+                <TextView
+                    android:id="@+id/tv_help_text6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/help_bottom"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/help7"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textAlignment="textStart"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

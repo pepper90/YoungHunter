@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="lime_3">#d2ce56</color>
+    <color name="lime_2">#9e9d24</color>
+    <color name="lime_1">#6c6f00</color>
+    <color name="olive_2">#9e9d24</color>
+    <color name="olive_1">#6c6f00</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
