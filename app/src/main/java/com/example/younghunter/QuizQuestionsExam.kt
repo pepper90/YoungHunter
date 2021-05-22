@@ -143,7 +143,7 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
                                 mInterstitialAd?.show(this)
                             } else {
                                 val intent = Intent(this, FinishQuiz::class.java)
-                                intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
+                                intent.putExtra(Constants.CORRECT_ANSWERS_EXAM, mCorrectAnswers)
                                 intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
                                 startActivity(intent)
                                 finish()
@@ -202,6 +202,7 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
 
         val exit = dialogLayout.findViewById<TextView>(R.id.tv_left)
         exit.setOnClickListener {
+            alertDialog.dismiss()
             val intent = Intent(this@QuizQuestionsExam, Dashboard::class.java)
             startActivity(intent)
             finish()

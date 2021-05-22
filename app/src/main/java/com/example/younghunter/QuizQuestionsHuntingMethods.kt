@@ -202,6 +202,7 @@ class QuizQuestionsHuntingMethods : AppCompatActivity(), View.OnClickListener {
 
         val exit = dialogLayout.findViewById<TextView>(R.id.tv_left)
         exit.setOnClickListener {
+            alertDialog.dismiss()
             val intent = Intent(this@QuizQuestionsHuntingMethods, Dashboard::class.java)
             startActivity(intent)
             finish()

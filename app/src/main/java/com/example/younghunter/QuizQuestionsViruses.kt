@@ -202,6 +202,7 @@ class QuizQuestionsViruses : AppCompatActivity(), View.OnClickListener {
 
         val exit = dialogLayout.findViewById<TextView>(R.id.tv_left)
         exit.setOnClickListener {
+            alertDialog.dismiss()
             val intent = Intent(this@QuizQuestionsViruses, Dashboard::class.java)
             startActivity(intent)
             finish()
