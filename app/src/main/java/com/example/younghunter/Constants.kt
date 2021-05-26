@@ -7,6 +7,7 @@ object Constants {
     const val CORRECT_ANSWERS: String = "correct_answers"
 
 
+
     val loadExam = getQuestionsAnimals().shuffled().take(47)+
                    getQuestionsHuntingLaw().shuffled().take(7)+
                    getQuestionsGameManagement().shuffled().take(11)+

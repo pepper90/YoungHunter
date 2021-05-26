@@ -1,13 +1,15 @@
 package com.example.younghunter
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.younghunter.databinding.ActivityDashboardBinding
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+
 
 class Dashboard : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardBinding
