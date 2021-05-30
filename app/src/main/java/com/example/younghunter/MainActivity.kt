@@ -13,6 +13,8 @@ import com.example.younghunter.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private var dpHeight:Int? = null
+    private var dpWidth: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +31,14 @@ class MainActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
+
+        //Gets display metrics
+        val displayMetrics = resources.displayMetrics
+        dpWidth = displayMetrics.widthPixels
+        dpHeight = displayMetrics.heightPixels
+
+        binding.splashScreen.layoutParams.height = dpHeight as Int
+        binding.splashScreen.layoutParams.width = dpWidth as Int
 
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this@MainActivity, Dashboard::class.java)

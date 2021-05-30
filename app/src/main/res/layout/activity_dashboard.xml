@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dashboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backimg_one"
     android:orientation="vertical"
     tools:context=".Dashboard">
 
+    <ImageView
+        android:id="@+id/dashBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/backimg_one"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fillViewport="true"
@@ -30,16 +41,18 @@
                 android:id="@+id/loadExam"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:background="@drawable/border"
-                android:drawableStart="@drawable/load_exam"
-                android:drawableLeft="@drawable/load_exam"
-                android:padding="10dp"
+                android:drawableStart="@drawable/ic_exam"
+                android:drawableLeft="@drawable/ic_exam"
                 android:text="@string/load_exam"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:gravity="center"
+                android:padding="10dp"
+                />
 
             <TextView
+                android:id="@+id/miniTests"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -48,7 +61,7 @@
                 android:text="@string/category"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="20sp"/>
 
             <Button
                 android:id="@+id/animals"
@@ -56,8 +69,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/border"
-                android:drawableStart="@drawable/animals"
-                android:drawableLeft="@drawable/animals"
+                android:drawableStart="@drawable/ic_animals"
+                android:drawableLeft="@drawable/ic_animals"
                 android:padding="10dp"
                 android:text="@string/animals"
                 android:textColor="@color/white"
@@ -69,8 +82,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/border"
-                android:drawableStart="@drawable/law"
-                android:drawableLeft="@drawable/law"
+                android:drawableStart="@drawable/ic_law"
+                android:drawableLeft="@drawable/ic_law"
                 android:padding="10dp"
                 android:text="@string/law"
                 android:textColor="@color/white"
@@ -82,8 +95,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/border"
-                android:drawableStart="@drawable/animal_care"
-                android:drawableLeft="@drawable/animal_care"
+                android:drawableStart="@drawable/ic_animalcare"
+                android:drawableLeft="@drawable/ic_animalcare"
                 android:padding="10dp"
                 android:text="@string/gameManagement"
                 android:textColor="@color/white"
@@ -95,8 +108,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/border"
-                android:drawableStart="@drawable/hunting_methods"
-                android:drawableLeft="@drawable/hunting_methods"
+                android:drawableStart="@drawable/ic_hunting"
+                android:drawableLeft="@drawable/ic_hunting"
                 android:padding="10dp"
                 android:text="@string/huntingMethods"
                 android:textColor="@color/white"
@@ -108,8 +121,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/border"
-                android:drawableStart="@drawable/guns"
-                android:drawableLeft="@drawable/guns"
+                android:drawableStart="@drawable/ic_guns"
+                android:drawableLeft="@drawable/ic_guns"
                 android:padding="10dp"
                 android:text="@string/guns"
                 android:textColor="@color/white"
@@ -121,8 +134,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/border"
-                android:drawableStart="@drawable/dogs"
-                android:drawableLeft="@drawable/dogs"
+                android:drawableStart="@drawable/ic_dogs"
+                android:drawableLeft="@drawable/ic_dogs"
                 android:padding="10dp"
                 android:text="@string/dogs"
                 android:textColor="@color/white"
@@ -134,8 +147,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/border"
-                android:drawableStart="@drawable/illnesses"
-                android:drawableLeft="@drawable/illnesses"
+                android:drawableStart="@drawable/ic_virus"
+                android:drawableLeft="@drawable/ic_virus"
                 android:padding="10dp"
                 android:text="@string/illnesses"
                 android:textColor="@color/white"
@@ -156,17 +169,9 @@
         android:contentDescription="@string/help"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/help_icon" />
-
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/homeAd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
-        ads:layout_constraintBottom_toBottomOf="parent"
-        ads:layout_constraintEnd_toEndOf="parent"
-        ads:layout_constraintStart_toStartOf="parent" />
+        android:src="@drawable/ic_help"
+        android:scaleType="centerInside"
+        android:background="#00FFFFFF"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

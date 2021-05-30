@@ -12,69 +12,70 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.YoungHunter"
         tools:ignore="LockedOrientationActivity">
+        <activity android:name=".test"></activity>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-7588987461083278~7432990397"/>
+            android:value="ca-app-pub-7588987461083278~7432990397" />
 
         <activity
-            android:hardwareAccelerated="true"
             android:name=".QuizQuestionsExam"
+            android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:hardwareAccelerated="true"
             android:name=".QuizQuestionsAnimals"
+            android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:hardwareAccelerated="true"
             android:name=".QuizQuestionsHuntingLaw"
+            android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:hardwareAccelerated="true"
             android:name=".QuizQuestionsHuntingMethods"
+            android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:hardwareAccelerated="true"
             android:name=".QuizQuestionsGameManagement"
+            android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:hardwareAccelerated="true"
             android:name=".QuizQuestionsGuns"
+            android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:hardwareAccelerated="true"
             android:name=".QuizQuestionsViruses"
+            android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:hardwareAccelerated="false"
             android:name=".Help"
+            android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:hardwareAccelerated="false"
             android:name=".FinishQuiz"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBarTheme" />
-        <activity
-            android:hardwareAccelerated="true"
-            android:name=".QuizQuestionsDogs"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBarTheme" />
-        <activity
-            android:hardwareAccelerated="true"
-            android:name=".Dashboard"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBarTheme" />
-        <activity
             android:hardwareAccelerated="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".QuizQuestionsDogs"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".Dashboard"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
             android:name=".MainActivity"
+            android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme">
             <intent-filter>

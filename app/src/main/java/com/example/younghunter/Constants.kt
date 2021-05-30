@@ -18,6 +18,7 @@ object Constants {
                    getQuestionsRedCross().shuffled().take(4)
 
 
+
     fun getQuestionsAnimals(): ArrayList<Question> {
         val animals = ArrayList<Question>()
 
@@ -9239,7 +9240,7 @@ object Constants {
             "Срокът за ловуване на фазан в ловностопански район е:",
             "от 1 октомври до 31 януари",
             "от 1 октомври до 30 ноември",
-            "от 15 август о 30 ноември",
+            "от 15 август до 30 ноември",
             1
         )
 

@@ -58,7 +58,7 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
         binding.progressBar.max = 104
 
         //Loads questions list
-        mQuestionsList = Constants.loadExam
+        mQuestionsList = Constants.loadExam.shuffled()
 
         setQuestionLoadExam()
 

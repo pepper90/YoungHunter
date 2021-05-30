@@ -4,9 +4,9 @@
     <string name="load_exam">ЗАПОЧНИ ТЕСТ</string>
     <string name="animals">ДИВЕЧОЗНАНИЕ</string>
     <string name="law">ЗАКОН ЗА ЛОВА</string>
-    <string name="gameManagement">СТОПАНИСВАНЕ НА ДИВЕЧА</string>
-    <string name="huntingMethods">МЕТОДИ НА ЛОВУВАНЕ</string>
-    <string name="guns">ОРЪЖИЯ И ЛОВНА СТРЕЛБА</string>
+    <string name="gameManagement">ГРИЖИ ЗА ДИВЕЧА</string>
+    <string name="huntingMethods">МЕТОДИ НА ЛОВ</string>
+    <string name="guns">ОРЪЖЕЗНАНИЕ</string>
     <string name="dogs">ЛОВНА КИНОЛОГИЯ</string>
     <string name="illnesses">БОЛЕСТИ ПО ДИВЕЧА</string>
     <string name="help">ИНСТРУКЦИИ</string>
