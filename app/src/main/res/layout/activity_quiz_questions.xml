@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/quizquestions"
     android:layout_width="match_parent"
@@ -21,7 +20,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_horizontal"
-            android:padding="16dp">
+            android:padding="@dimen/_12sdp">
 
             <ImageButton
                 android:id="@+id/backButton"
@@ -29,22 +28,38 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/back"
-                android:src="@drawable/back_icon"
+                android:src="@drawable/ic_backbutton"
                 android:layout_gravity="center_vertical"
-                android:paddingEnd="16dp"
-                android:paddingRight="16dp"/>
+                android:paddingEnd="@dimen/_12sdp"
+                android:paddingRight="@dimen/_12sdp"/>
 
-            <TextView
-                android:id="@+id/tv_header"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:background="@drawable/border"
-                android:padding="10dp"
-                app:drawableStartCompat="@drawable/load_exam"
-                android:text="@string/examYoungHunter"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:gravity="center"/>
+                android:padding="@dimen/_8sdp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:src="@drawable/ic_exam"
+                    tools:ignore="ContentDescription"
+                    android:layout_marginEnd="@dimen/_6sdp"
+                    android:layout_marginRight="@dimen/_6sdp"/>
+
+                <TextView
+                    android:id="@+id/tv_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/examYoungHunter"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16ssp"
+                    android:gravity="center"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -52,107 +67,121 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center"
-            android:padding="16dp">
-
-            <TextView
-                android:id="@+id/tv_question"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="22sp"
-                tools:text="@string/question"
-                android:background="@drawable/border"
-                android:padding="20dp"/>
+            android:gravity="center">
 
             <LinearLayout
-                android:id="@+id/ll_progress_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal">
-
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:max="104"
-                    android:minHeight="50dp"
-                    android:progress="0"
-                    android:indeterminate="false"
-                    android:progressBackgroundTint="@color/white"
-                    android:progressTint="@color/white"
-                    />
+                android:orientation="vertical"
+                android:paddingTop="@dimen/_16sdp"
+                android:paddingStart="@dimen/_16sdp"
+                android:paddingLeft="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_16sdp"
+                >
 
                 <TextView
-                    android:id="@+id/tv_progress"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_question"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
                     android:gravity="center"
-                    android:padding="15dp"
                     android:textColor="@color/white"
-                    android:textSize="14sp"
-                    tools:text="0/104"/>
+                    android:textSize="@dimen/_18ssp"
+                    tools:text="@string/question"
+                    android:background="@drawable/border"
+                    android:padding="@dimen/_16ssp"/>
 
+                <LinearLayout
+                    android:id="@+id/ll_progress_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginBottom="@dimen/_6sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal">
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:max="104"
+                        android:minHeight="@dimen/_38sdp"
+                        android:progress="0"
+                        android:indeterminate="false"
+                        android:progressBackgroundTint="@color/white"
+                        android:progressTint="@color/white"/>
+
+                    <TextView
+                        android:id="@+id/tv_progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="@dimen/_11sdp"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11ssp"
+                        tools:text="0/104"/>
+
+                </LinearLayout>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_option_one"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:padding="15dp"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:background="@drawable/border"
-                tools:text="ЕДНО"/>
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/_31sdp"
+                android:paddingStart="@dimen/_31sdp"
+                android:paddingEnd="@dimen/_31sdp"
+                android:paddingRight="@dimen/_31sdp">
 
-            <TextView
-                android:id="@+id/tv_option_two"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:padding="15dp"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:background="@drawable/border"
-                tools:text="ДВЕ"/>
+                <TextView
+                    android:id="@+id/tv_option_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:gravity="center"
+                    android:padding="@dimen/_11sdp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13ssp"
+                    android:background="@drawable/border"
+                    tools:text="ЕДНО"/>
 
-            <TextView
-                android:id="@+id/tv_option_three"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:padding="15dp"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:background="@drawable/border"
-                tools:text="ТРИ"/>
+                <TextView
+                    android:id="@+id/tv_option_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:gravity="center"
+                    android:padding="@dimen/_11sdp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13ssp"
+                    android:background="@drawable/border"
+                    tools:text="ДВЕ"/>
 
-            <Button
-                android:id="@+id/next"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:padding="15dp"
-                android:background="@drawable/border_next"
-                android:text="@string/nextQue"
-                android:textColor="@color/white"
-                android:textSize="18sp"/>
+                <TextView
+                    android:id="@+id/tv_option_three"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:gravity="center"
+                    android:padding="@dimen/_11sdp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13ssp"
+                    android:background="@drawable/border"
+                    tools:text="ТРИ"/>
 
-
-
-
+                <Button
+                    android:id="@+id/next"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:padding="@dimen/_11sdp"
+                    android:background="@drawable/border_next"
+                    android:text="@string/nextQue"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
         </LinearLayout>
-
-
     </LinearLayout>
 </ScrollView>

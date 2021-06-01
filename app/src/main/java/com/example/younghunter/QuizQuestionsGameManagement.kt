@@ -52,7 +52,7 @@ class QuizQuestionsGameManagement : AppCompatActivity(), View.OnClickListener {
         binding.tvHeader.setText(R.string.gameManagement)
 
         //Changes category icon
-        binding.tvHeader.setCompoundDrawablesWithIntrinsicBounds(R.drawable.animal_care, 0, 0, 0)
+        binding.ivHeader.setImageResource(R.drawable.ic_animalcare)
 
         //Changes progressbar max questions number
         binding.progressBar.max = 30

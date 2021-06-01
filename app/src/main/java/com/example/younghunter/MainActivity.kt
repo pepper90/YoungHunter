@@ -13,7 +13,7 @@ import com.example.younghunter.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private var dpHeight:Int? = null
+    private var dpHeight: Int? = null
     private var dpWidth: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

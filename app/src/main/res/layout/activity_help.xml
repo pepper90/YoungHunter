@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/helpLayout"
     android:layout_width="match_parent"
@@ -10,6 +10,7 @@
     android:orientation="vertical"
     tools:context=".Help"
     tools:ignore="RtlCompat">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:padding="16dp">
+                android:padding="@dimen/_12sdp">
 
                 <ImageButton
                     android:id="@+id/backButton"
@@ -29,24 +30,39 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/back"
-                    android:src="@drawable/back_icon"
+                    android:src="@drawable/ic_backbutton"
                     android:layout_gravity="center_vertical"
-                    android:paddingEnd="16dp"
-                    tools:ignore="RtlSymmetry"
-                    android:paddingRight="16dp"/>
+                    android:paddingEnd="@dimen/_12sdp"
+                    android:paddingRight="@dimen/_12sdp"
+                    tools:ignore="RtlSymmetry" />
 
-                <TextView
-                    android:id="@+id/tv_help"
-                    android:textAlignment="center"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:background="@drawable/border"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="@string/help"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:drawableStartCompat="@drawable/help_icon_activity" />
+                    android:padding="@dimen/_8sdp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/iv_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_help"
+                        tools:ignore="ContentDescription"
+                        android:layout_marginEnd="@dimen/_6sdp"
+                        android:layout_marginRight="@dimen/_6sdp"/>
+
+                    <TextView
+                        android:id="@+id/tv_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/help"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16ssp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -55,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="@dimen/_15sdp">
 
                 <TextView
                     android:id="@+id/tv_help_text"
@@ -63,10 +79,10 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/help_top"
                     android:gravity="center"
-                    android:padding="10dp"
+                    android:padding="@dimen/_7sdp"
                     android:text="@string/help2"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/_15ssp"
                     android:textAlignment="textStart"/>
 
                 <TextView
@@ -75,10 +91,10 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/help_middle"
                     android:gravity="center"
-                    android:padding="10dp"
+                    android:padding="@dimen/_7sdp"
                     android:text="@string/help3"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/_15ssp"
                     android:textAlignment="textStart"/>
 
                 <TextView
@@ -87,10 +103,10 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/help_middle"
                     android:gravity="center"
-                    android:padding="10dp"
+                    android:padding="@dimen/_7sdp"
                     android:text="@string/help4"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/_15ssp"
                     android:textAlignment="textStart"/>
 
                 <TextView
@@ -99,10 +115,10 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/help_middle"
                     android:gravity="center"
-                    android:padding="10dp"
+                    android:padding="@dimen/_7sdp"
                     android:text="@string/help5"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/_15ssp"
                     android:textAlignment="textStart"/>
 
                 <TextView
@@ -111,10 +127,10 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/help_middle"
                     android:gravity="center"
-                    android:padding="10dp"
+                    android:padding="@dimen/_7sdp"
                     android:text="@string/help6"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/_15ssp"
                     android:textAlignment="textStart"/>
 
                 <TextView
@@ -123,13 +139,13 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/help_bottom"
                     android:gravity="center"
-                    android:padding="10dp"
+                    android:padding="@dimen/_7sdp"
                     android:text="@string/help7"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/_15ssp"
                     android:textAlignment="textStart"/>
             </LinearLayout>
 
         </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+</ScrollView>

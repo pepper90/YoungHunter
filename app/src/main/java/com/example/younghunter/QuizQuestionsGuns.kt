@@ -52,7 +52,7 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
         binding.tvHeader.setText(R.string.guns)
 
         //Changes category icon
-        binding.tvHeader.setCompoundDrawablesWithIntrinsicBounds(R.drawable.guns, 0, 0, 0)
+        binding.ivHeader.setImageResource(R.drawable.ic_guns)
 
         //Changes progressbar max questions number
         binding.progressBar.max = 30

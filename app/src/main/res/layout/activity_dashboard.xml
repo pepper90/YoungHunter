@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fillViewport="true"
-        android:padding="60dp"
+        android:padding="@dimen/_50sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,113 +46,113 @@
                 android:drawableLeft="@drawable/ic_exam"
                 android:text="@string/load_exam"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="@dimen/_16ssp"
                 android:gravity="center"
-                android:padding="10dp"
+                android:padding="@dimen/_8sdp"
                 />
 
             <TextView
                 android:id="@+id/miniTests"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/_17sdp"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_horizontal"
                 android:text="@string/category"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="20sp"/>
+                android:textSize="@dimen/_16ssp"/>
 
             <Button
                 android:id="@+id/animals"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="@dimen/_6sdp"
                 android:background="@drawable/border"
                 android:drawableStart="@drawable/ic_animals"
                 android:drawableLeft="@drawable/ic_animals"
-                android:padding="10dp"
+                android:padding="@dimen/_8sdp"
                 android:text="@string/animals"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="@dimen/_16ssp" />
 
             <Button
                 android:id="@+id/law"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="@dimen/_6sdp"
                 android:background="@drawable/border"
                 android:drawableStart="@drawable/ic_law"
                 android:drawableLeft="@drawable/ic_law"
-                android:padding="10dp"
+                android:padding="@dimen/_8sdp"
                 android:text="@string/law"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="@dimen/_16ssp" />
 
             <Button
                 android:id="@+id/gameManagement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="@dimen/_6sdp"
                 android:background="@drawable/border"
                 android:drawableStart="@drawable/ic_animalcare"
                 android:drawableLeft="@drawable/ic_animalcare"
-                android:padding="10dp"
+                android:padding="@dimen/_8sdp"
                 android:text="@string/gameManagement"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="@dimen/_16ssp" />
 
             <Button
                 android:id="@+id/huntingMethods"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="@dimen/_6sdp"
                 android:background="@drawable/border"
                 android:drawableStart="@drawable/ic_hunting"
                 android:drawableLeft="@drawable/ic_hunting"
-                android:padding="10dp"
+                android:padding="@dimen/_8sdp"
                 android:text="@string/huntingMethods"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="@dimen/_16ssp" />
 
             <Button
                 android:id="@+id/guns"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="@dimen/_6sdp"
                 android:background="@drawable/border"
                 android:drawableStart="@drawable/ic_guns"
                 android:drawableLeft="@drawable/ic_guns"
-                android:padding="10dp"
+                android:padding="@dimen/_8sdp"
                 android:text="@string/guns"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="@dimen/_16ssp" />
 
             <Button
                 android:id="@+id/dogs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="@dimen/_6sdp"
                 android:background="@drawable/border"
                 android:drawableStart="@drawable/ic_dogs"
                 android:drawableLeft="@drawable/ic_dogs"
-                android:padding="10dp"
+                android:padding="@dimen/_8sdp"
                 android:text="@string/dogs"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="@dimen/_16ssp" />
 
             <Button
                 android:id="@+id/illnesses"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="@dimen/_6sdp"
                 android:background="@drawable/border"
                 android:drawableStart="@drawable/ic_virus"
                 android:drawableLeft="@drawable/ic_virus"
-                android:padding="10dp"
+                android:padding="@dimen/_8sdp"
                 android:text="@string/illnesses"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="@dimen/_16ssp" />
 
         </LinearLayout>
 
@@ -161,11 +161,11 @@
 
     <ImageButton
         android:id="@+id/helpIcon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginEnd="@dimen/_6sdp"
+        android:layout_marginRight="@dimen/_6sdp"
         android:contentDescription="@string/help"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

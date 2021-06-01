@@ -52,7 +52,7 @@ class QuizQuestionsHuntingLaw : AppCompatActivity(), View.OnClickListener {
         binding.tvHeader.setText(R.string.law)
 
         //Changes category icon
-        binding.tvHeader.setCompoundDrawablesWithIntrinsicBounds(R.drawable.law, 0, 0, 0)
+        binding.ivHeader.setImageResource(R.drawable.ic_law)
 
         //Changes progressbar max questions number
         binding.progressBar.max = 30

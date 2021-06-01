@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_margin="40dp"
+            android:layout_margin="@dimen/_31sdp"
             tools:ignore="UselessParent">
 
             <TextView
@@ -30,17 +30,17 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/border"
                 android:gravity="center_horizontal"
-                android:padding="10dp"
+                android:padding="@dimen/_7sdp"
                 android:text="@string/result"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="@dimen/_19ssp"
                 android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/img_success"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_marginTop="25dp"
+                android:layout_width="@dimen/_152sdp"
+                android:layout_height="@dimen/_152sdp"
+                android:layout_marginTop="@dimen/_19sdp"
                 android:contentDescription="@string/finish"
                 android:src="@drawable/satisfied" />
 
@@ -48,12 +48,12 @@
                 android:id="@+id/tv_congrats"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:background="@drawable/result_success_top"
                 android:gravity="center_horizontal"
-                android:padding="10dp"
+                android:padding="@dimen/_8sdp"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="@dimen/_19ssp"
                 android:textStyle="bold"
                 tools:text="@string/success" />
 
@@ -63,23 +63,25 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/result_success_bottom"
                 android:gravity="center_horizontal"
-                android:padding="10dp"
+                android:padding="@dimen/_8sdp"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="@dimen/_19ssp"
                 tools:text="@string/score" />
 
             <Button
                 android:id="@+id/toDashboard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:background="@drawable/border_next"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp"
+                android:paddingLeft="@dimen/_24sdp"
+                android:paddingRight="@dimen/_24sdp"
+                android:paddingTop="@dimen/_12sdp"
+                android:paddingBottom="@dimen/_12sdp"
                 android:text="@string/newTest"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold"/>
         </LinearLayout>
 
     </LinearLayout>

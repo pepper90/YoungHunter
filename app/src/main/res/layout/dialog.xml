@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="350dp"
-    android:layout_height="300dp"
+    android:layout_width="@dimen/_270sdp"
+    android:layout_height="@dimen/_230sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_gravity="center"
@@ -17,7 +17,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:padding="15dp"
+        android:padding="@dimen/_11sdp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true">
 
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:text="@string/dialogTitle1"
             android:gravity="center"
-            android:textSize="25sp"
+            android:textSize="@dimen/_19ssp"
             android:textColor="@color/white"
             android:textStyle="bold"/>
 
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:text="@string/dialogText1"
             android:gravity="center"
-            android:textSize="20sp"
+            android:textSize="@dimen/_13ssp"
             android:textColor="@color/white"
             />
 
@@ -62,12 +62,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/positiveExit"
-                android:layout_margin="10dp"
-                android:textSize="15sp"
+                android:layout_margin="@dimen/_8sdp"
+                android:textSize="@dimen/_11ssp"
                 android:textColor="@color/white"
                 android:background="@color/olive_1"
                 android:gravity="center"
-                android:padding="10dp"
+                android:padding="@dimen/_8sdp"
                 />
 
             <TextView
@@ -76,12 +76,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/negativeCont"
-                android:layout_margin="10dp"
-                android:textSize="15sp"
+                android:layout_margin="@dimen/_8sdp"
+                android:textSize="@dimen/_11ssp"
                 android:textColor="@color/white"
                 android:background="@color/olive_1"
                 android:gravity="center"
-                android:padding="10dp"
+                android:padding="@dimen/_8sdp"
                 />
         </LinearLayout>
 

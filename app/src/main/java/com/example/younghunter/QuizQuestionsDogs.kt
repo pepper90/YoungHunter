@@ -52,7 +52,7 @@ class QuizQuestionsDogs : AppCompatActivity(), View.OnClickListener {
         binding.tvHeader.setText(R.string.dogs)
 
         //Changes category icon
-        binding.tvHeader.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dogs, 0, 0, 0)
+        binding.ivHeader.setImageResource(R.drawable.ic_dogs)
 
         //Changes progressbar max questions number
         binding.progressBar.max = 30
