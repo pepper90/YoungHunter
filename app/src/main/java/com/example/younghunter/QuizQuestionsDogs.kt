@@ -72,7 +72,7 @@ class QuizQuestionsDogs : AppCompatActivity(), View.OnClickListener {
      @SuppressLint("SetTextI18n")
      private fun setQuestionDogs(){
 
-        val question: Question? = mQuestionsList!![mCurrentPosition - 1]
+        val question: Question = mQuestionsList!![mCurrentPosition - 1]
 
         defaultOptionsView()
 
@@ -87,7 +87,7 @@ class QuizQuestionsDogs : AppCompatActivity(), View.OnClickListener {
          binding.tvProgress.text = "$mCurrentPosition" + "/" + binding.progressBar.max
 
         //Loads question & options from list
-         binding.tvQuestion.text = question!!.question
+         binding.tvQuestion.text = question.question
          binding.tvOptionOne.text = question.optionOne
          binding.tvOptionTwo.text = question.optionTwo
          binding.tvOptionThree.text = question.optionThree

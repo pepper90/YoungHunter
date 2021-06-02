@@ -33,6 +33,7 @@ class Dashboard : AppCompatActivity() {
         binding.helpIcon.setOnClickListener{
             val intent = Intent(this,Help::class.java)
             startActivity(intent)
+            finish()
         }
 
         //Sets first button click

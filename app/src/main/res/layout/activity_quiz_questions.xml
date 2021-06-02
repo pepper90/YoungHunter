@@ -111,7 +111,8 @@
                         android:progress="0"
                         android:indeterminate="false"
                         android:progressBackgroundTint="@color/white"
-                        android:progressTint="@color/white"/>
+                        android:progressTint="@color/white"
+                        tools:ignore="UnusedAttribute" />
 
                     <TextView
                         android:id="@+id/tv_progress"
