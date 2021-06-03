@@ -30,6 +30,7 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
     private val startTimeInMillis: Long = 1500000
     private var mTimeLeftInMillis = startTimeInMillis
 
+    //Declare questionnaire variables
     private var mCurrentPosition:Int = 1
     private var mQuestionsList:ArrayList<Question>? = null
     private var mSelectedOptionPosition:Int = 0
