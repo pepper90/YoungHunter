@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
@@ -14,6 +15,8 @@ import com.example.younghunter.databinding.ActivityQuizQuestionsBinding
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
@@ -23,6 +26,10 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
 
     //Declare background photos
     private val backgrounds = arrayOf(R.drawable.backimg_one, R.drawable.backimg_two, R.drawable.backimg_three, R.drawable.backimg_four, R.drawable.backimg_five, R.drawable.backimg_six, R.drawable.backimg_seven, R.drawable.backimg_eight, R.drawable.backimg_nine, R.drawable.backimg_ten)
+
+    //Declare countdown timer
+    private val startTimeInMillis: Long = 1500000
+    private var mTimeLeftInMillis = startTimeInMillis
 
     private var mCurrentPosition:Int = 1
     private var mQuestionsList:ArrayList<Question>? = null
@@ -58,6 +65,9 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         //Changes progressbar max questions number
         binding.progressBar.max = 30
 
+        //Initializes timer
+        startTimer()
+
         //Loads questions list
         mQuestionsList = Constants.getQuestionsAnimals().shuffled().take(30) as ArrayList<Question>
 
@@ -71,6 +81,36 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         //Sets adds
         MobileAds.initialize(this) {}
         createPersonalizedAdd()
+    }
+
+    //This function sets the timer ---------------------------------------------------------
+    private fun startTimer() {
+        object: CountDownTimer(mTimeLeftInMillis, 1000) {
+
+            override fun onTick(millisUntilFinished: Long) {
+                mTimeLeftInMillis = millisUntilFinished
+                updateCountDownText()
+            }
+
+            override fun onFinish() {
+                if (mInterstitialAd != null) {
+                    mInterstitialAd?.show(this@QuizQuestionsAnimals)
+                } else {
+                    val intent = Intent(this@QuizQuestionsAnimals, FinishQuiz::class.java)
+                    intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
+                    intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        }.start()
+    }
+
+    private fun updateCountDownText() {
+        val minutes: Int = ((mTimeLeftInMillis / 1000) / 60).toInt()
+        val seconds: Int = ((mTimeLeftInMillis / 1000) % 60).toInt()
+        val timeLeftFormatted: String = String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds)
+        binding.timer.text = timeLeftFormatted
     }
 
     //This function assigns the questions ---------------------------------------------------------

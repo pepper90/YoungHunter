@@ -124,6 +124,18 @@
                         android:textSize="@dimen/_11ssp"
                         tools:text="0/104"/>
 
+                    <TextView
+                        android:id="@+id/timer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11ssp"
+                        android:paddingTop="@dimen/_11sdp"
+                        android:paddingBottom="@dimen/_11sdp"
+                        android:text="@string/timerText"
+                        android:textStyle="bold"/>
+
                 </LinearLayout>
             </LinearLayout>
 

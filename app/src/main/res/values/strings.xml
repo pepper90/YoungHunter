@@ -36,6 +36,7 @@
     <string name="negativeCont">ПРОДЪЛЖИ</string>
     <string name="positiveExit">ИЗХОД</string>
     <string name="toast">Натисете още веднъж за ИЗХОД.</string>
+    <string name="timerText">00:00</string>
 
 
 </resources>

@@ -27,4 +27,9 @@ class Help : AppCompatActivity() {
             finish()
         }
     }
+    override fun onBackPressed() {
+        val intent = Intent(this, Dashboard::class.java)
+        startActivity(intent)
+        finish()
+    }
 }
