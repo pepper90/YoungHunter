@@ -102,7 +102,7 @@
 
                     <ImageView
                         android:id="@+id/iv_reload"
-                        android:layout_width="@dimen/_39sdp"
+                        android:layout_width="@dimen/_38sdp"
                         android:layout_height="@dimen/_38sdp"
                         android:gravity="center"
                         android:padding="@dimen/_9sdp"
