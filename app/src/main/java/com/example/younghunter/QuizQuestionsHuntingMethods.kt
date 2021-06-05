@@ -62,6 +62,15 @@ class QuizQuestionsHuntingMethods : AppCompatActivity(), View.OnClickListener {
         //Changes category icon
         binding.ivHeader.setImageResource(R.drawable.ic_hunting)
 
+        //Sets reload button
+        binding.ivReload.setOnClickListener {
+            val intent = intent
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            finish()
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+
         //Changes progressbar max questions number
         binding.progressBar.max = 30
 
