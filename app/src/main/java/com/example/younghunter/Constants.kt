@@ -2,7 +2,9 @@ package com.example.younghunter
 
 object Constants {
 
-    const val SHARED_PREFERENCES = "shared_preferences"
+    const val SHARED_PREFERENCES_ANIMALS = "shared_preferences_animals"
+    const val CURRENT_POSITION = "current_position"
+    const val TIMER = "timer"
 
     const val CORRECT_ANSWERS_EXAM: String = "correct_answers_exam"
     const val TOTAL_QUESTIONS: String = "total_questions"

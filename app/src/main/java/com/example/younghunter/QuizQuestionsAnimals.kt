@@ -4,12 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.younghunter.databinding.ActivityQuizQuestionsBinding
 import com.google.android.gms.ads.*
@@ -43,6 +43,8 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         val view = binding.root
         setContentView(view)
 
+        loadData()
+
         //Changes randomly background
         binding.quizquestions.setBackgroundResource(backgrounds.random())
 
@@ -65,7 +67,15 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
 
         //Sets reload button
         binding.ivReload.setOnClickListener {
-            reloadDialogFunction()
+            if (mCurrentPosition == 1) {
+                val intent = intent
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                finish()
+                startActivity(intent)
+                overridePendingTransition(0, 0)
+            } else {
+                reloadDialogFunction()
+            }
         }
 
         //Changes progressbar max questions number
@@ -87,6 +97,31 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         //Sets adds
         MobileAds.initialize(this) {}
         createPersonalizedAdd()
+
+
+    }
+
+    private fun saveData() {
+        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_ANIMALS, MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putInt(Constants.CURRENT_POSITION, mCurrentPosition)
+        editor.putInt(Constants.CORRECT_ANSWERS,mCorrectAnswers)
+        editor.putLong(Constants.TIMER, mTimeLeftInMillis)
+        editor.apply()
+    }
+
+    private fun loadData() {
+        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_ANIMALS, MODE_PRIVATE)
+        mCurrentPosition = sharedPreferences.getInt(Constants.CURRENT_POSITION,1)
+        mCorrectAnswers = sharedPreferences.getInt(Constants.CORRECT_ANSWERS,0)
+        mTimeLeftInMillis = sharedPreferences.getLong(Constants.TIMER, startTimeInMillis)
+    }
+
+    private fun clearData() {
+        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_ANIMALS, MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
     }
 
     //This function sets the timer ---------------------------------------------------------
@@ -105,6 +140,7 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
                     val intent = Intent(this@QuizQuestionsAnimals, FinishQuiz::class.java)
                     intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                     intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+                    clearData()
                     startActivity(intent)
                     finish()
                 }
@@ -192,6 +228,7 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
                             val intent = Intent(this, FinishQuiz::class.java)
                             intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                             intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+                            clearData()
                             startActivity(intent)
                             finish()
                             }
@@ -248,6 +285,7 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         val yes = dialogLayout.findViewById<TextView>(R.id.tv_yes)
         yes.setOnClickListener {
             alertDialog.dismiss()
+            clearData()
             val intent = intent
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             finish()
@@ -273,6 +311,7 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         val exit = dialogLayout.findViewById<TextView>(R.id.tv_left)
         exit.setOnClickListener {
             alertDialog.dismiss()
+            saveData()
             val intent = Intent(this@QuizQuestionsAnimals, Dashboard::class.java)
             startActivity(intent)
             finish()
@@ -316,6 +355,7 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
                         val intent = Intent(this@QuizQuestionsAnimals, FinishQuiz::class.java)
                         intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                         intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+                        clearData()
                         startActivity(intent)
                         finish()
                     }
@@ -324,6 +364,7 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
                         val intent = Intent(this@QuizQuestionsAnimals, FinishQuiz::class.java)
                         intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                         intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+                        clearData()
                         startActivity(intent)
                         finish()
                     }

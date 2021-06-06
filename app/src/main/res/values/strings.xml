@@ -32,12 +32,13 @@
     <string name="success1">Отговорихте правилно на %d от общо %d въпроса.</string>
     <string name="success2">Отговорихте правилно на %d от общо %d въпроса.</string>
     <string name="dialogTitle1">КЪМ ГЛАВНОТО МЕНЮ?</string>
-    <string name="dialogText1">Текущите Ви отговори няма да бъдат запазени!</string>
+    <string name="dialogText1">Текущите Ви отговори ще бъдат запазени.</string>
     <string name="negativeCont">ПРОДЪЛЖИ</string>
     <string name="positiveExit">ИЗХОД</string>
     <string name="toast">Натисете още веднъж за ИЗХОД.</string>
     <string name="timerText">00:00</string>
     <string name="reload">ЗАРЕДИ НОВ ТЕСТ?</string>
+    <string name="reloadText">Текущите Ви отговори ще бъдат изтрити!</string>
     <string name="yes">ДА</string>
     <string name="no">НЕ</string>
 
