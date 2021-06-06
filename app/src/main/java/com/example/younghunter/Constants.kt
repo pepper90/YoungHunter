@@ -2,6 +2,8 @@ package com.example.younghunter
 
 object Constants {
 
+    const val SHARED_PREFERENCES = "shared_preferences"
+
     const val CORRECT_ANSWERS_EXAM: String = "correct_answers_exam"
     const val TOTAL_QUESTIONS: String = "total_questions"
     const val CORRECT_ANSWERS: String = "correct_answers"

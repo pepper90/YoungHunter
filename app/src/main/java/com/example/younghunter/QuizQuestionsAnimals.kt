@@ -65,11 +65,7 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
 
         //Sets reload button
         binding.ivReload.setOnClickListener {
-            val intent = intent
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            finish()
-            startActivity(intent)
-            overridePendingTransition(0, 0)
+            reloadDialogFunction()
         }
 
         //Changes progressbar max questions number
@@ -241,6 +237,30 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         tv.setTextColor(Color.parseColor("#424242"))
         tv.setTypeface(tv.typeface, Typeface.BOLD)
         tv.background = ContextCompat.getDrawable(this, R.drawable.selected_option)
+    }
+
+    private fun reloadDialogFunction() {
+        val dialog = AlertDialog.Builder(this@QuizQuestionsAnimals)
+        val dialogLayout = layoutInflater.inflate(R.layout.dialog_reload, null)
+        dialog.setView(dialogLayout)
+        val alertDialog = dialog.create()
+
+        val yes = dialogLayout.findViewById<TextView>(R.id.tv_yes)
+        yes.setOnClickListener {
+            alertDialog.dismiss()
+            val intent = intent
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            finish()
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+
+        val no = dialogLayout.findViewById<TextView>(R.id.tv_no)
+        no.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
     }
 
     private fun alertDialogFunction() {
