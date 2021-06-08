@@ -16,6 +16,8 @@ import com.example.younghunter.databinding.ActivityQuizQuestionsBinding
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -87,8 +89,6 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
         startTimer()
 
         //Loads questions list
-        mQuestionsList = Constants.loadExam.shuffled()
-
         setQuestionLoadExam()
 
         binding.tvOptionOne.setOnClickListener(this)
@@ -107,6 +107,9 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
         editor.putInt(Constants.CURRENT_POSITION, mCurrentPosition)
         editor.putInt(Constants.CORRECT_ANSWERS_EXAM,mCorrectAnswers)
         editor.putLong(Constants.TIMER, mTimeLeftInMillis)
+        val gson = Gson()
+        val json = gson.toJson(mQuestionsList)
+        editor.putString(Constants.QLIST, json)
         editor.apply()
     }
 
@@ -115,6 +118,14 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
         mCurrentPosition = sharedPreferences.getInt(Constants.CURRENT_POSITION,1)
         mCorrectAnswers = sharedPreferences.getInt(Constants.CORRECT_ANSWERS_EXAM,0)
         mTimeLeftInMillis = sharedPreferences.getLong(Constants.TIMER, startTimeInMillis)
+        val gson = Gson()
+        val json = sharedPreferences.getString(Constants.QLIST,null)
+        val type = object : TypeToken<ArrayList<Question>>() {}.type
+        mQuestionsList = gson.fromJson(json, type)
+
+        if (mQuestionsList == null) {
+            mQuestionsList = Constants.loadExam.shuffled() as ArrayList<Question>
+        }
     }
 
     private fun clearData() {

@@ -13,6 +13,7 @@ object Constants {
 
     const val CURRENT_POSITION = "current_position"
     const val TIMER = "timer"
+    const val QLIST = "qlist"
 
     const val CORRECT_ANSWERS_EXAM: String = "correct_answers_exam"
     const val TOTAL_QUESTIONS: String = "total_questions"
