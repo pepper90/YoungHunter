@@ -97,8 +97,6 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         //Sets adds
         MobileAds.initialize(this) {}
         createPersonalizedAdd()
-
-
     }
 
     private fun saveData() {

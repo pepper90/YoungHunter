@@ -42,6 +42,8 @@ class QuizQuestionsHuntingLaw : AppCompatActivity(), View.OnClickListener {
         val view = binding.root
         setContentView(view)
 
+        loadData()
+
         //Changes randomly background
         binding.quizquestions.setBackgroundResource(backgrounds.random())
 
@@ -64,11 +66,15 @@ class QuizQuestionsHuntingLaw : AppCompatActivity(), View.OnClickListener {
 
         //Sets reload button
         binding.ivReload.setOnClickListener {
-            val intent = intent
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            finish()
-            startActivity(intent)
-            overridePendingTransition(0, 0)
+            if (mCurrentPosition == 1) {
+                val intent = intent
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                finish()
+                startActivity(intent)
+                overridePendingTransition(0, 0)
+            } else {
+                reloadDialogFunction()
+            }
         }
 
         //Changes progressbar max questions number
@@ -92,6 +98,29 @@ class QuizQuestionsHuntingLaw : AppCompatActivity(), View.OnClickListener {
         createPersonalizedAdd()
     }
 
+    private fun saveData() {
+        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_LAW, MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putInt(Constants.CURRENT_POSITION, mCurrentPosition)
+        editor.putInt(Constants.CORRECT_ANSWERS,mCorrectAnswers)
+        editor.putLong(Constants.TIMER, mTimeLeftInMillis)
+        editor.apply()
+    }
+
+    private fun loadData() {
+        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_LAW, MODE_PRIVATE)
+        mCurrentPosition = sharedPreferences.getInt(Constants.CURRENT_POSITION,1)
+        mCorrectAnswers = sharedPreferences.getInt(Constants.CORRECT_ANSWERS,0)
+        mTimeLeftInMillis = sharedPreferences.getLong(Constants.TIMER, startTimeInMillis)
+    }
+
+    private fun clearData() {
+        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_LAW, MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
+    }
+
     //This function sets the timer ---------------------------------------------------------
     private fun startTimer() {
         object: CountDownTimer(mTimeLeftInMillis, 1000) {
@@ -108,6 +137,7 @@ class QuizQuestionsHuntingLaw : AppCompatActivity(), View.OnClickListener {
                     val intent = Intent(this@QuizQuestionsHuntingLaw, FinishQuiz::class.java)
                     intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                     intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+                    clearData()
                     startActivity(intent)
                     finish()
                 }
@@ -195,6 +225,7 @@ class QuizQuestionsHuntingLaw : AppCompatActivity(), View.OnClickListener {
                                 val intent = Intent(this, FinishQuiz::class.java)
                                 intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                                 intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+                                clearData()
                                 startActivity(intent)
                                 finish()
                             }
@@ -242,6 +273,31 @@ class QuizQuestionsHuntingLaw : AppCompatActivity(), View.OnClickListener {
         tv.background = ContextCompat.getDrawable(this, R.drawable.selected_option)
     }
 
+    private fun reloadDialogFunction() {
+        val dialog = AlertDialog.Builder(this@QuizQuestionsHuntingLaw)
+        val dialogLayout = layoutInflater.inflate(R.layout.dialog_reload, null)
+        dialog.setView(dialogLayout)
+        val alertDialog = dialog.create()
+
+        val yes = dialogLayout.findViewById<TextView>(R.id.tv_yes)
+        yes.setOnClickListener {
+            alertDialog.dismiss()
+            clearData()
+            val intent = intent
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            finish()
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+
+        val no = dialogLayout.findViewById<TextView>(R.id.tv_no)
+        no.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
+    }
+
     //This functions sets the dialog window
     private fun alertDialogFunction() {
         val dialog = AlertDialog.Builder(this@QuizQuestionsHuntingLaw)
@@ -253,6 +309,7 @@ class QuizQuestionsHuntingLaw : AppCompatActivity(), View.OnClickListener {
         val exit = dialogLayout.findViewById<TextView>(R.id.tv_left)
         exit.setOnClickListener {
             alertDialog.dismiss()
+            saveData()
             val intent = Intent(this@QuizQuestionsHuntingLaw, Dashboard::class.java)
             startActivity(intent)
             finish()
@@ -297,6 +354,7 @@ class QuizQuestionsHuntingLaw : AppCompatActivity(), View.OnClickListener {
                         val intent = Intent(this@QuizQuestionsHuntingLaw, FinishQuiz::class.java)
                         intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                         intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+                        clearData()
                         startActivity(intent)
                         finish()
                     }
@@ -305,6 +363,7 @@ class QuizQuestionsHuntingLaw : AppCompatActivity(), View.OnClickListener {
                         val intent = Intent(this@QuizQuestionsHuntingLaw, FinishQuiz::class.java)
                         intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                         intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+                        clearData()
                         startActivity(intent)
                         finish()
                     }
