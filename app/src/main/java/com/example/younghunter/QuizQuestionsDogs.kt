@@ -35,6 +35,7 @@ class QuizQuestionsDogs : AppCompatActivity(), View.OnClickListener {
     private var mQuestionsList:ArrayList<Question>? = null
     private var mSelectedOptionPosition:Int = 0
     private var mCorrectAnswers:Int = 0
+    private var isSelected:Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,6 +93,10 @@ class QuizQuestionsDogs : AppCompatActivity(), View.OnClickListener {
         binding.tvOptionTwo.setOnClickListener(this)
         binding.tvOptionThree.setOnClickListener(this)
         binding.next.setOnClickListener(null)
+
+        //Sets adds
+        MobileAds.initialize(this) {}
+        createPersonalizedAdd()
     }
 
     private fun saveData() {
@@ -108,7 +113,7 @@ class QuizQuestionsDogs : AppCompatActivity(), View.OnClickListener {
         mCurrentPosition = sharedPreferences.getInt(Constants.CURRENT_POSITION,1)
         mCorrectAnswers = sharedPreferences.getInt(Constants.CORRECT_ANSWERS,0)
         mTimeLeftInMillis = sharedPreferences.getLong(Constants.TIMER, startTimeInMillis)
-        }
+    }
 
     private fun clearData() {
         val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_DOGS, MODE_PRIVATE)
@@ -171,10 +176,6 @@ class QuizQuestionsDogs : AppCompatActivity(), View.OnClickListener {
          binding.tvOptionOne.text = question.optionOne
          binding.tvOptionTwo.text = question.optionTwo
          binding.tvOptionThree.text = question.optionThree
-
-         //Sets adds
-         MobileAds.initialize(this) {}
-         createPersonalizedAdd()
     }
 
     //This function assigns the default view -------------------------------------------------------
@@ -215,6 +216,9 @@ class QuizQuestionsDogs : AppCompatActivity(), View.OnClickListener {
                     binding.tvOptionThree.setOnClickListener(this)
                     binding.next.setOnClickListener(null)
 
+                    when (isSelected) {
+                        true -> mCorrectAnswers++
+                    }
 
                     when {
                         mCurrentPosition <= mQuestionsList!!.size ->{setQuestionDogs()}
@@ -233,10 +237,11 @@ class QuizQuestionsDogs : AppCompatActivity(), View.OnClickListener {
                     }
                 } else {
                     val question = mQuestionsList?.get(mCurrentPosition-1)
+                    isSelected = false
                     if(question!!.correctAnswer != mSelectedOptionPosition){
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option)
                     }else{
-                        mCorrectAnswers++
+                        isSelected = true
                     }
                     answerView(question.correctAnswer, R.drawable.correct_option)
 
@@ -249,8 +254,6 @@ class QuizQuestionsDogs : AppCompatActivity(), View.OnClickListener {
                     binding.tvOptionOne.setOnClickListener(null)
                     binding.tvOptionTwo.setOnClickListener(null)
                     binding.tvOptionThree.setOnClickListener(null)
-
-
                 }
             }
         }

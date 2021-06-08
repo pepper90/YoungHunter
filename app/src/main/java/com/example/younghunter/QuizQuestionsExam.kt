@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
@@ -36,6 +37,7 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
     private var mQuestionsList:List<Question>? = null
     private var mSelectedOptionPosition:Int = 0
     private var mCorrectAnswers:Int = 0
+    private var isSelected:Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -216,6 +218,10 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
                     binding.tvOptionThree.setOnClickListener(this)
                     binding.next.setOnClickListener(null)
 
+                    when (isSelected) {
+                        true -> mCorrectAnswers++
+                    }
+                    Log.i("Answers","$mCorrectAnswers")
 
                     when {
                         mCurrentPosition <= mQuestionsList!!.size ->{setQuestionLoadExam()}
@@ -234,10 +240,11 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
                     }
                 } else {
                     val question = mQuestionsList?.get(mCurrentPosition-1)
+                    isSelected = false
                     if(question!!.correctAnswer != mSelectedOptionPosition){
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option)
                     }else{
-                        mCorrectAnswers++
+                        isSelected = true
                     }
                     answerView(question.correctAnswer, R.drawable.correct_option)
 

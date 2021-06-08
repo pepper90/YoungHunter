@@ -36,6 +36,7 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
     private var mQuestionsList:ArrayList<Question>? = null
     private var mSelectedOptionPosition:Int = 0
     private var mCorrectAnswers:Int = 0
+    private var isSelected:Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -216,6 +217,9 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
                     binding.tvOptionThree.setOnClickListener(this)
                     binding.next.setOnClickListener(null)
 
+                    when (isSelected) {
+                        true -> mCorrectAnswers++
+                    }
 
                     when {
                         mCurrentPosition <= mQuestionsList!!.size ->{setQuestionAnimals()}
@@ -223,21 +227,22 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
                             if (mInterstitialAd != null) {
                                 mInterstitialAd?.show(this)
                             } else {
-                            val intent = Intent(this, FinishQuiz::class.java)
-                            intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
-                            intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
-                            clearData()
-                            startActivity(intent)
-                            finish()
+                                val intent = Intent(this, FinishQuiz::class.java)
+                                intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
+                                intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+                                clearData()
+                                startActivity(intent)
+                                finish()
                             }
                         }
                     }
                 } else {
                     val question = mQuestionsList?.get(mCurrentPosition-1)
+                    isSelected = false
                     if(question!!.correctAnswer != mSelectedOptionPosition){
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option)
                     }else{
-                        mCorrectAnswers++
+                        isSelected = true
                     }
                     answerView(question.correctAnswer, R.drawable.correct_option)
 
@@ -250,8 +255,6 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
                     binding.tvOptionOne.setOnClickListener(null)
                     binding.tvOptionTwo.setOnClickListener(null)
                     binding.tvOptionThree.setOnClickListener(null)
-
-
                 }
             }
         }

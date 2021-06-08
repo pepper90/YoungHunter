@@ -35,6 +35,7 @@ class QuizQuestionsHuntingMethods : AppCompatActivity(), View.OnClickListener {
     private var mQuestionsList:ArrayList<Question>? = null
     private var mSelectedOptionPosition:Int = 0
     private var mCorrectAnswers:Int = 0
+    private var isSelected:Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -215,6 +216,9 @@ class QuizQuestionsHuntingMethods : AppCompatActivity(), View.OnClickListener {
                     binding.tvOptionThree.setOnClickListener(this)
                     binding.next.setOnClickListener(null)
 
+                    when (isSelected) {
+                        true -> mCorrectAnswers++
+                    }
 
                     when {
                         mCurrentPosition <= mQuestionsList!!.size ->{setQuestionHuntingMethods()}
@@ -233,10 +237,11 @@ class QuizQuestionsHuntingMethods : AppCompatActivity(), View.OnClickListener {
                     }
                 } else {
                     val question = mQuestionsList?.get(mCurrentPosition-1)
+                    isSelected = false
                     if(question!!.correctAnswer != mSelectedOptionPosition){
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option)
                     }else{
-                        mCorrectAnswers++
+                        isSelected = true
                     }
                     answerView(question.correctAnswer, R.drawable.correct_option)
 
