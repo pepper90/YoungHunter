@@ -9,6 +9,7 @@ object Constants {
     const val SHARED_PREFERENCES_LAW = "shared_preferences_law"
     const val SHARED_PREFERENCES_HUNTING = "shared_preferences_hunting"
     const val SHARED_PREFERENCES_VIRUSES = "shared_preferences_viruses"
+    const val SHARED_PREFERENCES_EXAM = "shared_preferences_exam"
 
     const val CURRENT_POSITION = "current_position"
     const val TIMER = "timer"
