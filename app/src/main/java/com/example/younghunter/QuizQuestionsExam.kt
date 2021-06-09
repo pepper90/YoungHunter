@@ -237,7 +237,6 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
                     when (isSelected) {
                         true -> mCorrectAnswers++
                     }
-                    Log.i("Answers","$mCorrectAnswers")
 
                     when {
                         mCurrentPosition <= mQuestionsList!!.size ->{setQuestionLoadExam()}
