@@ -7,6 +7,7 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -100,6 +101,7 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         createPersonalizedAdd()
     }
 
+    //This function saves data -------------------------------------------------------
     private fun saveData() {
         val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_ANIMALS, MODE_PRIVATE)
         val editor = sharedPreferences.edit()
@@ -112,6 +114,7 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         editor.apply()
     }
 
+    //This function loads data -------------------------------------------------------
     private fun loadData() {
         val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_ANIMALS, MODE_PRIVATE)
         mCurrentPosition = sharedPreferences.getInt(Constants.CURRENT_POSITION,1)
@@ -127,6 +130,7 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    //This function clears all data -------------------------------------------------------
     private fun clearData() {
         val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_ANIMALS, MODE_PRIVATE)
         val editor = sharedPreferences.edit()
@@ -205,6 +209,7 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    //This function sets the quiz buttons -------------------------------------------------------
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.tv_option_one -> {
@@ -271,6 +276,7 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    //This function sets options design -------------------------------------------------------
     private fun answerView (answer: Int, drawableView: Int) {
         when(answer){
             1 -> {binding.tvOptionOne.background = ContextCompat.getDrawable(this,drawableView)}
@@ -288,6 +294,7 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         tv.background = ContextCompat.getDrawable(this, R.drawable.selected_option)
     }
 
+    //This function sets the reload dialog -------------------------------------------------------
     private fun reloadDialogFunction() {
         val dialog = AlertDialog.Builder(this@QuizQuestionsAnimals)
         val dialogLayout = layoutInflater.inflate(R.layout.dialog_reload, null)
@@ -310,9 +317,15 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
             alertDialog.dismiss()
         }
 
+        val dismiss = dialogLayout.findViewById<ImageView>(R.id.iv_dismiss)
+        dismiss.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
         alertDialog.show()
     }
 
+    //This function sets the exit dialog -------------------------------------------------------
     private fun alertDialogFunction() {
         val dialog = AlertDialog.Builder(this@QuizQuestionsAnimals)
         val dialogLayout = layoutInflater.inflate(R.layout.dialog, null)
@@ -320,8 +333,8 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         val alertDialog = dialog.create()
 
 
-        val exit = dialogLayout.findViewById<TextView>(R.id.tv_left)
-        exit.setOnClickListener {
+        val yes = dialogLayout.findViewById<TextView>(R.id.tv_yes)
+        yes.setOnClickListener {
             alertDialog.dismiss()
             saveData()
             val intent = Intent(this@QuizQuestionsAnimals, Dashboard::class.java)
@@ -329,15 +342,24 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
             finish()
         }
 
-        val back = dialogLayout.findViewById<TextView>(R.id.tv_right)
-        back.setOnClickListener {
+        val no = dialogLayout.findViewById<TextView>(R.id.tv_no)
+        no.setOnClickListener {
+            alertDialog.dismiss()
+            clearData()
+            val intent = Intent(this@QuizQuestionsAnimals, Dashboard::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        val dismiss = dialogLayout.findViewById<ImageView>(R.id.iv_dismiss)
+        dismiss.setOnClickListener {
             alertDialog.dismiss()
         }
 
         alertDialog.show()
-        alertDialog.setCancelable(false)
     }
 
+    //This function sets the physical back button -------------------------------------------------------
     override fun onBackPressed() {
         if (mCurrentPosition == 1) {
             val intent = Intent(this, Dashboard::class.java)
@@ -348,6 +370,7 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    //This function sets Admob -------------------------------------------------------
     private fun createPersonalizedAdd() {
         val adRequest = AdRequest.Builder().build()
         createInterstitialAdd(adRequest)
