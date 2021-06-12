@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -413,10 +412,5 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
                 }
             }
         })
-    }
-
-    override fun onStop() {
-        saveData()
-        super.onStop()
     }
 }

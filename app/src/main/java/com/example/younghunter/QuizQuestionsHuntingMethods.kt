@@ -412,9 +412,4 @@ class QuizQuestionsHuntingMethods : AppCompatActivity(), View.OnClickListener {
             }
         })
     }
-
-    override fun onStop() {
-        saveData()
-        super.onStop()
-    }
 }
