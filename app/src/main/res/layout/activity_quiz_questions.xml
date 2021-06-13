@@ -144,7 +144,8 @@
                         android:paddingTop="@dimen/_11sdp"
                         android:paddingBottom="@dimen/_11sdp"
                         android:text="@string/timerText"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:fontFamily="monospace"/>
 
                 </LinearLayout>
             </LinearLayout>
