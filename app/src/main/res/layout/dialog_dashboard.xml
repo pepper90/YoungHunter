@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center"
-    android:background="@drawable/border">
+    android:background="@color/olive_2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,21 +20,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            tools:ignore="UseCompoundDrawables">
-
-            <ImageView
-                android:id="@+id/iv_dashIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:srcCompat="@drawable/ic_exam"
-                android:contentDescription="@string/dialogText1"
-                />
-
             <TextView
                 android:id="@+id/tv_dialogTitle"
                 android:layout_width="wrap_content"
@@ -45,8 +30,6 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:paddingHorizontal="@dimen/_6sdp"/>
-        </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,7 +59,7 @@
                 android:textColor="@color/white"
                 android:background="@drawable/border_next"
                 android:gravity="center"
-                android:padding="@dimen/_8sdp"/>
+                android:padding="@dimen/_13sdp"/>
         </LinearLayout>
 
 
