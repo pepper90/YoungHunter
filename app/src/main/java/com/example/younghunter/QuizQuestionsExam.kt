@@ -142,7 +142,7 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
 
     //This function sets the timer ---------------------------------------------------------
     private fun startTimer() {
-        object: CountDownTimer(mTimeLeftInMillis, 1000) {
+        object: CountDownTimer(mTimeLeftInMillis, 500) {
 
             override fun onTick(millisUntilFinished: Long) {
                 mTimeLeftInMillis = millisUntilFinished
