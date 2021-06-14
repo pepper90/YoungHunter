@@ -239,6 +239,12 @@ class Dashboard : AppCompatActivity() {
         alertDialog.show()
     }
 
+    private fun toTime(timer: Long) : String {
+        val minutes: Int = ((timer / 1000) / 60).toInt()
+        val seconds: Int = ((timer / 1000) % 60).toInt()
+        return (String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds))
+    }
+
     private var counter = 0
     override fun onBackPressed() {
         counter++
@@ -249,9 +255,5 @@ class Dashboard : AppCompatActivity() {
         }
     }
 
-    private fun toTime(timer: Long) : String {
-        val minutes: Int = ((timer / 1000) / 60).toInt()
-        val seconds: Int = ((timer / 1000) % 60).toInt()
-        return (String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds))
-    }
+
 }
