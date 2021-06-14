@@ -40,8 +40,8 @@
     <string name="yes">ДА</string>
     <string name="no">НЕ</string>
     <string name="loadNewTest">ЗАПОЧНИ НОВ ТЕСТ</string>
-    <string name="continueTest30"><big>ПРОДЪЛЖИ ТЕСТ</big><small>\nВъпрос номер: %d/30\nОставащо време: %s</small></string>
-    <string name="continueTest104">ПРОДЪЛЖИ ТЕСТ<small>\nВъпрос номер: %d/104</small><small>\nОставащо време: %s</small></string>
+    <string name="continueTest30">ПРОДЪЛЖИ ТЕСТ\nВъпрос номер: %d/30\nОставащо време: %s</string>
+    <string name="continueTest104">ПРОДЪЛЖИ ТЕСТ\nВъпрос номер: %d/104\nОставащо време: %s</string>
     <string name="timeRem">Оставащо време: %d</string>
 
 

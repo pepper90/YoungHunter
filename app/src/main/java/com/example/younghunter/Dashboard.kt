@@ -2,7 +2,12 @@ package com.example.younghunter
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.RelativeSizeSpan
+import android.text.style.StyleSpan
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -186,7 +191,7 @@ class Dashboard : AppCompatActivity() {
     }
 
     private fun dashboardDialog() {
-        val dialog = AlertDialog.Builder(this@Dashboard)
+        val dialog = AlertDialog.Builder(this@Dashboard, R.style.DialogSlideAnim)
         val dialogLayout = layoutInflater.inflate(R.layout.dialog_dashboard, null)
         dialog.setView(dialogLayout)
         val alertDialog = dialog.create()
@@ -197,7 +202,10 @@ class Dashboard : AppCompatActivity() {
 
 
         val continueTest = dialogLayout.findViewById<TextView>(R.id.tv_continueTest)
-        continueTest.text = dialogString
+        val ss1 = SpannableString(dialogString)
+        ss1.setSpan(RelativeSizeSpan(1.3f),0,13, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        ss1.setSpan(StyleSpan(Typeface.BOLD),0,13,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        continueTest.text = ss1
 
         continueTest.setOnClickListener{
             alertDialog.dismiss()
@@ -207,6 +215,11 @@ class Dashboard : AppCompatActivity() {
         }
 
         val startNewTest = dialogLayout.findViewById<TextView>(R.id.tv_startNewTest)
+        val ss2 = SpannableString(startNewTest.text)
+        ss2.setSpan(RelativeSizeSpan(1.3f),0,16, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        ss2.setSpan(StyleSpan(Typeface.BOLD),0,16,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        startNewTest.text = ss2
+
         startNewTest.setOnClickListener {
             alertDialog.dismiss()
             val sharedPreferences = mySharedPreferences!!
