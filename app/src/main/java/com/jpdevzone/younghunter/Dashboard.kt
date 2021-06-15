@@ -1,4 +1,4 @@
-package com.example.younghunter
+package com.jpdevzone.younghunter
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -13,7 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.younghunter.databinding.ActivityDashboardBinding
+import com.jpdevzone.younghunter.databinding.ActivityDashboardBinding
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds

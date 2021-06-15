@@ -1,9 +1,10 @@
-package com.example.younghunter
+package com.jpdevzone.younghunter
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
@@ -11,9 +12,8 @@ import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.example.younghunter.databinding.ActivityQuizQuestionsBinding
+import com.jpdevzone.younghunter.databinding.ActivityQuizQuestionsBinding
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
@@ -22,8 +22,7 @@ import com.google.gson.reflect.TypeToken
 import java.util.*
 import kotlin.collections.ArrayList
 
-
-class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
+class QuizQuestionsViruses : AppCompatActivity(), View.OnClickListener {
     @SuppressLint("SetTextI18n")
     private lateinit var binding: ActivityQuizQuestionsBinding
     private var mInterstitialAd: InterstitialAd? = null
@@ -32,12 +31,12 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
     private val backgrounds = arrayOf(R.drawable.backimg_one, R.drawable.backimg_two, R.drawable.backimg_three, R.drawable.backimg_four, R.drawable.backimg_five, R.drawable.backimg_six, R.drawable.backimg_seven, R.drawable.backimg_eight, R.drawable.backimg_nine, R.drawable.backimg_ten)
 
     //Declare countdown timer
-    private val startTimeInMillis: Long = 5400000
+    private val startTimeInMillis: Long = 1500000
     private var mTimeLeftInMillis = startTimeInMillis
 
     //Declare questionnaire variables
     private var mCurrentPosition:Int = 1
-    private var mQuestionsList:List<Question>? = null
+    private var mQuestionsList:ArrayList<Question>? = null
     private var mSelectedOptionPosition:Int = 0
     private var mCorrectAnswers:Int = 0
     private var isSelected:Boolean? = null
@@ -66,10 +65,10 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
         }
 
         //Changes category text
-        binding.tvHeader.setText(R.string.examYoungHunter)
+        binding.tvHeader.setText(R.string.illnesses)
 
         //Changes category icon
-        binding.ivHeader.setImageResource(R.drawable.ic_exam)
+        binding.ivHeader.setImageResource(R.drawable.ic_virus)
 
         //Sets reload button
         binding.ivReload.setOnClickListener {
@@ -85,13 +84,13 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
         }
 
         //Changes progressbar max questions number
-        binding.progressBar.max = 104
+        binding.progressBar.max = 30
 
         //Initializes timer
         startTimer()
 
         //Loads questions list
-        setQuestionLoadExam()
+        setQuestionViruses()
 
         binding.tvOptionOne.setOnClickListener(this)
         binding.tvOptionTwo.setOnClickListener(this)
@@ -105,10 +104,10 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
 
     //This function saves data -------------------------------------------------------
     private fun saveData() {
-        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_EXAM, MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_VIRUSES, MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putInt(Constants.CURRENT_POSITION, mCurrentPosition)
-        editor.putInt(Constants.CORRECT_ANSWERS_EXAM,mCorrectAnswers)
+        editor.putInt(Constants.CORRECT_ANSWERS,mCorrectAnswers)
         editor.putLong(Constants.TIMER, mTimeLeftInMillis)
         val gson = Gson()
         val json = gson.toJson(mQuestionsList)
@@ -118,9 +117,9 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
 
     //This function loads data -------------------------------------------------------
     private fun loadData() {
-        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_EXAM, MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_VIRUSES, MODE_PRIVATE)
         mCurrentPosition = sharedPreferences.getInt(Constants.CURRENT_POSITION,1)
-        mCorrectAnswers = sharedPreferences.getInt(Constants.CORRECT_ANSWERS_EXAM,0)
+        mCorrectAnswers = sharedPreferences.getInt(Constants.CORRECT_ANSWERS,0)
         mTimeLeftInMillis = sharedPreferences.getLong(Constants.TIMER, startTimeInMillis)
         val gson = Gson()
         val json = sharedPreferences.getString(Constants.QLIST,null)
@@ -128,13 +127,13 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
         mQuestionsList = gson.fromJson(json, type)
 
         if (mQuestionsList == null) {
-            mQuestionsList = Constants.loadExam.shuffled() as ArrayList<Question>
+            mQuestionsList = Constants.getQuestionsViruses().shuffled().take(30) as ArrayList<Question>
         }
     }
 
     //This function clears all data -------------------------------------------------------
     private fun clearData() {
-        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_EXAM, MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_VIRUSES, MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.clear()
         editor.apply()
@@ -151,10 +150,10 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
 
             override fun onFinish() {
                 if (mInterstitialAd != null) {
-                    mInterstitialAd?.show(this@QuizQuestionsExam)
+                    mInterstitialAd?.show(this@QuizQuestionsViruses)
                 } else {
-                    val intent = Intent(this@QuizQuestionsExam, FinishQuiz::class.java)
-                    intent.putExtra(Constants.CORRECT_ANSWERS_EXAM, mCorrectAnswers)
+                    val intent = Intent(this@QuizQuestionsViruses, FinishQuiz::class.java)
+                    intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                     intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
                     clearData()
                     startActivity(intent)
@@ -173,7 +172,7 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
 
     //This function assigns the questions ---------------------------------------------------------
     @SuppressLint("SetTextI18n")
-    private fun setQuestionLoadExam(){
+    private fun setQuestionViruses(){
 
         val question: Question = mQuestionsList!![mCurrentPosition - 1]
 
@@ -240,13 +239,13 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
                     }
 
                     when {
-                        mCurrentPosition <= mQuestionsList!!.size ->{setQuestionLoadExam()}
+                        mCurrentPosition <= mQuestionsList!!.size ->{setQuestionViruses()}
                         else -> {
                             if (mInterstitialAd != null) {
                                 mInterstitialAd?.show(this)
                             } else {
                                 val intent = Intent(this, FinishQuiz::class.java)
-                                intent.putExtra(Constants.CORRECT_ANSWERS_EXAM, mCorrectAnswers)
+                                intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                                 intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
                                 clearData()
                                 startActivity(intent)
@@ -290,7 +289,7 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
     }
 
     //This function sets the selected option -------------------------------------------------------
-    private fun selectedOptionView(tv: TextView, selectedOptionNumber: Int){
+    private fun selectedOptionView(tv: TextView, selectedOptionNumber: Int) {
         defaultOptionsView()
         mSelectedOptionPosition = selectedOptionNumber
         tv.setTextColor(Color.parseColor("#424242"))
@@ -300,7 +299,7 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
 
     //This function sets the reload dialog -------------------------------------------------------
     private fun reloadDialogFunction() {
-        val dialog = AlertDialog.Builder(this@QuizQuestionsExam)
+        val dialog = AlertDialog.Builder(this@QuizQuestionsViruses)
         val dialogLayout = layoutInflater.inflate(R.layout.dialog_reload, null)
         dialog.setView(dialogLayout)
         val alertDialog = dialog.create()
@@ -331,7 +330,7 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
 
     //This function sets the exit dialog -------------------------------------------------------
     private fun alertDialogFunction() {
-        val dialog = AlertDialog.Builder(this@QuizQuestionsExam)
+        val dialog = AlertDialog.Builder(this@QuizQuestionsViruses)
         val dialogLayout = layoutInflater.inflate(R.layout.dialog, null)
         dialog.setView(dialogLayout)
         val alertDialog = dialog.create()
@@ -341,7 +340,7 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
         yes.setOnClickListener {
             alertDialog.dismiss()
             saveData()
-            val intent = Intent(this@QuizQuestionsExam, Dashboard::class.java)
+            val intent = Intent(this@QuizQuestionsViruses, Dashboard::class.java)
             startActivity(intent)
             finish()
         }
@@ -350,7 +349,7 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
         no.setOnClickListener {
             alertDialog.dismiss()
             clearData()
-            val intent = Intent(this@QuizQuestionsExam, Dashboard::class.java)
+            val intent = Intent(this@QuizQuestionsViruses, Dashboard::class.java)
             startActivity(intent)
             finish()
         }
@@ -381,7 +380,7 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun createInterstitialAdd(adRequest: AdRequest) {
-        InterstitialAd.load(this,"ca-app-pub-7588987461083278/9569157005", adRequest, object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(this,"ca-app-pub-7588987461083278/8165889071", adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 mInterstitialAd = null
             }
@@ -391,8 +390,8 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
 
                 mInterstitialAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
                     override fun onAdDismissedFullScreenContent() {
-                        val intent = Intent(this@QuizQuestionsExam, FinishQuiz::class.java)
-                        intent.putExtra(Constants.CORRECT_ANSWERS_EXAM, mCorrectAnswers)
+                        val intent = Intent(this@QuizQuestionsViruses, FinishQuiz::class.java)
+                        intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                         intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
                         clearData()
                         startActivity(intent)
@@ -400,8 +399,8 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
                     }
 
                     override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
-                        val intent = Intent(this@QuizQuestionsExam, FinishQuiz::class.java)
-                        intent.putExtra(Constants.CORRECT_ANSWERS_EXAM, mCorrectAnswers)
+                        val intent = Intent(this@QuizQuestionsViruses, FinishQuiz::class.java)
+                        intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                         intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
                         clearData()
                         startActivity(intent)

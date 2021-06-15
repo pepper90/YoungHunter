@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
-    id 'com.google.gms.google-services'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -12,7 +12,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.younghunter"
+        applicationId "com.jpdevzone.younghunter"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1

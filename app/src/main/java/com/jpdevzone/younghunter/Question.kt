@@ -1,4 +1,4 @@
-package com.example.younghunter
+package com.jpdevzone.younghunter
 
 data class Question (
     val id: Int,

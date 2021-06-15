@@ -1,10 +1,9 @@
-package com.example.younghunter
+package com.jpdevzone.younghunter
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
@@ -12,8 +11,9 @@ import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.example.younghunter.databinding.ActivityQuizQuestionsBinding
+import com.jpdevzone.younghunter.databinding.ActivityQuizQuestionsBinding
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
@@ -22,7 +22,7 @@ import com.google.gson.reflect.TypeToken
 import java.util.*
 import kotlin.collections.ArrayList
 
-class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
+class QuizQuestionsDogs : AppCompatActivity(), View.OnClickListener {
     @SuppressLint("SetTextI18n")
     private lateinit var binding: ActivityQuizQuestionsBinding
     private var mInterstitialAd: InterstitialAd? = null
@@ -65,10 +65,10 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
         }
 
         //Changes category text
-        binding.tvHeader.setText(R.string.guns)
+        binding.tvHeader.setText(R.string.dogs)
 
         //Changes category icon
-        binding.ivHeader.setImageResource(R.drawable.ic_guns)
+        binding.ivHeader.setImageResource(R.drawable.ic_dogs)
 
         //Sets reload button
         binding.ivReload.setOnClickListener {
@@ -90,7 +90,7 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
         startTimer()
 
         //Loads questions list
-        setQuestionGuns()
+        setQuestionDogs()
 
         binding.tvOptionOne.setOnClickListener(this)
         binding.tvOptionTwo.setOnClickListener(this)
@@ -104,7 +104,7 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
 
     //This function saves data -------------------------------------------------------
     private fun saveData() {
-        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_GUNS, MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_DOGS, MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putInt(Constants.CURRENT_POSITION, mCurrentPosition)
         editor.putInt(Constants.CORRECT_ANSWERS,mCorrectAnswers)
@@ -117,7 +117,7 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
 
     //This function loads data -------------------------------------------------------
     private fun loadData() {
-        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_GUNS, MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_DOGS, MODE_PRIVATE)
         mCurrentPosition = sharedPreferences.getInt(Constants.CURRENT_POSITION,1)
         mCorrectAnswers = sharedPreferences.getInt(Constants.CORRECT_ANSWERS,0)
         mTimeLeftInMillis = sharedPreferences.getLong(Constants.TIMER, startTimeInMillis)
@@ -127,13 +127,13 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
         mQuestionsList = gson.fromJson(json, type)
 
         if (mQuestionsList == null) {
-            mQuestionsList = Constants.getQuestionsGuns().shuffled().take(30) as ArrayList<Question>
+            mQuestionsList = Constants.getQuestionsDogs().shuffled().take(30) as ArrayList<Question>
         }
     }
 
     //This function clears all data -------------------------------------------------------
     private fun clearData() {
-        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_GUNS, MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_DOGS, MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.clear()
         editor.apply()
@@ -150,9 +150,9 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
 
             override fun onFinish() {
                 if (mInterstitialAd != null) {
-                    mInterstitialAd?.show(this@QuizQuestionsGuns)
+                    mInterstitialAd?.show(this@QuizQuestionsDogs)
                 } else {
-                    val intent = Intent(this@QuizQuestionsGuns, FinishQuiz::class.java)
+                    val intent = Intent(this@QuizQuestionsDogs, FinishQuiz::class.java)
                     intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                     intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
                     clearData()
@@ -170,9 +170,9 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
         binding.timer.text = timeLeftFormatted
     }
 
-    //This function assigns the questions ---------------------------------------------------------
-    @SuppressLint("SetTextI18n")
-    private fun setQuestionGuns(){
+     //This function assigns the questions ---------------------------------------------------------
+     @SuppressLint("SetTextI18n")
+     private fun setQuestionDogs(){
 
         val question: Question = mQuestionsList!![mCurrentPosition - 1]
 
@@ -185,14 +185,14 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
         }
 
         //Sets progress bar
-        binding.progressBar.progress = mCurrentPosition
-        binding.tvProgress.text = "$mCurrentPosition" + "/" + binding.progressBar.max
+         binding.progressBar.progress = mCurrentPosition
+         binding.tvProgress.text = "$mCurrentPosition" + "/" + binding.progressBar.max
 
         //Loads question & options from list
-        binding.tvQuestion.text = question.question
-        binding.tvOptionOne.text = question.optionOne
-        binding.tvOptionTwo.text = question.optionTwo
-        binding.tvOptionThree.text = question.optionThree
+         binding.tvQuestion.text = question.question
+         binding.tvOptionOne.text = question.optionOne
+         binding.tvOptionTwo.text = question.optionTwo
+         binding.tvOptionThree.text = question.optionThree
     }
 
     //This function assigns the default view -------------------------------------------------------
@@ -239,7 +239,7 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
                     }
 
                     when {
-                        mCurrentPosition <= mQuestionsList!!.size ->{setQuestionGuns()}
+                        mCurrentPosition <= mQuestionsList!!.size ->{setQuestionDogs()}
                         else -> {
                             if (mInterstitialAd != null) {
                                 mInterstitialAd?.show(this)
@@ -272,8 +272,6 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
                     binding.tvOptionOne.setOnClickListener(null)
                     binding.tvOptionTwo.setOnClickListener(null)
                     binding.tvOptionThree.setOnClickListener(null)
-
-
                 }
             }
         }
@@ -299,7 +297,7 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
 
     //This function sets the reload dialog -------------------------------------------------------
     private fun reloadDialogFunction() {
-        val dialog = AlertDialog.Builder(this@QuizQuestionsGuns)
+        val dialog = AlertDialog.Builder(this@QuizQuestionsDogs)
         val dialogLayout = layoutInflater.inflate(R.layout.dialog_reload, null)
         dialog.setView(dialogLayout)
         val alertDialog = dialog.create()
@@ -330,7 +328,7 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
 
     //This function sets the exit dialog -------------------------------------------------------
     private fun alertDialogFunction() {
-        val dialog = AlertDialog.Builder(this@QuizQuestionsGuns)
+        val dialog = AlertDialog.Builder(this@QuizQuestionsDogs)
         val dialogLayout = layoutInflater.inflate(R.layout.dialog, null)
         dialog.setView(dialogLayout)
         val alertDialog = dialog.create()
@@ -340,7 +338,7 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
         yes.setOnClickListener {
             alertDialog.dismiss()
             saveData()
-            val intent = Intent(this@QuizQuestionsGuns, Dashboard::class.java)
+            val intent = Intent(this@QuizQuestionsDogs, Dashboard::class.java)
             startActivity(intent)
             finish()
         }
@@ -349,7 +347,7 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
         no.setOnClickListener {
             alertDialog.dismiss()
             clearData()
-            val intent = Intent(this@QuizQuestionsGuns, Dashboard::class.java)
+            val intent = Intent(this@QuizQuestionsDogs, Dashboard::class.java)
             startActivity(intent)
             finish()
         }
@@ -380,7 +378,7 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun createInterstitialAdd(adRequest: AdRequest) {
-        InterstitialAd.load(this,"ca-app-pub-7588987461083278/1245257504", adRequest, object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(this,"ca-app-pub-7588987461083278/7935676985", adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 mInterstitialAd = null
             }
@@ -390,7 +388,7 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
 
                 mInterstitialAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
                     override fun onAdDismissedFullScreenContent() {
-                        val intent = Intent(this@QuizQuestionsGuns, FinishQuiz::class.java)
+                        val intent = Intent(this@QuizQuestionsDogs, FinishQuiz::class.java)
                         intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                         intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
                         clearData()
@@ -399,7 +397,7 @@ class QuizQuestionsGuns : AppCompatActivity(), View.OnClickListener {
                     }
 
                     override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
-                        val intent = Intent(this@QuizQuestionsGuns, FinishQuiz::class.java)
+                        val intent = Intent(this@QuizQuestionsDogs, FinishQuiz::class.java)
                         intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                         intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
                         clearData()

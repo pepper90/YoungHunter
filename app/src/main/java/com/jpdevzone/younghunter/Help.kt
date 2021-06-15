@@ -1,9 +1,9 @@
-package com.example.younghunter
+package com.jpdevzone.younghunter
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.younghunter.databinding.ActivityHelpBinding
+import com.jpdevzone.younghunter.databinding.ActivityHelpBinding
 
 
 class Help : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.example.younghunter
+package com.jpdevzone.younghunter
 
 import android.content.Intent
 import android.os.Build
@@ -8,7 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.WindowInsets
 import android.view.WindowManager
-import com.example.younghunter.databinding.ActivityMainBinding
+import com.jpdevzone.younghunter.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {

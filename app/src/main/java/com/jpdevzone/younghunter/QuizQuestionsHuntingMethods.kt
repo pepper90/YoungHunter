@@ -1,4 +1,4 @@
-package com.example.younghunter
+package com.jpdevzone.younghunter
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -13,7 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
-import com.example.younghunter.databinding.ActivityQuizQuestionsBinding
+import com.jpdevzone.younghunter.databinding.ActivityQuizQuestionsBinding
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
