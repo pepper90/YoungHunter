@@ -14,6 +14,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.younghunter.databinding.ActivityDashboardBinding
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import java.util.*
 
 
@@ -26,6 +29,7 @@ class Dashboard : AppCompatActivity() {
     private val startTimeInMillisMaxi: Long = 5400000
     private var myIntent: Intent? = null
     private var mySharedPreferences: SharedPreferences? = null
+    private lateinit var mAdView : AdView
 
     //Declare background photos
     private val backgrounds = arrayOf(R.drawable.backimg_one, R.drawable.backimg_two, R.drawable.backimg_three, R.drawable.backimg_four, R.drawable.backimg_five, R.drawable.backimg_six, R.drawable.backimg_seven, R.drawable.backimg_eight, R.drawable.backimg_nine, R.drawable.backimg_ten)
@@ -188,6 +192,12 @@ class Dashboard : AppCompatActivity() {
                 finish()
             }
         }
+
+        //Activates adds
+        MobileAds.initialize(this) {}
+        mAdView = binding.homeAd
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
     }
 
     private fun dashboardDialog() {

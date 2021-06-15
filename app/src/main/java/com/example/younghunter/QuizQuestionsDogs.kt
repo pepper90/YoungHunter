@@ -378,7 +378,7 @@ class QuizQuestionsDogs : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun createInterstitialAdd(adRequest: AdRequest) {
-        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(this,"ca-app-pub-7588987461083278/7935676985", adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 mInterstitialAd = null
             }
