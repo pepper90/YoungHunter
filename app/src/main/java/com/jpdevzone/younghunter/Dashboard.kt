@@ -17,6 +17,7 @@ import com.jpdevzone.younghunter.databinding.ActivityDashboardBinding
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import es.dmoral.toasty.Toasty
 import java.util.*
 
 
@@ -259,11 +260,9 @@ class Dashboard : AppCompatActivity() {
     override fun onBackPressed() {
         counter++
         if (counter==1) {
-            Toast.makeText(this, R.string.toast, Toast.LENGTH_SHORT).show()
+            Toasty.custom(this, R.string.toast,R.drawable.ic_exit,R.color.black,Toast.LENGTH_LONG,true, true).show()
         }else {
             super.onBackPressed()
         }
     }
-
-
 }
