@@ -150,7 +150,7 @@
                 android:drawableStart="@drawable/ic_virus"
                 android:drawableLeft="@drawable/ic_virus"
                 android:padding="@dimen/_8sdp"
-                android:text="@string/illnesses"
+                android:text="@string/viruses"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_16ssp" />
 

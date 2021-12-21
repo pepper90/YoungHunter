@@ -181,7 +181,7 @@ class Dashboard : AppCompatActivity() {
         binding.illnesses.setOnClickListener {
             mySharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_VIRUSES, MODE_PRIVATE)
             if (mySharedPreferences?.getString(Constants.QLIST,null) != null) {
-                dialogTitle = getString(R.string.illnesses)
+                dialogTitle = getString(R.string.viruses)
                 val position = mySharedPreferences?.getInt(Constants.CURRENT_POSITION,1)
                 val timer = mySharedPreferences?.getLong(Constants.TIMER,startTimeInMillisMini)
                 dialogString = getString(R.string.continueTest30, position,toTime(timer!!))

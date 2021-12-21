@@ -19,6 +19,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.jpdevzone.younghunter.database.Question
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -52,7 +53,7 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         loadData()
 
         //Changes randomly background
-        binding.quizquestions.setBackgroundResource(backgrounds.random())
+//        binding.quizquestions.setBackgroundResource(backgrounds.random())
 
         //Sets back button
         binding.backButton.setOnClickListener {
@@ -66,10 +67,10 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         }
 
         //Changes category text
-        binding.tvHeader.setText(R.string.animals)
+//        binding.tvHeader.setText(R.string.animals)
 
         //Changes category icon
-        binding.ivHeader.setImageResource(R.drawable.ic_animals)
+//        binding.ivHeader.setImageResource(R.drawable.ic_animals)
 
         //Sets reload button
         binding.ivReload.setOnClickListener {
@@ -127,9 +128,9 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         val type = object : TypeToken<ArrayList<Question>>() {}.type
         mQuestionsList = gson.fromJson(json, type)
 
-        if (mQuestionsList == null) {
-            mQuestionsList = Constants.getQuestionsAnimals().shuffled().take(30) as ArrayList<Question>
-        }
+//        if (mQuestionsList == null) {
+//            mQuestionsList = Constants.getQuestionsAnimals().shuffled().take(30) as ArrayList<Question>
+//        }
     }
 
     //This function clears all data -------------------------------------------------------

@@ -19,6 +19,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.jpdevzone.younghunter.database.Question
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -127,9 +128,9 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
         val type = object : TypeToken<ArrayList<Question>>() {}.type
         mQuestionsList = gson.fromJson(json, type)
 
-        if (mQuestionsList == null) {
-            mQuestionsList = Constants.loadExam.shuffled() as ArrayList<Question>
-        }
+//        if (mQuestionsList == null) {
+//            mQuestionsList = Constants.loadExam.shuffled() as ArrayList<Question>
+//        }
     }
 
     //This function clears all data -------------------------------------------------------

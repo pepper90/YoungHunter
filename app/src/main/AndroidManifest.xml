@@ -3,15 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.jpdevzone.younghunter">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
+        android:supportsRtl="false"
         android:theme="@style/Theme.YoungHunter"
         tools:ignore="AllowBackup,LockedOrientationActivity">
 
@@ -20,62 +19,69 @@
             android:value="ca-app-pub-7588987461083278~7432990397" />
 
         <activity
-            android:name="com.jpdevzone.younghunter.QuizQuestionsExam"
+            android:name=".FragmentContainer"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme" />
+
+        <activity
+            android:name=".QuizQuestionsExam"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:name="com.jpdevzone.younghunter.QuizQuestionsAnimals"
+            android:name=".QuizQuestionsAnimals"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:name="com.jpdevzone.younghunter.QuizQuestionsHuntingLaw"
+            android:name=".QuizQuestionsHuntingLaw"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:name="com.jpdevzone.younghunter.QuizQuestionsHuntingMethods"
+            android:name=".QuizQuestionsHuntingMethods"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:name="com.jpdevzone.younghunter.QuizQuestionsGameManagement"
+            android:name=".QuizQuestionsGameManagement"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:name="com.jpdevzone.younghunter.QuizQuestionsGuns"
+            android:name=".QuizQuestionsGuns"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:name="com.jpdevzone.younghunter.QuizQuestionsViruses"
+            android:name=".QuizQuestionsViruses"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:name="com.jpdevzone.younghunter.Help"
+            android:name=".Help"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:name="com.jpdevzone.younghunter.FinishQuiz"
+            android:name=".FinishQuiz"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:name="com.jpdevzone.younghunter.QuizQuestionsDogs"
+            android:name=".QuizQuestionsDogs"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:name="com.jpdevzone.younghunter.Dashboard"
+            android:name=".Dashboard"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:name="com.jpdevzone.younghunter.MainActivity"
+            android:name=".MainActivity"
+            android:exported="true"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme">
@@ -85,10 +91,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

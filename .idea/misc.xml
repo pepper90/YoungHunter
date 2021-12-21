@@ -3,8 +3,35 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/bg_button.xml" value="0.22179487179487178" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/border.xml" value="0.17357859531772576" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/border_next.xml" value="0.17533783783783785" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/help_bottom.xml" value="0.22179487179487178" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/help_middle.xml" value="0.22179487179487178" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/ic_arrow_back.xml" value="0.25341796875" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.25341796875" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/ic_copy.xml" value="0.22179487179487178" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/ic_exit.xml" value="0.2703125" />
-        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/activity_dashboard.xml" value="0.13541666666666666" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/ic_share.xml" value="0.22179487179487178" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/result_failure_middle.xml" value="0.22179487179487178" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/result_failure_top.xml" value="0.22179487179487178" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/result_success_bottom.xml" value="0.22179487179487178" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/result_success_middle.xml" value="0.22179487179487178" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/font/acme.xml" value="0.16041666666666668" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout-sw600dp/fragment_finish_quiz.xml" value="0.176" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout-sw600dp/fragment_quiz_question.xml" value="0.2" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/activity_dashboard.xml" value="0.2" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/activity_finish_quiz.xml" value="0.2" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/activity_fragment_container.xml" value="0.25226449275362317" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/activity_help.xml" value="0.2" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/activity_main.xml" value="0.12360688956433637" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/activity_quiz_questions.xml" value="0.4" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/dialog.xml" value="0.16259057971014493" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/fragment_dashboard.xml" value="0.2" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/fragment_finish_quiz.xml" value="0.536" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/fragment_help.xml" value="0.176" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/fragment_quiz_question.xml" value="0.2" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/fragment_quiz_question2.xml" value="0.16486486486486487" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2703125" />
       </map>
     </option>

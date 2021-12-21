@@ -3,16 +3,16 @@
     <item>
         <shape
             android:shape="rectangle">
-            <stroke android:width="2dp" android:color="@color/white" />
+            <stroke android:width="@dimen/_1sdp" android:color="@color/white" />
             <solid android:color="@color/olive_2" />
 
         </shape>
     </item>
 
-    <item android:left="2dp" android:right="2dp">
+    <item android:left="@dimen/_1sdp" android:right="@dimen/_1sdp">
         <shape
             android:shape="rectangle">
-            <stroke android:width="2dp" android:color="@color/olive_2" />
+            <stroke android:width="@dimen/_1sdp" android:color="@color/olive_2" />
             <solid android:color="#00000000" />
 
         </shape>
