@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ContentDescription, RtlHardcoded, UselessParent" >
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/finish_quiz_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/backimg_one" />
+
+        <RelativeLayout
+            android:id="@+id/category_info"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/_16sdp"
+            android:background="@drawable/border"
+            app:layout_constraintBottom_toTopOf="@id/finish_quiz_ad"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/arrow_back_iv"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_alignTop="@id/result_tv"
+                android:layout_alignBottom="@id/result_tv"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/_10sdp"
+                app:srcCompat="@drawable/ic_arrow_back" />
+
+            <TextView
+                android:id="@+id/result_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_toLeftOf="@id/result_iv"
+                android:layout_toRightOf="@id/arrow_back_iv"
+                android:fontFamily="@font/oswald_regular"
+                android:gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_23ssp"
+                tools:text="@string/result" />
+
+            <ImageView
+                android:id="@+id/result_iv"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignTop="@id/result_tv"
+                android:layout_alignBottom="@id/result_tv"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/_10sdp"
+                tools:src="@drawable/ic_result" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_below="@id/result_tv"
+                android:layout_alignLeft="@id/arrow_back_iv"
+                android:layout_alignRight="@id/result_iv"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@color/white"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider"
+                android:layout_alignStart="@+id/divider"
+                android:layout_alignLeft="@+id/divider"
+                android:layout_alignEnd="@+id/divider"
+                android:layout_alignRight="@+id/divider"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/_20sdp">
+
+                <ImageView
+                    android:id="@+id/img_success"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_150sdp"
+                    android:src="@drawable/satisfied" />
+
+                <TextView
+                    android:id="@+id/tv_congrats"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/result_success_top"
+                    android:fontFamily="@font/raleway_medium"
+                    android:gravity="center"
+                    android:padding="@dimen/_8sdp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_17ssp"
+                    android:textStyle="bold"
+                    tools:text="@string/success" />
+
+                <TextView
+                    android:id="@+id/tv_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/result_success_bottom"
+                    android:fontFamily="@font/raleway_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="@dimen/_8sdp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_15ssp"
+                    tools:text="@string/score" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_20sdp">
+
+                    <ImageButton
+                        android:id="@+id/btn_share"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_button"
+                        android:padding="@dimen/_15sdp"
+                        app:srcCompat="@drawable/ic_share" />
+
+                    <ImageButton
+                        android:id="@+id/btn_copy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_15sdp"
+                        android:background="@drawable/bg_button"
+                        android:padding="@dimen/_15sdp"
+                        app:srcCompat="@drawable/ic_copy" />
+
+                    <ImageButton
+                        android:id="@+id/btn_continue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_button"
+                        android:padding="@dimen/_15sdp"
+                        app:srcCompat="@drawable/ic_arrow_forward" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="0dp"-->
+        <!--            android:layout_margin="@dimen/_16sdp"-->
+        <!--            android:background="@drawable/border"-->
+        <!--            android:paddingVertical="@dimen/_10sdp"-->
+        <!--            app:layout_constraintBottom_toTopOf="@id/finish_quiz_ad"-->
+        <!--            app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--            app:layout_constraintRight_toRightOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent">-->
+
+        <!--            <ImageView-->
+        <!--                android:id="@+id/arrow_back_iv"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginTop="10dp"-->
+        <!--                app:layout_constraintBottom_toBottomOf="@+id/result_tv"-->
+        <!--                app:layout_constraintEnd_toStartOf="@+id/result_tv"-->
+        <!--                app:layout_constraintHorizontal_chainStyle="spread"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/result_tv"-->
+        <!--                app:srcCompat="@drawable/ic_arrow_back" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/result_tv"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:fontFamily="@font/oswald_regular"-->
+        <!--                android:gravity="center"-->
+        <!--                android:textColor="@color/white"-->
+        <!--                android:textSize="@dimen/_23ssp"-->
+        <!--                app:layout_constraintBottom_toBottomOf="@+id/result_iv"-->
+        <!--                app:layout_constraintEnd_toStartOf="@+id/result_iv"-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/arrow_back_iv"-->
+        <!--                app:layout_constraintTop_toTopOf="parent"-->
+        <!--                tools:text="@string/result" />-->
+
+        <!--            <ImageView-->
+        <!--                android:id="@+id/result_iv"-->
+        <!--                android:layout_width="@dimen/_50sdp"-->
+        <!--                android:layout_height="@dimen/_50sdp"-->
+        <!--                android:src="@drawable/ic_result"-->
+        <!--                app:layout_constraintBottom_toBottomOf="@id/result_tv"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/result_tv"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/result_tv" />-->
+
+        <!--            <View-->
+        <!--                android:id="@+id/divider"-->
+        <!--                android:layout_width="0dp"-->
+        <!--                android:layout_height="@dimen/_1sdp"-->
+        <!--                android:layout_marginTop="@dimen/_8sdp"-->
+        <!--                android:background="@color/white"-->
+        <!--                app:layout_constraintEnd_toEndOf="@+id/result_iv"-->
+        <!--                app:layout_constraintStart_toStartOf="@+id/arrow_back_iv"-->
+        <!--                app:layout_constraintTop_toBottomOf="@+id/result_tv" />-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/finish_quiz_ad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-7588987461083278/8606880386"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

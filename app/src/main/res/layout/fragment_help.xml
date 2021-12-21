@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ContentDescription, RtlHardcoded, UselessParent">
+
+        <ImageView
+            android:id="@+id/help_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/backimg_one" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/_16sdp"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/category_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/border">
+
+                    <ImageView
+                        android:id="@+id/arrow_back_iv"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_alignTop="@id/help_tv"
+                        android:layout_alignBottom="@id/help_tv"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        app:srcCompat="@drawable/ic_arrow_back" />
+
+                    <TextView
+                        android:id="@+id/help_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_toLeftOf="@id/help_iv"
+                        android:layout_toRightOf="@id/arrow_back_iv"
+                        android:fontFamily="@font/oswald_regular"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_23ssp"
+                        android:text="@string/help" />
+
+                    <ImageView
+                        android:id="@+id/help_iv"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_alignTop="@id/help_tv"
+                        android:layout_alignBottom="@id/help_tv"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:src="@drawable/ic_help"/>
+
+                    <View
+                        android:id="@+id/divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_below="@id/help_tv"
+                        android:layout_alignLeft="@id/arrow_back_iv"
+                        android:layout_alignRight="@id/help_iv"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tv_help_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/divider"
+                        android:layout_alignStart="@+id/divider"
+                        android:layout_alignLeft="@+id/divider"
+                        android:layout_alignEnd="@+id/divider"
+                        android:layout_alignRight="@+id/divider"
+                        android:fontFamily="@font/raleway_regular"
+                        android:gravity="center"
+                        android:padding="@dimen/_5sdp"
+                        android:text="@string/help2"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15ssp" />
+
+                    <TextView
+                        android:id="@+id/tv_help_text2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_help_text"
+                        android:layout_alignStart="@+id/tv_help_text"
+                        android:layout_alignLeft="@+id/tv_help_text"
+                        android:layout_alignEnd="@+id/tv_help_text"
+                        android:layout_alignRight="@+id/tv_help_text"
+                        android:fontFamily="@font/raleway_regular"
+                        android:padding="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:text="@string/help3"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15ssp" />
+
+                    <TextView
+                        android:id="@+id/tv_help_text3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_help_text2"
+                        android:layout_alignStart="@+id/tv_help_text2"
+                        android:layout_alignLeft="@+id/tv_help_text2"
+                        android:layout_alignEnd="@+id/tv_help_text2"
+                        android:layout_alignRight="@+id/tv_help_text2"
+                        android:fontFamily="@font/raleway_regular"
+                        android:gravity="center"
+                        android:padding="@dimen/_5sdp"
+                        android:text="@string/help4"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15ssp" />
+
+                    <TextView
+                        android:id="@+id/tv_help_text4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_help_text3"
+                        android:layout_alignStart="@+id/tv_help_text3"
+                        android:layout_alignLeft="@+id/tv_help_text3"
+                        android:layout_alignEnd="@+id/tv_help_text3"
+                        android:layout_alignRight="@+id/tv_help_text3"
+                        android:fontFamily="@font/raleway_regular"
+                        android:gravity="center"
+                        android:padding="@dimen/_5sdp"
+                        android:text="@string/help5"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15ssp" />
+
+                    <TextView
+                        android:id="@+id/tv_help_text5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_help_text4"
+                        android:layout_alignStart="@+id/tv_help_text4"
+                        android:layout_alignLeft="@+id/tv_help_text4"
+                        android:layout_alignEnd="@+id/tv_help_text4"
+                        android:layout_alignRight="@+id/tv_help_text4"
+                        android:fontFamily="@font/raleway_regular"
+                        android:gravity="center"
+                        android:padding="@dimen/_5sdp"
+                        android:text="@string/help6"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15ssp" />
+
+                    <TextView
+                        android:id="@+id/tv_help_text6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_help_text5"
+                        android:layout_alignStart="@+id/tv_help_text5"
+                        android:layout_alignLeft="@+id/tv_help_text5"
+                        android:layout_alignEnd="@+id/tv_help_text5"
+                        android:layout_alignRight="@+id/tv_help_text5"
+                        android:fontFamily="@font/raleway_regular"
+                        android:gravity="center"
+                        android:padding="@dimen/_5sdp"
+                        android:text="@string/help7"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15ssp" />
+
+                </RelativeLayout>
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
