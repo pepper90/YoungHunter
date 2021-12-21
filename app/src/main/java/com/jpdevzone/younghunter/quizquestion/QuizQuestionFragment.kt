@@ -66,20 +66,20 @@ class QuizQuestionFragment : Fragment(), View.OnClickListener {
 
         })
 
-        viewModel.position.observe(viewLifecycleOwner, {
-            binding.progressBar.progress = it
+        viewModel.position.observe(viewLifecycleOwner, {position ->
+            binding.progressBar.progress = position
             binding.progressTv.text = getString(
                 R.string.position,
-                it,
+                position,
                 binding.progressBar.max
             )
-        })
 
-        viewModel.questionsList.observe(viewLifecycleOwner, {
-            binding.questionTv.text = it[viewModel.position.value?.minus(1)!!].question
-            binding.optionOneTv.text = it[viewModel.position.value?.minus(1)!!].optionOne
-            binding.optionTwoTv.text = it[viewModel.position.value?.minus(1)!!].optionTwo
-            binding.optionThreeTv.text = it[viewModel.position.value?.minus(1)!!].optionThree
+            viewModel.questionsList.observe(viewLifecycleOwner, {question ->
+                binding.questionTv.text = question[position.minus(1)].question
+                binding.optionOneTv.text = question[position.minus(1)].optionOne
+                binding.optionTwoTv.text = question[position.minus(1)].optionTwo
+                binding.optionThreeTv.text = question[position.minus(1)].optionThree
+            })
         })
 
         binding.optionOneTv.setOnClickListener(this)
