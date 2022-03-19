@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.jpdevzone.younghunter.R
-import com.jpdevzone.younghunter.database.Question
 import com.jpdevzone.younghunter.databinding.FragmentQuizQuestionBinding
 import com.jpdevzone.younghunter.setBackground
 
@@ -45,6 +44,10 @@ class QuizQuestionFragment : Fragment() {
         // Sets back navigation
         binding.arrowBackIv.setOnClickListener {
             navigateBack()
+        }
+
+        viewModel.position.observe(viewLifecycleOwner) { position ->
+            viewModel.getQuestion(args.ids[position.minus(1)])
         }
 
         return binding.root

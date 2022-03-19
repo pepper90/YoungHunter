@@ -47,5 +47,13 @@
         <argument
             android:name="dashData"
             app:argType="com.jpdevzone.younghunter.dashboard.DashboardData" />
+        <action
+            android:id="@+id/action_quizQuestionFragment_to_finishQuizFragment"
+            app:destination="@id/finishQuizFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/finishQuizFragment"
+        android:name="com.jpdevzone.younghunter.finishquiz.FinishQuizFragment"
+        android:label="FinishQuizFragment"
+        tools:layout="@layout/fragment_finish_quiz"/>
 </navigation>

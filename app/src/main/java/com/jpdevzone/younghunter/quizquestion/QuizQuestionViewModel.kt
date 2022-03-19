@@ -24,7 +24,15 @@ class QuizQuestionViewModel(
     * Question
     * */
 
+    private val _question = MutableLiveData<Question>()
+    val question: LiveData<Question>
+        get() = _question
 
+    fun getQuestion(id: Int) {
+        viewModelScope.launch {
+            _question.value = repository.getQuestion(id)
+        }
+    }
 
     /*
     * Position

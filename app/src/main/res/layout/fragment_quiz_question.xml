@@ -12,10 +12,6 @@
         <variable
             name="viewModel"
             type="com.jpdevzone.younghunter.quizquestion.QuizQuestionViewModel" />
-
-        <variable
-            name="question"
-            type="com.jpdevzone.younghunter.database.Question" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,12 +33,12 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="@dimen/_16sdp"
+            android:overScrollMode="never"
+            android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:overScrollMode="never"
-            android:scrollbars="none">
+            app:layout_constraintTop_toTopOf="parent">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -77,10 +73,10 @@
                         android:layout_toRightOf="@id/arrow_back_iv"
                         android:fontFamily="@font/oswald_regular"
                         android:gravity="center_horizontal"
+                        android:text="@{dashData.title}"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_18ssp"
-                        tools:text="@string/examYoungHunter"
-                        android:text="@{dashData.title}"/>
+                        tools:text="@string/examYoungHunter"/>
 
                     <TextView
                         android:id="@+id/category_time_tv"
@@ -91,21 +87,21 @@
                         android:layout_toRightOf="@id/arrow_back_iv"
                         android:fontFamily="@font/oswald_light"
                         android:gravity="center_horizontal"
+                        android:text="@{dashData.subtitle}"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_10ssp"
-                        tools:text="@string/time_exam"
-                        android:text="@{dashData.subtitle}"/>
+                        tools:text="@string/time_exam"/>
 
                     <ImageView
                         android:id="@+id/category_iv"
+                        setIcon="@{dashData.icon}"
                         android:layout_width="@dimen/_50sdp"
                         android:layout_height="@dimen/_50sdp"
                         android:layout_alignTop="@id/category_tv"
                         android:layout_alignBottom="@id/category_time_tv"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="@dimen/_10sdp"
-                        tools:src="@drawable/ic_exam"
-                        setIcon="@{dashData.icon}"/>
+                        tools:src="@drawable/ic_exam"/>
 
                     <View
                         android:id="@+id/divider"
@@ -133,7 +129,7 @@
                         android:layout_marginBottom="@dimen/_10sdp"
                         android:fontFamily="@font/raleway_medium"
                         android:gravity="center"
-                        android:text="@{question.question}"
+                        android:text="@{viewModel.question.question}"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_15ssp"
                         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
@@ -179,10 +175,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/_8sdp"
                             android:gravity="center"
+                            android:text="@{@string/position(viewModel.position, viewModel.setProgressBarMax(dashData.topic))}"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_11ssp"
-                            tools:text="0/104"
-                            android:text="@{@string/position(viewModel.position, viewModel.setProgressBarMax(dashData.topic))}"/>
+                            tools:text="0/104"/>
 
                         <TextView
                             android:id="@+id/timer"
@@ -217,7 +213,7 @@
                         android:fontFamily="@font/raleway_medium"
                         android:gravity="center"
                         android:paddingHorizontal="@dimen/_10sdp"
-                        android:text="@{question.optionOne}"
+                        android:text="@{viewModel.question.optionOne}"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_13ssp"
                         tools:text="получаване на удостоверение от Държавана изпитна комисия" />
@@ -229,15 +225,15 @@
                         android:layout_below="@id/option_one_tv"
                         android:layout_centerHorizontal="true"
                         android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:paddingHorizontal="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:background="@drawable/border"
                         android:fontFamily="@font/raleway_medium"
                         android:gravity="center"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:text="@{viewModel.question.optionTwo}"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_13ssp"
-                        tools:text="от Държавана изпитна комисия"
-                        android:text="@{question.optionTwo}"/>
+                        tools:text="от Държавана изпитна комисия"/>
 
                     <TextView
                         android:id="@+id/option_three_tv"
@@ -246,15 +242,15 @@
                         android:layout_below="@id/option_two_tv"
                         android:layout_centerHorizontal="true"
                         android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:paddingHorizontal="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:background="@drawable/border"
                         android:fontFamily="@font/raleway_medium"
                         android:gravity="center"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:text="@{viewModel.question.optionThree}"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_13ssp"
-                        tools:text="получаване на удостоверение от Държавана изпитна комисия"
-                        android:text="@{question.optionThree}"/>
+                        tools:text="получаване на удостоверение от Държавана изпитна комисия"/>
 
                     <TextView
                         android:id="@+id/next_tv"
@@ -267,11 +263,11 @@
                         android:background="@drawable/border_next"
                         android:fontFamily="@font/raleway_medium"
                         android:gravity="center"
+                        android:onClick="@{() -> viewModel.next()}"
                         android:paddingHorizontal="@dimen/_10sdp"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_13ssp"
-                        tools:text="МАРКИРАЙ"
-                        android:onClick="@{() -> viewModel.next()}"/>
+                        tools:text="МАРКИРАЙ"/>
 
                 </RelativeLayout>
 
