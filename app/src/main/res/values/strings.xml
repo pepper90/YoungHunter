@@ -47,10 +47,8 @@
     <string name="time_mini_test">30 въпроса / 25 минути</string>
     <string name="module1">МОДУЛ 1 - ИЗПИТЕН ТЕСТ</string>
     <string name="module2">МОДУЛ 2 - ТЕСТОВЕ ПО ТЕМИ</string>
-    <string name="position">%d / %d</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="position">%d / %d</string>
 
 </resources>

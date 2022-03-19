@@ -12,5 +12,3 @@ interface QuestionsDatabaseDao {
     @Query("SELECT * from questions WHERE id = :key" )
     suspend fun get(key: Int): Question
 }
-
-//ORDER BY RANDOM() LIMIT 30

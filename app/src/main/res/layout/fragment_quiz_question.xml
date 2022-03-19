@@ -6,9 +6,16 @@
 
     <data>
         <variable
+            name="dashData"
+            type="com.jpdevzone.younghunter.dashboard.DashboardData" />
+
+        <variable
             name="viewModel"
             type="com.jpdevzone.younghunter.quizquestion.QuizQuestionViewModel" />
 
+        <variable
+            name="question"
+            type="com.jpdevzone.younghunter.database.Question" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -72,7 +79,8 @@
                         android:gravity="center_horizontal"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_18ssp"
-                        tools:text="@string/examYoungHunter" />
+                        tools:text="@string/examYoungHunter"
+                        android:text="@{dashData.title}"/>
 
                     <TextView
                         android:id="@+id/category_time_tv"
@@ -85,7 +93,8 @@
                         android:gravity="center_horizontal"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_10ssp"
-                        tools:text="@string/time_exam" />
+                        tools:text="@string/time_exam"
+                        android:text="@{dashData.subtitle}"/>
 
                     <ImageView
                         android:id="@+id/category_iv"
@@ -95,7 +104,8 @@
                         android:layout_alignBottom="@id/category_time_tv"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="@dimen/_10sdp"
-                        tools:src="@drawable/ic_exam" />
+                        tools:src="@drawable/ic_exam"
+                        setIcon="@{dashData.icon}"/>
 
                     <View
                         android:id="@+id/divider"
@@ -123,6 +133,7 @@
                         android:layout_marginBottom="@dimen/_10sdp"
                         android:fontFamily="@font/raleway_medium"
                         android:gravity="center"
+                        android:text="@{question.question}"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_15ssp"
                         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
@@ -156,8 +167,8 @@
                             android:layout_marginHorizontal="@dimen/_8sdp"
                             android:layout_weight="1"
                             android:indeterminate="false"
-                            android:max="104"
-                            android:progress="0"
+                            android:max="@{viewModel.setProgressBarMax(dashData.topic)}"
+                            android:progress="@{viewModel.position}"
                             android:progressBackgroundTint="@color/white"
                             android:progressTint="@color/white"
                             tools:ignore="UnusedAttribute" />
@@ -170,7 +181,8 @@
                             android:gravity="center"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_11ssp"
-                            tools:text="0/104"/>
+                            tools:text="0/104"
+                            android:text="@{@string/position(viewModel.position, viewModel.setProgressBarMax(dashData.topic))}"/>
 
                         <TextView
                             android:id="@+id/timer"
@@ -181,7 +193,7 @@
                             android:textColor="@color/white"
                             android:textSize="@dimen/_11ssp"
                             android:textStyle="bold"
-                            tools:text="@string/timerText"/>
+                            tools:text="@string/timerText" />
 
                     </LinearLayout>
 
@@ -205,10 +217,10 @@
                         android:fontFamily="@font/raleway_medium"
                         android:gravity="center"
                         android:paddingHorizontal="@dimen/_10sdp"
+                        android:text="@{question.optionOne}"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_13ssp"
-                        tools:text="получаване на удостоверение от Държавана изпитна комисия
-" />
+                        tools:text="получаване на удостоверение от Държавана изпитна комисия" />
 
                     <TextView
                         android:id="@+id/option_two_tv"
@@ -224,8 +236,8 @@
                         android:gravity="center"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_13ssp"
-                        tools:text="от Държавана изпитна комисия
-" />
+                        tools:text="от Държавана изпитна комисия"
+                        android:text="@{question.optionTwo}"/>
 
                     <TextView
                         android:id="@+id/option_three_tv"
@@ -241,8 +253,8 @@
                         android:gravity="center"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_13ssp"
-                        tools:text="получаване на удостоверение от Държавана изпитна комисия
-" />
+                        tools:text="получаване на удостоверение от Държавана изпитна комисия"
+                        android:text="@{question.optionThree}"/>
 
                     <TextView
                         android:id="@+id/next_tv"
@@ -258,7 +270,8 @@
                         android:paddingHorizontal="@dimen/_10sdp"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_13ssp"
-                        tools:text="НАПРЕД" />
+                        tools:text="МАРКИРАЙ"
+                        android:onClick="@{() -> viewModel.next()}"/>
 
                 </RelativeLayout>
 

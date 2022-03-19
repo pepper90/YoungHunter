@@ -30,7 +30,7 @@ class QuestionsDatabaseTest : TestCase() {
     }
 
     @Test
-    fun getQuestions() {
+    suspend fun getQuestions() {
         val question1 = Question(1,
             "В Световния Червен списък е включен:",
             "малкият корморан",

@@ -2,17 +2,57 @@ package com.jpdevzone.younghunter.quizquestion
 
 import android.app.Application
 import android.os.CountDownTimer
-import androidx.lifecycle.*
+import android.util.Log
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.jpdevzone.younghunter.database.Question
-import com.jpdevzone.younghunter.database.QuestionsDatabaseDao
+import com.jpdevzone.younghunter.database.QuestionsDatabase
+import com.jpdevzone.younghunter.database.QuestionsRepository
+import kotlinx.coroutines.launch
 import kotlin.properties.Delegates
 
-
 class QuizQuestionViewModel(
-    val database: QuestionsDatabaseDao,
     application: Application
 ) : AndroidViewModel(application) {
 
+    private val database = QuestionsDatabase.getInstance(application)
+    private val repository = QuestionsRepository(database)
+
+    /*
+    * Question
+    * */
+
+
+
+    /*
+    * Position
+    * */
+
+    // Holds current question position & progress position
+    private val _position = MutableLiveData<Int>()
+    val position: LiveData<Int>
+    get() = _position
+
+    init {
+        _position.value = 1
+    }
+
+    fun next() {
+        _position.value = _position.value?.plus(1)
+    }
+
+    /*
+    * Timer and Progress bar
+    * */
+
+    // Holds current time value
+    private val _currentTime = MutableLiveData<Long>()
+    val currentTime: LiveData<Long>
+        get() = _currentTime
+
+    // Default timer values
     companion object {
         private const val DONE = 0L
         private const val ONE_SECOND = 1000L
@@ -21,6 +61,7 @@ class QuizQuestionViewModel(
         private var COUNTDOWN_TIME by Delegates.notNull<Long>()
     }
 
+    // Setting timer depending ot topic string from safeArgs
     fun timer(topic: String) {
         val timer: CountDownTimer
         COUNTDOWN_TIME = when (topic) {
@@ -41,44 +82,7 @@ class QuizQuestionViewModel(
         timer.start()
     }
 
-    private val _currentTime = MutableLiveData<Long>()
-    val currentTime: LiveData<Long>
-        get() = _currentTime
-
-    private var _questionsList = MediatorLiveData<List<Question>>()
-    val questionsList: LiveData<List<Question>>
-        get() = _questionsList
-
-    fun getQuestions(topic: String) {
-        _questionsList
-            .addSource(
-                database.getQuestions(topic),
-                _questionsList::setValue
-            )
-    }
-
-    private val _position = MutableLiveData<Int>()
-    val position: LiveData<Int>
-        get() = _position
-
-    private val _correctAnswers = MutableLiveData<Int>()
-    val correctAnswers: LiveData<Int>
-        get() = _correctAnswers
-
-
-    init {
-        _position.value = 1
-        _correctAnswers.value = 0
-    }
-
-    fun onNext() {
-        _position.value = position.value?.plus(1)
-    }
-
-    fun onCorrect() {
-        _correctAnswers.value = correctAnswers.value?.minus(1)
-    }
-
+    // Sets progress bar max depending ot topic string from safeArgs
     fun setProgressBarMax(topic: String) : Int {
         return when (topic) {
             "exam" -> 104
@@ -87,27 +91,3 @@ class QuizQuestionViewModel(
     }
 
 }
-
-
-//    private var viewModelJob = Job()
-//    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-
-//    override fun onCleared() {
-//        super.onCleared()
-//        viewModelJob.cancel()
-//    }
-
-
-
-
-//    fun test() {
-//        uiScope.launch {
-//
-//
-//        }
-//    }
-
-//    private suspend fun testTest() {
-//        withContext(Dispatchers.IO) {
-//        }
-//    }

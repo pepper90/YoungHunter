@@ -6,14 +6,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.jpdevzone.younghunter.database.QuestionsDatabaseDao
 
 class QuizQuestionViewModelFactory(
-    private val dataSource: QuestionsDatabaseDao,
-    private val application: Application
+    private val application: Application,
 ) : ViewModelProvider.Factory {
 
     @Suppress("unchecked_cast")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(QuizQuestionViewModel::class.java)) {
-            return QuizQuestionViewModel(dataSource, application) as T
+            return QuizQuestionViewModel(application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

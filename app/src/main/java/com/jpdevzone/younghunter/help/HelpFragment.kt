@@ -1,15 +1,13 @@
 package com.jpdevzone.younghunter.help
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.jpdevzone.younghunter.R
-import com.jpdevzone.younghunter.dashboard.DashboardFragmentDirections
-import com.jpdevzone.younghunter.databinding.FragmentDashboardBinding
 import com.jpdevzone.younghunter.databinding.FragmentHelpBinding
 import com.jpdevzone.younghunter.setBackground
 

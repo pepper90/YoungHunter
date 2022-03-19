@@ -1,5 +1,9 @@
 package com.jpdevzone.younghunter
 
+/*
+* Backgrounds
+* */
+
 val backgrounds = arrayOf(
     R.drawable.backimg_one,
     R.drawable.backimg_two,
@@ -13,4 +17,3 @@ val backgrounds = arrayOf(
     R.drawable.backimg_ten)
 
 val setBackground = backgrounds.random()
-

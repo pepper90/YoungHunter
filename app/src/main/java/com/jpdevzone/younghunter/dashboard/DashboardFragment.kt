@@ -7,9 +7,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.jpdevzone.younghunter.R
+import com.jpdevzone.younghunter.*
 import com.jpdevzone.younghunter.databinding.FragmentDashboardBinding
-import com.jpdevzone.younghunter.setBackground
 
 class DashboardFragment : Fragment() {
 
@@ -31,10 +30,13 @@ class DashboardFragment : Fragment() {
             this.findNavController().navigate(
                 DashboardFragmentDirections
                     .actionDashboardFragmentToQuizQuestionFragment(
-                        R.string.examYoungHunter,
-                        R.string.time_exam,
-                        R.drawable.ic_exam,
-                        "exam"
+                        DashboardData(
+                            R.string.examYoungHunter,
+                            R.string.time_exam,
+                            R.drawable.ic_exam,
+                            "exam",
+                            exam
+                        )
                     )
             )
         }
@@ -43,10 +45,13 @@ class DashboardFragment : Fragment() {
             this.findNavController().navigate(
                 DashboardFragmentDirections
                     .actionDashboardFragmentToQuizQuestionFragment(
-                        R.string.animals,
-                        R.string.time_mini_test,
-                        R.drawable.ic_animals,
-                        "animals"
+                        DashboardData(
+                            R.string.animals,
+                            R.string.time_mini_test,
+                            R.drawable.ic_animals,
+                            "animals",
+                            animals.take(30)
+                        )
                     )
             )
         }
@@ -55,10 +60,13 @@ class DashboardFragment : Fragment() {
             this.findNavController().navigate(
                 DashboardFragmentDirections
                     .actionDashboardFragmentToQuizQuestionFragment(
-                        R.string.law,
-                        R.string.time_mini_test,
-                        R.drawable.ic_law,
-                        "law"
+                        DashboardData(
+                            R.string.law,
+                            R.string.time_mini_test,
+                            R.drawable.ic_law,
+                            "law",
+                            law
+                        )
                     )
             )
         }
@@ -67,10 +75,14 @@ class DashboardFragment : Fragment() {
             this.findNavController().navigate(
                 DashboardFragmentDirections
                     .actionDashboardFragmentToQuizQuestionFragment(
-                        R.string.gameManagement,
-                        R.string.time_mini_test,
-                        R.drawable.ic_animalcare,
-                        "gameManagement")
+                        DashboardData(
+                            R.string.gameManagement,
+                            R.string.time_mini_test,
+                            R.drawable.ic_animalcare,
+                            "gameManagement",
+                            gameManagement
+                        )
+                    )
             )
         }
 
@@ -78,10 +90,14 @@ class DashboardFragment : Fragment() {
             this.findNavController().navigate(
                 DashboardFragmentDirections
                     .actionDashboardFragmentToQuizQuestionFragment(
-                        R.string.huntingMethods,
-                        R.string.time_mini_test,
-                        R.drawable.ic_hunting,
-                        "huntingMethods")
+                        DashboardData(
+                            R.string.huntingMethods,
+                            R.string.time_mini_test,
+                            R.drawable.ic_hunting,
+                            "huntingMethods",
+                            huntingMethods
+                        )
+                    )
             )
         }
 
@@ -89,10 +105,14 @@ class DashboardFragment : Fragment() {
             this.findNavController().navigate(
                 DashboardFragmentDirections
                     .actionDashboardFragmentToQuizQuestionFragment(
-                        R.string.guns,
-                        R.string.time_mini_test,
-                        R.drawable.ic_guns,
-                        "guns")
+                        DashboardData(
+                            R.string.guns,
+                            R.string.time_mini_test,
+                            R.drawable.ic_guns,
+                            "guns",
+                            guns
+                        )
+                    )
             )
         }
 
@@ -100,10 +120,14 @@ class DashboardFragment : Fragment() {
             this.findNavController().navigate(
                 DashboardFragmentDirections
                     .actionDashboardFragmentToQuizQuestionFragment(
-                        R.string.dogs,
-                        R.string.time_mini_test,
-                        R.drawable.ic_dogs,
-                        "dogs")
+                        DashboardData(
+                            R.string.dogs,
+                            R.string.time_mini_test,
+                            R.drawable.ic_dogs,
+                            "dogs",
+                            dogs
+                        )
+                    )
             )
         }
 
@@ -111,13 +135,34 @@ class DashboardFragment : Fragment() {
             this.findNavController().navigate(
                 DashboardFragmentDirections
                     .actionDashboardFragmentToQuizQuestionFragment(
-                        R.string.viruses,
-                        R.string.time_mini_test,
-                        R.drawable.ic_virus,
-                        "viruses")
+                        DashboardData(
+                            R.string.viruses,
+                            R.string.time_mini_test,
+                            R.drawable.ic_virus,
+                            "viruses",
+                            viruses
+                        )
+                    )
             )
         }
 
         return binding.root
     }
+    private val animals = IntRange(1, 522).shuffled().take(30)
+    private val law = IntRange(523, 591).shuffled().take(30)
+    private val gameManagement = IntRange(592, 680).shuffled().take(30)
+    private val huntingMethods = IntRange(681, 812).shuffled().take(30)
+    private val guns = IntRange(813, 856).shuffled().take(30)
+    private val dogs = IntRange(857, 929).shuffled().take(30)
+    private val viruses = IntRange(930, 960).shuffled().take(30)
+    private val emergency = IntRange(961, 972).shuffled().take(30)
+    private val exam =
+                animals.take(47) +
+                law.take(7) +
+                gameManagement.take(11) +
+                huntingMethods.take(12) +
+                guns.take(5) +
+                dogs.take(9) +
+                viruses.take(9) +
+                emergency.take(4)
 }
