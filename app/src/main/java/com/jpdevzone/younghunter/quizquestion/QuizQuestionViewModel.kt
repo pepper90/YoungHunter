@@ -2,7 +2,6 @@ package com.jpdevzone.younghunter.quizquestion
 
 import android.app.Application
 import android.os.CountDownTimer
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -24,10 +23,12 @@ class QuizQuestionViewModel(
     * Question
     * */
 
+    // Holds current question & options
     private val _question = MutableLiveData<Question>()
     val question: LiveData<Question>
         get() = _question
 
+    // Gets question from repository
     fun getQuestion(id: Int) {
         viewModelScope.launch {
             _question.value = repository.getQuestion(id)
@@ -47,6 +48,7 @@ class QuizQuestionViewModel(
         _position.value = 1
     }
 
+    // Position increment
     fun next() {
         _position.value = _position.value?.plus(1)
     }

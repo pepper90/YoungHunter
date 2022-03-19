@@ -76,7 +76,7 @@
                         android:text="@{dashData.title}"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_18ssp"
-                        tools:text="@string/examYoungHunter"/>
+                        tools:text="@string/examYoungHunter" />
 
                     <TextView
                         android:id="@+id/category_time_tv"
@@ -201,73 +201,46 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/category_info">
 
-                    <TextView
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/option_one_tv"
+                        style="@style/QuestionOptions"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_50sdp"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:background="@drawable/border"
-                        android:fontFamily="@font/raleway_medium"
-                        android:gravity="center"
-                        android:paddingHorizontal="@dimen/_10sdp"
                         android:text="@{viewModel.question.optionOne}"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_13ssp"
                         tools:text="получаване на удостоверение от Държавана изпитна комисия" />
 
-                    <TextView
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/option_two_tv"
+                        style="@style/QuestionOptions"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_50sdp"
+                        android:layout_height="wrap_content"
                         android:layout_below="@id/option_one_tv"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:background="@drawable/border"
-                        android:fontFamily="@font/raleway_medium"
-                        android:gravity="center"
-                        android:paddingHorizontal="@dimen/_10sdp"
                         android:text="@{viewModel.question.optionTwo}"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_13ssp"
                         tools:text="от Държавана изпитна комисия"/>
 
-                    <TextView
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/option_three_tv"
+                        style="@style/QuestionOptions"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_50sdp"
+                        android:layout_height="wrap_content"
                         android:layout_below="@id/option_two_tv"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:background="@drawable/border"
-                        android:fontFamily="@font/raleway_medium"
-                        android:gravity="center"
-                        android:paddingHorizontal="@dimen/_10sdp"
                         android:text="@{viewModel.question.optionThree}"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_13ssp"
                         tools:text="получаване на удостоверение от Държавана изпитна комисия"/>
 
-                    <TextView
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/next_tv"
+                        style="@style/QuizButton"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_50sdp"
+                        android:layout_height="wrap_content"
                         android:layout_below="@id/option_three_tv"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:background="@drawable/border_next"
-                        android:fontFamily="@font/raleway_medium"
-                        android:gravity="center"
                         android:onClick="@{() -> viewModel.next()}"
-                        android:paddingHorizontal="@dimen/_10sdp"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_13ssp"
-                        tools:text="МАРКИРАЙ"/>
+                        tools:text="МАРКИРАЙ" />
 
                 </RelativeLayout>
 

@@ -22,15 +22,13 @@
             android:name=".FragmentContainer"
             android:exported="false"
             android:hardwareAccelerated="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBarTheme" />
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:hardwareAccelerated="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBarTheme">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

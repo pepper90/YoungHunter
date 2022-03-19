@@ -46,6 +46,7 @@ class QuizQuestionFragment : Fragment() {
             navigateBack()
         }
 
+        // Loads question based on position
         viewModel.position.observe(viewLifecycleOwner) { position ->
             viewModel.getQuestion(args.ids[position.minus(1)])
         }
