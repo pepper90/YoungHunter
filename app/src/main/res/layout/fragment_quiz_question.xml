@@ -65,32 +65,25 @@
 
                     <TextView
                         android:id="@+id/category_tv"
+                        style="@style/QuizHeaderTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
-                        android:layout_marginTop="@dimen/_10sdp"
                         android:layout_toLeftOf="@id/category_iv"
                         android:layout_toRightOf="@id/arrow_back_iv"
-                        android:fontFamily="@font/oswald_regular"
-                        android:gravity="center_horizontal"
                         android:text="@{dashData.title}"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_18ssp"
                         tools:text="@string/examYoungHunter" />
 
                     <TextView
                         android:id="@+id/category_time_tv"
+                        style="@style/QuizHeaderSubtitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/category_tv"
                         android:layout_toLeftOf="@id/category_iv"
                         android:layout_toRightOf="@id/arrow_back_iv"
-                        android:fontFamily="@font/oswald_light"
-                        android:gravity="center_horizontal"
                         android:text="@{dashData.subtitle}"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_10ssp"
-                        tools:text="@string/time_exam"/>
+                        tools:text="@string/time_exam" />
 
                     <ImageView
                         android:id="@+id/category_iv"
@@ -101,7 +94,7 @@
                         android:layout_alignBottom="@id/category_time_tv"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="@dimen/_10sdp"
-                        tools:src="@drawable/ic_exam"/>
+                        tools:src="@drawable/ic_exam" />
 
                     <View
                         android:id="@+id/divider"
@@ -111,27 +104,18 @@
                         android:layout_alignLeft="@id/arrow_back_iv"
                         android:layout_alignRight="@id/category_iv"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:id="@+id/question_tv"
+                        style="@style/QuestionField"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_above="@+id/progress_bar_ll"
                         android:layout_below="@id/divider"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentRight="true"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_marginRight="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:fontFamily="@font/raleway_medium"
-                        android:gravity="center"
                         android:text="@{viewModel.question.question}"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_15ssp"
                         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
 
                     <LinearLayout
@@ -157,38 +141,26 @@
 
                         <ProgressBar
                             android:id="@+id/progressBar"
-                            style="?android:attr/progressBarStyleHorizontal"
+                            style="@style/ProgressBar"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_marginHorizontal="@dimen/_8sdp"
                             android:layout_weight="1"
-                            android:indeterminate="false"
                             android:max="@{viewModel.setProgressBarMax(dashData.topic)}"
-                            android:progress="@{viewModel.position}"
-                            android:progressBackgroundTint="@color/white"
-                            android:progressTint="@color/white"
-                            tools:ignore="UnusedAttribute" />
+                            android:progress="@{viewModel.position}" />
 
                         <TextView
                             android:id="@+id/progress_tv"
+                            style="@style/ProgressText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_8sdp"
-                            android:gravity="center"
                             android:text="@{@string/position(viewModel.position, viewModel.setProgressBarMax(dashData.topic))}"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_11ssp"
-                            tools:text="0/104"/>
+                            tools:text="0/104" />
 
                         <TextView
                             android:id="@+id/timer"
+                            style="@style/QuizTimer"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="monospace"
-                            android:gravity="center"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_11ssp"
-                            android:textStyle="bold"
                             tools:text="@string/timerText" />
 
                     </LinearLayout>
@@ -199,7 +171,8 @@
                     android:id="@+id/answers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/category_info">
+                    android:layout_below="@id/category_info"
+                    android:layout_marginTop="@dimen/_5sdp">
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/option_one_tv"
@@ -240,6 +213,7 @@
                         android:layout_below="@id/option_three_tv"
                         android:layout_centerHorizontal="true"
                         android:onClick="@{() -> viewModel.next()}"
+                        android:text="@string/mark"
                         tools:text="МАРКИРАЙ" />
 
                 </RelativeLayout>
