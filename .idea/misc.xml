@@ -6,6 +6,7 @@
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/bg_button.xml" value="0.22179487179487178" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/border.xml" value="0.17357859531772576" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/border_next.xml" value="0.17533783783783785" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/correct_option.xml" value="0.127" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/help_bottom.xml" value="0.22179487179487178" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/help_middle.xml" value="0.22179487179487178" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/ic_arrow_back.xml" value="0.25341796875" />
@@ -18,6 +19,7 @@
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/result_success_bottom.xml" value="0.22179487179487178" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/result_success_middle.xml" value="0.22179487179487178" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/selected_option.xml" value="0.17533783783783785" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/wrong_option.xml" value="0.127" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/font/acme.xml" value="0.16041666666666668" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout-sw600dp/fragment_finish_quiz.xml" value="0.176" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout-sw600dp/fragment_quiz_question.xml" value="0.2" />

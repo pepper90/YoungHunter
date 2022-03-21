@@ -177,32 +177,37 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/option_one_tv"
                         style="@style/QuestionOptions"
+                        setOptionState="@{viewModel.optionOneState}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
+                        android:onClick="@{() -> viewModel.onOptionOneSelected()}"
                         android:text="@{viewModel.question.optionOne}"
                         tools:text="получаване на удостоверение от Държавана изпитна комисия" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/option_two_tv"
                         style="@style/QuestionOptions"
+                        setOptionState="@{viewModel.optionTwoState}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/option_one_tv"
                         android:layout_centerHorizontal="true"
+                        android:onClick="@{() -> viewModel.onOptionTwoSelected()}"
                         android:text="@{viewModel.question.optionTwo}"
                         tools:text="от Държавана изпитна комисия"/>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/option_three_tv"
                         style="@style/QuestionOptions"
+                        setOptionState="@{viewModel.optionThreeState}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/option_two_tv"
                         android:layout_centerHorizontal="true"
+                        android:onClick="@{() -> viewModel.onOptionThreeSelected()}"
                         android:text="@{viewModel.question.optionThree}"
-                        android:textColor="@color/white"
                         tools:text="получаване на удостоверение от Държавана изпитна комисия"/>
 
                     <com.google.android.material.button.MaterialButton

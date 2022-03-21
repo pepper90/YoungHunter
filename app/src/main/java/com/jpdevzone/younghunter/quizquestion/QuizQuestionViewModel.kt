@@ -40,9 +40,9 @@ class QuizQuestionViewModel(
     * */
 
     // Holds current question position & progress position
-    private val _position = MutableLiveData<Int>()
+    private val _position = MutableLiveData<Int>(1)
     val position: LiveData<Int>
-    get() = _position
+        get() = _position
 
     init {
         _position.value = 1
@@ -50,6 +50,7 @@ class QuizQuestionViewModel(
 
     // Position increment
     fun next() {
+        resetAllOption()
         _position.value = _position.value?.plus(1)
     }
 
@@ -100,4 +101,62 @@ class QuizQuestionViewModel(
         }
     }
 
+    /*
+    * Options states (clicked or not)
+    * */
+
+    // Checks if there is any Option selected.
+    private val _isAnyOptionSelected = MutableLiveData<Boolean?>()
+    val isAnyOptionSelected: LiveData<Boolean?>
+        get() = _isAnyOptionSelected
+
+    // Hold value fro Option One
+    private val _optionOneState = MutableLiveData<Boolean?>()
+    val optionOneState: LiveData<Boolean?>
+        get() = _optionOneState
+
+    // Sets Option One value to true. Resets other options.
+    //Used for Binding adapter to change button background, stroke & text colors
+    fun onOptionOneSelected() {
+        _isAnyOptionSelected.value = true
+        _optionTwoState.value = false
+        _optionThreeState.value = false
+        _optionOneState.value = true
+    }
+
+    // Hold value fro Option Two
+    private val _optionTwoState = MutableLiveData<Boolean?>()
+    val optionTwoState: LiveData<Boolean?>
+        get() = _optionTwoState
+
+    // Sets Option Two value to true. Resets other options.
+    //Used for Binding adapter to change button background, stroke & text colors
+    fun onOptionTwoSelected() {
+        _isAnyOptionSelected.value = true
+        _optionOneState.value = false
+        _optionThreeState.value = false
+        _optionTwoState.value = true
+    }
+
+    // Hold value fro Option Three
+    private val _optionThreeState = MutableLiveData<Boolean?>()
+    val optionThreeState: LiveData<Boolean?>
+        get() = _optionThreeState
+
+    // Sets Option Three value to true. Resets other options.
+    //Used for Binding adapter to change button background, stroke & text colors
+    fun onOptionThreeSelected() {
+        _isAnyOptionSelected.value = true
+        _optionOneState.value = false
+        _optionTwoState.value = false
+        _optionThreeState.value = true
+    }
+
+    // Resets all options back to normal when Next bts is clicked
+    fun resetAllOption() {
+        _isAnyOptionSelected.value = false
+        _optionOneState.value = false
+        _optionTwoState.value = false
+        _optionThreeState.value = false
+    }
 }
