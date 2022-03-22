@@ -27,7 +27,7 @@ class QuizQuestionFragment : Fragment() {
             this,
             QuizQuestionViewModelFactory(requireActivity().application))[QuizQuestionViewModel::class.java]
 
-        binding.viewModel = viewModel
+        binding.vm = viewModel
 
         binding.lifecycleOwner = this
 

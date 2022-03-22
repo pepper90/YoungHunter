@@ -2,6 +2,7 @@ package com.jpdevzone.younghunter.quizquestion
 
 import android.app.Application
 import android.os.CountDownTimer
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -105,10 +106,11 @@ class QuizQuestionViewModel(
     * Options states (clicked or not)
     * */
 
-    // Checks if there is any Option selected.
-    private val _isAnyOptionSelected = MutableLiveData<Boolean?>()
-    val isAnyOptionSelected: LiveData<Boolean?>
-        get() = _isAnyOptionSelected
+    // Gives an index to the selected option.
+    // If null Mark button is not clickable.
+    private val _selectedOptionIndex = MutableLiveData<Int?>()
+    val selectedOptionIndex: LiveData<Int?>
+        get() = _selectedOptionIndex
 
     // Hold value fro Option One
     private val _optionOneState = MutableLiveData<Boolean?>()
@@ -118,7 +120,7 @@ class QuizQuestionViewModel(
     // Sets Option One value to true. Resets other options.
     //Used for Binding adapter to change button background, stroke & text colors
     fun onOptionOneSelected() {
-        _isAnyOptionSelected.value = true
+        _selectedOptionIndex.value = 1
         _optionTwoState.value = false
         _optionThreeState.value = false
         _optionOneState.value = true
@@ -132,7 +134,7 @@ class QuizQuestionViewModel(
     // Sets Option Two value to true. Resets other options.
     //Used for Binding adapter to change button background, stroke & text colors
     fun onOptionTwoSelected() {
-        _isAnyOptionSelected.value = true
+        _selectedOptionIndex.value = 2
         _optionOneState.value = false
         _optionThreeState.value = false
         _optionTwoState.value = true
@@ -146,17 +148,41 @@ class QuizQuestionViewModel(
     // Sets Option Three value to true. Resets other options.
     //Used for Binding adapter to change button background, stroke & text colors
     fun onOptionThreeSelected() {
-        _isAnyOptionSelected.value = true
+        _selectedOptionIndex.value = 3
         _optionOneState.value = false
         _optionTwoState.value = false
         _optionThreeState.value = true
     }
 
-    // Resets all options back to normal when Next bts is clicked
+    // Resets all options back to normal when Next btn is clicked.
+    // Makes selectedOptionIndex null
     fun resetAllOption() {
-        _isAnyOptionSelected.value = false
+        _selectedOptionIndex.value = 0
         _optionOneState.value = false
         _optionTwoState.value = false
         _optionThreeState.value = false
+    }
+
+    /*
+    * Check answer logic
+    * */
+
+    // Holds the correctAnswer value from _question.value.correctAnswer
+    private val _correctAnswer = MutableLiveData<Int?>()
+    val correctAnswer: LiveData<Int?>
+        get() = _correctAnswer
+
+    // Holds the total number of correct answers
+    private val _totalAnswers = MutableLiveData(0)
+    val totalAnswers: LiveData<Int>
+        get() = _totalAnswers
+
+    fun checkAnswer() {
+        _correctAnswer.value = _question.value?.correctAnswer
+
+        if (_selectedOptionIndex.value == _correctAnswer.value) {
+            _totalAnswers.value = totalAnswers.value?.plus(1)
+            Log.d("Correct answers", totalAnswers.value.toString())
+        }
     }
 }

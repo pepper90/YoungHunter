@@ -10,7 +10,7 @@
             type="com.jpdevzone.younghunter.dashboard.DashboardData" />
 
         <variable
-            name="viewModel"
+            name="vm"
             type="com.jpdevzone.younghunter.quizquestion.QuizQuestionViewModel" />
     </data>
 
@@ -115,7 +115,7 @@
                         android:layout_below="@id/divider"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentRight="true"
-                        android:text="@{viewModel.question.question}"
+                        android:text="@{vm.question.question}"
                         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
 
                     <LinearLayout
@@ -145,15 +145,15 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:max="@{viewModel.setProgressBarMax(dashData.topic)}"
-                            android:progress="@{viewModel.position}" />
+                            android:max="@{vm.setProgressBarMax(dashData.topic)}"
+                            android:progress="@{vm.position}" />
 
                         <TextView
                             android:id="@+id/progress_tv"
                             style="@style/ProgressText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{@string/position(viewModel.position, viewModel.setProgressBarMax(dashData.topic))}"
+                            android:text="@{@string/position(vm.position, vm.setProgressBarMax(dashData.topic))}"
                             tools:text="0/104" />
 
                         <TextView
@@ -177,38 +177,47 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/option_one_tv"
                         style="@style/QuestionOptions"
-                        setOptionState="@{viewModel.optionOneState}"
+                        setOptionState="@{vm.optionOneState}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:onClick="@{() -> viewModel.onOptionOneSelected()}"
-                        android:text="@{viewModel.question.optionOne}"
-                        tools:text="получаване на удостоверение от Държавана изпитна комисия" />
+                        android:onClick="@{() -> vm.onOptionOneSelected()}"
+                        android:text="@{vm.question.optionOne}"
+                        tools:text="получаване на удостоверение от Държавана изпитна комисия"
+                        correctAnswer="@{vm.correctAnswer}"
+                        optionIndex="@{vm.selectedOptionIndex}"
+                        optionState="@{vm.optionOneState}"/>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/option_two_tv"
                         style="@style/QuestionOptions"
-                        setOptionState="@{viewModel.optionTwoState}"
+                        setOptionState="@{vm.optionTwoState}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/option_one_tv"
                         android:layout_centerHorizontal="true"
-                        android:onClick="@{() -> viewModel.onOptionTwoSelected()}"
-                        android:text="@{viewModel.question.optionTwo}"
-                        tools:text="от Държавана изпитна комисия"/>
+                        android:onClick="@{() -> vm.onOptionTwoSelected()}"
+                        android:text="@{vm.question.optionTwo}"
+                        tools:text="от Държавана изпитна комисия"
+                        correctAnswer="@{vm.correctAnswer}"
+                        optionIndex="@{vm.selectedOptionIndex}"
+                        optionState="@{vm.optionTwoState}"/>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/option_three_tv"
                         style="@style/QuestionOptions"
-                        setOptionState="@{viewModel.optionThreeState}"
+                        setOptionState="@{vm.optionThreeState}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/option_two_tv"
                         android:layout_centerHorizontal="true"
-                        android:onClick="@{() -> viewModel.onOptionThreeSelected()}"
-                        android:text="@{viewModel.question.optionThree}"
-                        tools:text="получаване на удостоверение от Държавана изпитна комисия"/>
+                        android:onClick="@{() -> vm.onOptionThreeSelected()}"
+                        android:text="@{vm.question.optionThree}"
+                        tools:text="получаване на удостоверение от Държавана изпитна комисия"
+                        correctAnswer="@{vm.correctAnswer}"
+                        optionIndex="@{vm.selectedOptionIndex}"
+                        optionState="@{vm.optionThreeState}"/>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/next_tv"
@@ -217,9 +226,10 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/option_three_tv"
                         android:layout_centerHorizontal="true"
-                        android:onClick="@{() -> viewModel.next()}"
+                        android:onClick="@{() -> vm.checkAnswer()}"
                         android:text="@string/mark"
-                        tools:text="МАРКИРАЙ" />
+                        tools:text="МАРКИРАЙ"
+                        setButtonState="@{vm.selectedOptionIndex}"/>
 
                 </RelativeLayout>
 
