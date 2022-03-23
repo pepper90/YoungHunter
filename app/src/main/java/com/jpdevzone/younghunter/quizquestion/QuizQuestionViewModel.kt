@@ -20,8 +20,8 @@ class QuizQuestionViewModel(
     private val database = QuestionsDatabase.getInstance(application)
     private val repository = QuestionsRepository(database)
 
-    /*
-    * Question
+    /**
+    * QUESTION
     * */
 
     // Holds current question & options
@@ -36,8 +36,8 @@ class QuizQuestionViewModel(
         }
     }
 
-    /*
-    * Position
+    /**
+    * POSITION
     * */
 
     // Holds current question position & progress position
@@ -55,8 +55,8 @@ class QuizQuestionViewModel(
         _position.value = _position.value?.plus(1)
     }
 
-    /*
-    * Timer and Progress bar
+    /**
+    * TIMER & PROGRESS BAR
     * */
 
     // Holds current time value
@@ -102,25 +102,24 @@ class QuizQuestionViewModel(
         }
     }
 
-    /*
-    * Options states (clicked or not)
+    /**
+    * OPTION STATES & INDEXES (clicked or not)
     * */
-
-    // Gives an index to the selected option.
-    // If null Mark button is not clickable.
-    private val _selectedOptionIndex = MutableLiveData<Int?>()
-    val selectedOptionIndex: LiveData<Int?>
-        get() = _selectedOptionIndex
 
     // Hold value fro Option One
     private val _optionOneState = MutableLiveData<Boolean?>()
     val optionOneState: LiveData<Boolean?>
         get() = _optionOneState
 
+    // Holds Option One index
+    private val _optionOneIndex = MutableLiveData(1)
+    val optionOneIndex: LiveData<Int>
+        get() = _optionOneIndex
+
     // Sets Option One value to true. Resets other options.
     //Used for Binding adapter to change button background, stroke & text colors
     fun onOptionOneSelected() {
-        _selectedOptionIndex.value = 1
+        _selectedOptionIndex.value = _optionOneIndex.value
         _optionTwoState.value = false
         _optionThreeState.value = false
         _optionOneState.value = true
@@ -131,10 +130,15 @@ class QuizQuestionViewModel(
     val optionTwoState: LiveData<Boolean?>
         get() = _optionTwoState
 
+    // Hold Option Two index
+    private val _optionTwoIndex = MutableLiveData(2)
+    val optionTwoIndex: LiveData<Int>
+        get() = _optionTwoIndex
+
     // Sets Option Two value to true. Resets other options.
     //Used for Binding adapter to change button background, stroke & text colors
     fun onOptionTwoSelected() {
-        _selectedOptionIndex.value = 2
+        _selectedOptionIndex.value = _optionTwoIndex.value
         _optionOneState.value = false
         _optionThreeState.value = false
         _optionTwoState.value = true
@@ -145,32 +149,44 @@ class QuizQuestionViewModel(
     val optionThreeState: LiveData<Boolean?>
         get() = _optionThreeState
 
-    // Sets Option Three value to true. Resets other options.
-    //Used for Binding adapter to change button background, stroke & text colors
+    // Hold Option Three index
+    private val _optionThreeIndex = MutableLiveData(3)
+    val optionThreeIndex: LiveData<Int>
+        get() = _optionThreeIndex
+
+    // Sets Option Three value to true. Resets other options
+    // Used for Binding adapter to change button background, stroke & text colors
     fun onOptionThreeSelected() {
-        _selectedOptionIndex.value = 3
+        _selectedOptionIndex.value = _optionThreeIndex.value
         _optionOneState.value = false
         _optionTwoState.value = false
         _optionThreeState.value = true
     }
 
-    // Resets all options back to normal when Next btn is clicked.
+    // Resets all options back to normal when Next btn is clicked
     // Makes selectedOptionIndex null
     fun resetAllOption() {
-        _selectedOptionIndex.value = 0
+        _correctAnswer.value = null
+        _selectedOptionIndex.value = null
         _optionOneState.value = false
         _optionTwoState.value = false
         _optionThreeState.value = false
     }
 
-    /*
-    * Check answer logic
+    /**
+    * CHECK ANSWER LOGIC
     * */
 
     // Holds the correctAnswer value from _question.value.correctAnswer
     private val _correctAnswer = MutableLiveData<Int?>()
     val correctAnswer: LiveData<Int?>
         get() = _correctAnswer
+
+    // Get the index from the selected option
+    // Used in Binding adapter to mart correct and wrong answers
+    private val _selectedOptionIndex = MutableLiveData<Int?>()
+    val selectedOptionIndex: LiveData<Int?>
+        get() = _selectedOptionIndex
 
     // Holds the total number of correct answers
     private val _totalAnswers = MutableLiveData(0)
@@ -185,4 +201,8 @@ class QuizQuestionViewModel(
             Log.d("Correct answers", totalAnswers.value.toString())
         }
     }
+
+    /**
+     * NAVIGATION
+     * */
 }

@@ -34,29 +34,15 @@ fun setOptionState(view: MaterialButton, state: Boolean) {
     }
 }
 
-private fun colorizeAnswer (view: MaterialButton, answer: Int, color: String) {
-    when(answer){
-        1 -> view.setBackgroundColor(Color.parseColor(color))
-        2 -> view.setBackgroundColor(Color.parseColor(color))
-        3 -> view.setBackgroundColor(Color.parseColor(color))
-    }
-}
-
-@BindingAdapter("correctAnswer", "optionIndex", "optionState", requireAll = true)
-fun checkAnswer(view: MaterialButton, correctAnswer: Int?, index: Int?, state: Boolean?) {
-    if (correctAnswer != null && index != null) {
+@BindingAdapter("correctAnswer", "optionIndex", "selectedOptionIndex", requireAll = true)
+fun checkAnswer(view: MaterialButton, correctAnswer: Int?, optionIndex: Int?, selectedOptionIndex: Int?) {
+    if (correctAnswer != null && selectedOptionIndex != null) {
         when {
-            correctAnswer != index && state == true -> colorizeAnswer(view, correctAnswer,"#ea4647")
-            correctAnswer == index && state == true -> colorizeAnswer(view, index,"#99cc00")
+            correctAnswer != selectedOptionIndex && selectedOptionIndex == optionIndex -> {
+                colorizeAnswer(view, selectedOptionIndex,"#ea4647")
+            }
+            correctAnswer == optionIndex -> colorizeAnswer(view, optionIndex,"#99cc00")
         }
-    }
-}
-
-@BindingAdapter("setButtonState")
-fun setButtonState(view: MaterialButton, optionIndex: Int?) {
-    when (optionIndex in 1..3) {
-        true -> view.isClickable = true
-        false -> view.isClickable = false
     }
 }
 

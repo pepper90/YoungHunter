@@ -29,7 +29,7 @@ class QuizQuestionFragment : Fragment() {
 
         binding.vm = viewModel
 
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         // Sets random background
         binding.quizQuestionBackground.setImageResource(setBackground)

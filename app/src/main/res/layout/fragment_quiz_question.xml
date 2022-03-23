@@ -178,13 +178,14 @@
                         android:id="@+id/option_one_tv"
                         style="@style/QuestionOptions"
                         correctAnswer="@{vm.correctAnswer}"
-                        optionIndex="@{vm.selectedOptionIndex}"
-                        optionState="@{vm.optionOneState}"
+                        optionIndex="@{vm.optionOneIndex}"
+                        selectedOptionIndex="@{vm.selectedOptionIndex}"
                         setOptionState="@{vm.optionOneState}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
+                        android:enabled="@{vm.correctAnswer != null ? false : true}"
                         android:onClick="@{() -> vm.onOptionOneSelected()}"
                         android:text="@{vm.question.optionOne}"
                         tools:text="получаване на удостоверение от Държавана изпитна комисия" />
@@ -192,32 +193,34 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/option_two_tv"
                         style="@style/QuestionOptions"
+                        correctAnswer="@{vm.correctAnswer}"
+                        optionIndex="@{vm.optionTwoIndex}"
+                        selectedOptionIndex="@{vm.selectedOptionIndex}"
                         setOptionState="@{vm.optionTwoState}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/option_one_tv"
                         android:layout_centerHorizontal="true"
+                        android:enabled="@{vm.correctAnswer != null ? false : true}"
                         android:onClick="@{() -> vm.onOptionTwoSelected()}"
                         android:text="@{vm.question.optionTwo}"
-                        tools:text="от Държавана изпитна комисия"
-                        correctAnswer="@{vm.correctAnswer}"
-                        optionIndex="@{vm.selectedOptionIndex}"
-                        optionState="@{vm.optionTwoState}"/>
+                        tools:text="от Държавана изпитна комисия"/>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/option_three_tv"
                         style="@style/QuestionOptions"
+                        correctAnswer="@{vm.correctAnswer}"
+                        optionIndex="@{vm.optionThreeIndex}"
+                        selectedOptionIndex="@{vm.selectedOptionIndex}"
                         setOptionState="@{vm.optionThreeState}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/option_two_tv"
                         android:layout_centerHorizontal="true"
+                        android:enabled="@{vm.correctAnswer != null ? false : true}"
                         android:onClick="@{() -> vm.onOptionThreeSelected()}"
                         android:text="@{vm.question.optionThree}"
-                        tools:text="получаване на удостоверение от Държавана изпитна комисия"
-                        correctAnswer="@{vm.correctAnswer}"
-                        optionIndex="@{vm.selectedOptionIndex}"
-                        optionState="@{vm.optionThreeState}"/>
+                        tools:text="получаване на удостоверение от Държавана изпитна комисия"/>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/next_tv"
@@ -226,10 +229,10 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/option_three_tv"
                         android:layout_centerHorizontal="true"
-                        android:onClick="@{() -> vm.checkAnswer()}"
-                        android:text="@string/mark"
-                        tools:text="МАРКИРАЙ"
-                        setButtonState="@{vm.selectedOptionIndex}"/>
+                        android:enabled="@{vm.selectedOptionIndex != null ? true : false}"
+                        android:onClick="@{() -> vm.correctAnswer == null ? vm.checkAnswer() : vm.next()}"
+                        android:text="@{vm.correctAnswer == null ? @string/mark : @string/nextQue }"
+                        tools:text="МАРКИРАЙ"/>
 
                 </RelativeLayout>
 
