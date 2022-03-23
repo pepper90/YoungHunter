@@ -41,7 +41,7 @@ class QuizQuestionViewModel(
     * */
 
     // Holds current question position & progress position
-    private val _position = MutableLiveData<Int>(1)
+    private val _position = MutableLiveData(1)
     val position: LiveData<Int>
         get() = _position
 

@@ -177,6 +177,9 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/option_one_tv"
                         style="@style/QuestionOptions"
+                        correctAnswer="@{vm.correctAnswer}"
+                        optionIndex="@{vm.selectedOptionIndex}"
+                        optionState="@{vm.optionOneState}"
                         setOptionState="@{vm.optionOneState}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -184,10 +187,7 @@
                         android:layout_centerHorizontal="true"
                         android:onClick="@{() -> vm.onOptionOneSelected()}"
                         android:text="@{vm.question.optionOne}"
-                        tools:text="получаване на удостоверение от Държавана изпитна комисия"
-                        correctAnswer="@{vm.correctAnswer}"
-                        optionIndex="@{vm.selectedOptionIndex}"
-                        optionState="@{vm.optionOneState}"/>
+                        tools:text="получаване на удостоверение от Държавана изпитна комисия" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/option_two_tv"

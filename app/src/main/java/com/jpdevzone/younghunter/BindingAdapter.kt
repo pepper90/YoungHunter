@@ -44,10 +44,10 @@ private fun colorizeAnswer (view: MaterialButton, answer: Int, color: String) {
 
 @BindingAdapter("correctAnswer", "optionIndex", "optionState", requireAll = true)
 fun checkAnswer(view: MaterialButton, correctAnswer: Int?, index: Int?, state: Boolean?) {
-    if (correctAnswer != null && index != null && state == true) {
-        when (correctAnswer == index) {
-            true -> view.setBackgroundColor(Color.parseColor("#99cc00"))
-            false -> view.setBackgroundColor(Color.parseColor("#ea4647"))
+    if (correctAnswer != null && index != null) {
+        when {
+            correctAnswer != index && state == true -> colorizeAnswer(view, correctAnswer,"#ea4647")
+            correctAnswer == index && state == true -> colorizeAnswer(view, index,"#99cc00")
         }
     }
 }
