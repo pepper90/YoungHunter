@@ -17,6 +17,7 @@ import com.jpdevzone.younghunter.setBackground
 class QuizQuestionFragment : Fragment() {
     private lateinit var binding : FragmentQuizQuestionBinding
     private lateinit var viewModel: QuizQuestionViewModel
+    private lateinit var args: QuizQuestionFragmentArgs
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,34 +36,48 @@ class QuizQuestionFragment : Fragment() {
         binding.quizQuestionBackground.setImageResource(setBackground)
 
         // Gets arguments from Bundle and bind them to xml
-        val args = QuizQuestionFragmentArgs.fromBundle(requireArguments()).dashData
-        binding.dashData = args
+        args = QuizQuestionFragmentArgs.fromBundle(requireArguments())
+        binding.dashData = args.dashData
 
-        // Launch timer
-        launchTimer(args.topic)
+        // Setup quiz environment based on topic from safeArgs
+        setupEnvironment(args.dashData.topic)
 
         // Sets back navigation
         binding.arrowBackIv.setOnClickListener {
             navigateBack()
         }
 
-        // Loads question based on position
-        viewModel.position.observe(viewLifecycleOwner) { position ->
-            viewModel.getQuestion(args.ids[position.minus(1)])
-        }
-
         return binding.root
     }
 
-    // Initiates the timer and observes current time with Live Data
-    private fun launchTimer(topic: String) {
+    private fun setupEnvironment(topic: String) {
+        // Initiates the timer and observes current time with Live Data
         viewModel.timer(topic)
         viewModel.currentTime.observe(viewLifecycleOwner) { newTime ->
             binding.timer.text = DateUtils.formatElapsedTime(newTime)
         }
+
+        // Loads question based on position
+        viewModel.position.observe(viewLifecycleOwner) { position ->
+            if (position <= args.dashData.ids.size) {
+                viewModel.getQuestion(args.dashData.ids[position.minus(1)])
+            } else {
+                viewModel.navigateToFinish()
+            }
+        }
+
+        // Navigate to FinishQuizFragment
+        viewModel.navigateToFinish.observe(viewLifecycleOwner) {
+            if (it == true) {
+                this.findNavController().navigate(
+                    QuizQuestionFragmentDirections.actionQuizQuestionFragmentToFinishQuizFragment()
+                )
+                viewModel.doneNavigating()
+            }
+        }
     }
 
-    // Sets navigation action
+    // Navigate to DashboardFragment
     private fun navigateBack() {
         this.findNavController().navigate(
             QuizQuestionFragmentDirections.actionQuizQuestionFragmentToDashboardFragment()

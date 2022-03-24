@@ -155,14 +155,12 @@ class DashboardFragment : Fragment() {
     private val guns = IntRange(813, 856).shuffled().take(30)
     private val dogs = IntRange(857, 929).shuffled().take(30)
     private val viruses = IntRange(930, 960).shuffled().take(30)
-    private val emergency = IntRange(961, 972).shuffled().take(30)
-    private val exam =
-                animals.take(47) +
-                law.take(7) +
-                gameManagement.take(11) +
-                huntingMethods.take(12) +
-                guns.take(5) +
-                dogs.take(9) +
-                viruses.take(9) +
-                emergency.take(4)
+    private val exam =  IntRange(1, 522).shuffled().take(47) +
+                        IntRange(523, 591).shuffled().take(7) +
+                        IntRange(592, 680).shuffled().take(11) +
+                        IntRange(681, 812).shuffled().take(12) +
+                        IntRange(813, 856).shuffled().take(5) +
+                        IntRange(857, 929).shuffled().take(9) +
+                        IntRange(930, 960).shuffled().take(9) +
+                        IntRange(961, 972).shuffled().take(4)
 }

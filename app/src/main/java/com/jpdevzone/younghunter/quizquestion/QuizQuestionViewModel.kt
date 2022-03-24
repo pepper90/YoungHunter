@@ -22,7 +22,7 @@ class QuizQuestionViewModel(
 
     /**
     * QUESTION
-    * */
+    **/
 
     // Holds current question & options
     private val _question = MutableLiveData<Question>()
@@ -38,10 +38,10 @@ class QuizQuestionViewModel(
 
     /**
     * POSITION
-    * */
+    **/
 
     // Holds current question position & progress position
-    private val _position = MutableLiveData(1)
+    private val _position = MutableLiveData<Int>()
     val position: LiveData<Int>
         get() = _position
 
@@ -57,7 +57,7 @@ class QuizQuestionViewModel(
 
     /**
     * TIMER & PROGRESS BAR
-    * */
+    **/
 
     // Holds current time value
     private val _currentTime = MutableLiveData<Long>()
@@ -104,7 +104,7 @@ class QuizQuestionViewModel(
 
     /**
     * OPTION STATES & INDEXES (clicked or not)
-    * */
+    **/
 
     // Hold value fro Option One
     private val _optionOneState = MutableLiveData<Boolean?>()
@@ -175,7 +175,7 @@ class QuizQuestionViewModel(
 
     /**
     * CHECK ANSWER LOGIC
-    * */
+    **/
 
     // Holds the correctAnswer value from _question.value.correctAnswer
     private val _correctAnswer = MutableLiveData<Int?>()
@@ -204,5 +204,20 @@ class QuizQuestionViewModel(
 
     /**
      * NAVIGATION
-     * */
+     **/
+
+    private val _navigateToFinish = MutableLiveData<Boolean?>()
+    val navigateToFinish: LiveData<Boolean?>
+        get() = _navigateToFinish
+
+    fun navigateToFinish() {
+        // Prevent position > progressBar max
+        // right before navigating to FinishFragment
+        _position.value = _position.value?.minus(1)
+        _navigateToFinish.value = true
+    }
+
+    fun doneNavigating() {
+        _navigateToFinish.value = null
+    }
 }
