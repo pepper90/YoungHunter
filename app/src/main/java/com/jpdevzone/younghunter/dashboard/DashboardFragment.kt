@@ -34,8 +34,7 @@ class DashboardFragment : Fragment() {
                             R.string.examYoungHunter,
                             R.string.time_exam,
                             R.drawable.ic_exam,
-                            "exam",
-                            exam
+                            "exam"
                         )
                     )
             )
@@ -49,8 +48,7 @@ class DashboardFragment : Fragment() {
                             R.string.animals,
                             R.string.time_mini_test,
                             R.drawable.ic_animals,
-                            "animals",
-                            animals.take(30)
+                            "animals"
                         )
                     )
             )
@@ -64,8 +62,7 @@ class DashboardFragment : Fragment() {
                             R.string.law,
                             R.string.time_mini_test,
                             R.drawable.ic_law,
-                            "law",
-                            law
+                            "law"
                         )
                     )
             )
@@ -79,8 +76,7 @@ class DashboardFragment : Fragment() {
                             R.string.gameManagement,
                             R.string.time_mini_test,
                             R.drawable.ic_animalcare,
-                            "gameManagement",
-                            gameManagement
+                            "gameManagement"
                         )
                     )
             )
@@ -94,8 +90,7 @@ class DashboardFragment : Fragment() {
                             R.string.huntingMethods,
                             R.string.time_mini_test,
                             R.drawable.ic_hunting,
-                            "huntingMethods",
-                            huntingMethods
+                            "huntingMethods"
                         )
                     )
             )
@@ -109,8 +104,7 @@ class DashboardFragment : Fragment() {
                             R.string.guns,
                             R.string.time_mini_test,
                             R.drawable.ic_guns,
-                            "guns",
-                            guns
+                            "guns"
                         )
                     )
             )
@@ -124,8 +118,7 @@ class DashboardFragment : Fragment() {
                             R.string.dogs,
                             R.string.time_mini_test,
                             R.drawable.ic_dogs,
-                            "dogs",
-                            dogs
+                            "dogs"
                         )
                     )
             )
@@ -139,8 +132,7 @@ class DashboardFragment : Fragment() {
                             R.string.viruses,
                             R.string.time_mini_test,
                             R.drawable.ic_virus,
-                            "viruses",
-                            viruses
+                            "viruses"
                         )
                     )
             )
@@ -148,19 +140,5 @@ class DashboardFragment : Fragment() {
 
         return binding.root
     }
-    private val animals = IntRange(1, 522).shuffled().take(30)
-    private val law = IntRange(523, 591).shuffled().take(30)
-    private val gameManagement = IntRange(592, 680).shuffled().take(30)
-    private val huntingMethods = IntRange(681, 812).shuffled().take(30)
-    private val guns = IntRange(813, 856).shuffled().take(30)
-    private val dogs = IntRange(857, 929).shuffled().take(30)
-    private val viruses = IntRange(930, 960).shuffled().take(30)
-    private val exam =  IntRange(1, 522).shuffled().take(47) +
-                        IntRange(523, 591).shuffled().take(7) +
-                        IntRange(592, 680).shuffled().take(11) +
-                        IntRange(681, 812).shuffled().take(12) +
-                        IntRange(813, 856).shuffled().take(5) +
-                        IntRange(857, 929).shuffled().take(9) +
-                        IntRange(930, 960).shuffled().take(9) +
-                        IntRange(961, 972).shuffled().take(4)
+
 }

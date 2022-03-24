@@ -1,7 +1,6 @@
 package com.jpdevzone.younghunter.quizquestion
 
 import android.os.Bundle
-import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,7 +39,14 @@ class QuizQuestionFragment : Fragment() {
         binding.dashData = args.dashData
 
         // Setup quiz environment based on topic from safeArgs
-        setupEnvironment(args.dashData.topic)
+        viewModel.setupEnvironment(args.dashData.topic)
+
+        // Loads next question
+        // Triggers navigation to FinishQuizFragment
+        loadQuestion()
+
+        // Sets navigation to FinishQuizFragment
+        finishQuiz()
 
         // Sets back navigation
         binding.arrowBackIv.setOnClickListener {
@@ -50,23 +56,20 @@ class QuizQuestionFragment : Fragment() {
         return binding.root
     }
 
-    private fun setupEnvironment(topic: String) {
-        // Initiates the timer and observes current time with Live Data
-        viewModel.timer(topic)
-        viewModel.currentTime.observe(viewLifecycleOwner) { newTime ->
-            binding.timer.text = DateUtils.formatElapsedTime(newTime)
-        }
-
-        // Loads question based on position
+    // Loads next question
+    private fun loadQuestion() {
         viewModel.position.observe(viewLifecycleOwner) { position ->
-            if (position <= args.dashData.ids.size) {
-                viewModel.getQuestion(args.dashData.ids[position.minus(1)])
+            val range = viewModel.range.value
+            if (position <= range!!.size) {
+                viewModel.loadQuestion(range[position.minus(1)])
             } else {
                 viewModel.navigateToFinish()
             }
         }
+    }
 
-        // Navigate to FinishQuizFragment
+    // Navigate to FinishQuizFragment
+    private fun finishQuiz() {
         viewModel.navigateToFinish.observe(viewLifecycleOwner) {
             if (it == true) {
                 this.findNavController().navigate(

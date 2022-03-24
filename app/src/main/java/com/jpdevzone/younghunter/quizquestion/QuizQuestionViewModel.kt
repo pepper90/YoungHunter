@@ -2,6 +2,7 @@ package com.jpdevzone.younghunter.quizquestion
 
 import android.app.Application
 import android.os.CountDownTimer
+import android.text.format.DateUtils
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -24,13 +25,55 @@ class QuizQuestionViewModel(
     * QUESTION
     **/
 
+    private val _range = MutableLiveData<List<Int>>()
+    val range: LiveData<List<Int>>
+        get() = _range
+
     // Holds current question & options
     private val _question = MutableLiveData<Question>()
     val question: LiveData<Question>
         get() = _question
 
     // Gets question from repository
-    fun getQuestion(id: Int) {
+    fun setupEnvironment(topic: String) {
+        when (topic) {
+            "exam" -> {
+                _range.value = IntRange(1, 522).shuffled().take(47) +
+                               IntRange(523, 591).shuffled().take(7) +
+                               IntRange(592, 680).shuffled().take(11) +
+                               IntRange(681, 812).shuffled().take(12) +
+                               IntRange(813, 856).shuffled().take(5) +
+                               IntRange(857, 929).shuffled().take(9) +
+                               IntRange(930, 960).shuffled().take(9) +
+                               IntRange(961, 972).shuffled().take(4)
+            }
+            "animals" -> {
+                _range.value = IntRange(1, 522).shuffled().take(30)
+            }
+            "law" -> {
+                _range.value = IntRange(523, 591).shuffled().take(30)
+            }
+            "gameManagement" -> {
+                _range.value = IntRange(592, 680).shuffled().take(30)
+            }
+            "huntingMethods" -> {
+                _range.value = IntRange(681, 812).shuffled().take(30)
+            }
+            "guns" -> {
+                _range.value = IntRange(813, 856).shuffled().take(30)
+            }
+            "dogs" -> {
+                _range.value = IntRange(857, 929).shuffled().take(30)
+            }
+            "viruses" -> {
+                _range.value = IntRange(930, 960).shuffled().take(30)
+            }
+        }
+        setProgressBarMax(topic)
+        setTimer(topic)
+    }
+
+    fun loadQuestion(id: Int) {
         viewModelScope.launch {
             _question.value = repository.getQuestion(id)
         }
@@ -64,6 +107,11 @@ class QuizQuestionViewModel(
     val currentTime: LiveData<Long>
         get() = _currentTime
 
+    // Holds current time value
+    private val _progressBarMax = MutableLiveData<Int>()
+    val progressBarMax: LiveData<Int>
+        get() = _progressBarMax
+
     // Default timer values
     companion object {
         private const val DONE = 0L
@@ -74,7 +122,7 @@ class QuizQuestionViewModel(
     }
 
     // Setting timer depending ot topic string from safeArgs
-    fun timer(topic: String) {
+    private fun setTimer(topic: String) {
         val timer: CountDownTimer
         COUNTDOWN_TIME = when (topic) {
             "exam" -> COUNTDOWN_TIME_EXAM
@@ -94,11 +142,15 @@ class QuizQuestionViewModel(
         timer.start()
     }
 
+    fun formattedTime(time: Long) : String {
+        return DateUtils.formatElapsedTime(time)
+    }
+
     // Sets progress bar max depending ot topic string from safeArgs
-    fun setProgressBarMax(topic: String) : Int {
-        return when (topic) {
-            "exam" -> 104
-            else -> 30
+    private fun setProgressBarMax(topic: String) {
+        when (topic) {
+            "exam" -> _progressBarMax.value = 104
+            else -> _progressBarMax.value = 30
         }
     }
 
@@ -165,7 +217,7 @@ class QuizQuestionViewModel(
 
     // Resets all options back to normal when Next btn is clicked
     // Makes selectedOptionIndex null
-    fun resetAllOption() {
+    private fun resetAllOption() {
         _correctAnswer.value = null
         _selectedOptionIndex.value = null
         _optionOneState.value = false

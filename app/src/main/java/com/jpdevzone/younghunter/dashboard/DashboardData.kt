@@ -8,6 +8,5 @@ data class DashboardData (
     val title: Int,
     val subtitle: Int,
     val icon: Int,
-    val topic: String,
-    val ids: List<Int>
+    val topic: String
     ) : Parcelable
