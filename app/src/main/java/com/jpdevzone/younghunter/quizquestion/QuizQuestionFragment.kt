@@ -53,6 +53,10 @@ class QuizQuestionFragment : Fragment() {
             navigateBack()
         }
 
+        binding.reloadIv.setOnClickListener {
+            reloadQuiz()
+        }
+
         return binding.root
     }
 
@@ -78,6 +82,13 @@ class QuizQuestionFragment : Fragment() {
                 viewModel.doneNavigating()
             }
         }
+    }
+
+    // Reload QuizQuestionFragment
+    private fun reloadQuiz() {
+        this.findNavController().navigate(
+            QuizQuestionFragmentDirections.actionQuizQuestionFragmentSelf(args.dashData)
+        )
     }
 
     // Navigate to DashboardFragment
