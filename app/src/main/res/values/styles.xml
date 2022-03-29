@@ -157,5 +157,42 @@
         <item name="android:textSize">@dimen/_11ssp</item>
     </style>
 
+    <!-- RELOAD DIALOG STYLE -->
+    <!-- Dialog container style -->
+    <style name="ReloadDialog">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/olive_2</item>
+        <item name="android:padding">@dimen/_11sdp</item>
+    </style>
+
+    <!-- Dialog title style -->
+    <style name="DialogTitle">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_19ssp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">@dimen/_5sdp</item>
+        <item name="android:fontFamily">@font/raleway_medium</item>
+    </style>
+
+    <!-- Dialog text style -->
+    <style name="DialogText">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_13ssp</item>
+        <item name="android:layout_marginTop">@dimen/_5sdp</item>
+        <item name="android:layout_marginBottom">@dimen/_5sdp</item>
+        <item name="android:fontFamily">@font/raleway_medium</item>
+    </style>
+
+    <!-- Dialog buttons style -->
+    <style name="DialogButton">
+        <item name="android:backgroundTint" tools:targetApi="lollipop">@color/olive_1</item>
+        <item name="android:layout_marginLeft">@dimen/_5sdp</item>
+        <item name="android:layout_marginRight">@dimen/_5sdp</item>
+    </style>
+
 
 </resources>

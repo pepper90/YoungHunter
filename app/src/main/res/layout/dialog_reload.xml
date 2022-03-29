@@ -1,106 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ReloadDialog"
     android:layout_width="@dimen/_270sdp"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_gravity="center"
-    android:gravity="center"
-    android:background="@color/olive_2"
+    tools:ignore="ContentDescription">
 
-    >
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/dialog_title_tv"
+        style="@style/DialogTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:padding="@dimen/_11sdp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true">
-
-
-        <TextView
-            android:id="@+id/tv_dialogTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/reload"
-            android:gravity="center"
-            android:textSize="@dimen/_19ssp"
-            android:textColor="@color/white"
-            android:textStyle="bold"/>
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/reload"
-            android:contentDescription="@string/reload"/>
-
-        <TextView
-            android:id="@+id/tv_dialogText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/reloadText"
-            android:gravity="center"
-            android:textSize="@dimen/_13ssp"
-            android:textColor="@color/white"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-
-
-            <TextView
-                android:id="@+id/tv_yes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/yes"
-                android:layout_margin="@dimen/_8sdp"
-                android:textSize="@dimen/_11ssp"
-                android:textColor="@color/white"
-                android:background="@color/olive_1"
-                android:gravity="center"
-                android:padding="@dimen/_8sdp"
-                />
-
-            <TextView
-                android:id="@+id/tv_no"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/no"
-                android:layout_margin="@dimen/_8sdp"
-                android:textSize="@dimen/_11ssp"
-                android:textColor="@color/white"
-                android:background="@color/olive_1"
-                android:gravity="center"
-                android:padding="@dimen/_8sdp"
-                />
-        </LinearLayout>
-
-
-    </LinearLayout>
+        android:text="@string/reload"
+        app:layout_constraintBottom_toTopOf="@+id/reload_iv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/iv_dismiss"
+        android:id="@+id/reload_iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/reload"
+        app:layout_constraintBottom_toTopOf="@+id/dialog_text_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_title_tv"
+        app:srcCompat="@drawable/reload" />
+
+    <TextView
+        android:id="@+id/dialog_text_tv"
+        style="@style/DialogText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/reloadText"
+        app:layout_constraintBottom_toTopOf="@+id/yes_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reload_iv" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/yes_btn"
+        style="@style/DialogButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/yes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/no_btn"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_text_tv" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/no_btn"
+        style="@style/DialogButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/no"
+        app:layout_constraintBottom_toBottomOf="@+id/yes_btn"
+        app:layout_constraintEnd_toStartOf="@+id/yes_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/yes_btn"/>
+
+    <ImageView
+        android:id="@+id/dismiss_dialog_iv"
         android:layout_width="@dimen/_11sdp"
         android:layout_height="@dimen/_11sdp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:src="@drawable/ic_close"
-        android:layout_marginRight="@dimen/_8sdp"
-        android:layout_marginEnd="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_8sdp"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
