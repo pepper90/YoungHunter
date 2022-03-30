@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -54,7 +57,7 @@ class QuizQuestionFragment : Fragment() {
         }
 
         binding.reloadIv.setOnClickListener {
-            reloadQuiz()
+            showReloadDialog()
         }
 
         return binding.root
@@ -85,7 +88,7 @@ class QuizQuestionFragment : Fragment() {
     }
 
     // Reload QuizQuestionFragment
-    private fun reloadQuiz() {
+    private fun reload() {
         this.findNavController().navigate(
             QuizQuestionFragmentDirections.actionQuizQuestionFragmentSelf(args.dashData)
         )
@@ -96,5 +99,30 @@ class QuizQuestionFragment : Fragment() {
         this.findNavController().navigate(
             QuizQuestionFragmentDirections.actionQuizQuestionFragmentToDashboardFragment()
         )
+    }
+
+    // Show Reload dialog
+    private fun showReloadDialog() {
+        val dialog = AlertDialog.Builder(requireContext())
+        val dialogLayout = layoutInflater.inflate(R.layout.dialog_reload, null)
+        dialog.setView(dialogLayout)
+        val alertDialog = dialog.create()
+
+        val yes = dialogLayout.findViewById<TextView>(R.id.yes_btn)
+        yes.setOnClickListener {
+            alertDialog.dismiss()
+            reload()
+        }
+
+        val no = dialogLayout.findViewById<TextView>(R.id.no_btn)
+        no.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        val dismiss = dialogLayout.findViewById<ImageView>(R.id.dismiss_dialog_iv)
+        dismiss.setOnClickListener {
+            alertDialog.dismiss()
+        }
+        alertDialog.show()
     }
 }
