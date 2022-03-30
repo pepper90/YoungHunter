@@ -53,7 +53,7 @@ class QuizQuestionFragment : Fragment() {
 
         // Sets back navigation
         binding.arrowBackIv.setOnClickListener {
-            navigateBack()
+            showQuitDialog()
         }
 
         binding.reloadIv.setOnClickListener {
@@ -123,6 +123,33 @@ class QuizQuestionFragment : Fragment() {
         dismiss.setOnClickListener {
             alertDialog.dismiss()
         }
+        alertDialog.show()
+    }
+
+    private fun showQuitDialog() {
+        val dialog = AlertDialog.Builder(requireContext())
+        val dialogLayout = layoutInflater.inflate(R.layout.dialog_quit, null)
+        dialog.setView(dialogLayout)
+        val alertDialog = dialog.create()
+
+
+        val yes = dialogLayout.findViewById<TextView>(R.id.yes_btn)
+        yes.setOnClickListener {
+            alertDialog.dismiss()
+            navigateBack()
+        }
+
+        val no = dialogLayout.findViewById<TextView>(R.id.no_btn)
+        no.setOnClickListener {
+            alertDialog.dismiss()
+            navigateBack()
+        }
+
+        val dismiss = dialogLayout.findViewById<ImageView>(R.id.dismiss_dialog_iv)
+        dismiss.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
         alertDialog.show()
     }
 }
