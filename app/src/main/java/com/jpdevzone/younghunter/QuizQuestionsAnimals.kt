@@ -304,21 +304,21 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
         dialog.setView(dialogLayout)
         val alertDialog = dialog.create()
 
-        val yes = dialogLayout.findViewById<TextView>(R.id.tv_yes)
-        yes.setOnClickListener {
-            alertDialog.dismiss()
-            clearData()
-            val intent = intent
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            finish()
-            startActivity(intent)
-            overridePendingTransition(0, 0)
-        }
+//        val yes = dialogLayout.findViewById<TextView>(R.id.tv_yes)
+//        yes.setOnClickListener {
+//            alertDialog.dismiss()
+//            clearData()
+//            val intent = intent
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+//            finish()
+//            startActivity(intent)
+//            overridePendingTransition(0, 0)
+//        }
 
-        val no = dialogLayout.findViewById<TextView>(R.id.tv_no)
-        no.setOnClickListener {
-            alertDialog.dismiss()
-        }
+//        val no = dialogLayout.findViewById<TextView>(R.id.tv_no)
+//        no.setOnClickListener {
+//            alertDialog.dismiss()
+//        }
 
         val dismiss = dialogLayout.findViewById<ImageView>(R.id.iv_dismiss)
         dismiss.setOnClickListener {
@@ -331,28 +331,28 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
     //This function sets the exit dialog -------------------------------------------------------
     private fun alertDialogFunction() {
         val dialog = AlertDialog.Builder(this@QuizQuestionsAnimals)
-        val dialogLayout = layoutInflater.inflate(R.layout.dialog, null)
+        val dialogLayout = layoutInflater.inflate(R.layout.dialog_quit, null)
         dialog.setView(dialogLayout)
         val alertDialog = dialog.create()
 
 
-        val yes = dialogLayout.findViewById<TextView>(R.id.tv_yes)
-        yes.setOnClickListener {
-            alertDialog.dismiss()
-            saveData()
-            val intent = Intent(this@QuizQuestionsAnimals, Dashboard::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        val yes = dialogLayout.findViewById<TextView>(R.id.tv_yes)
+//        yes.setOnClickListener {
+//            alertDialog.dismiss()
+//            saveData()
+//            val intent = Intent(this@QuizQuestionsAnimals, Dashboard::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 
-        val no = dialogLayout.findViewById<TextView>(R.id.tv_no)
-        no.setOnClickListener {
-            alertDialog.dismiss()
-            clearData()
-            val intent = Intent(this@QuizQuestionsAnimals, Dashboard::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        val no = dialogLayout.findViewById<TextView>(R.id.tv_no)
+//        no.setOnClickListener {
+//            alertDialog.dismiss()
+//            clearData()
+//            val intent = Intent(this@QuizQuestionsAnimals, Dashboard::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 
         val dismiss = dialogLayout.findViewById<ImageView>(R.id.iv_dismiss)
         dismiss.setOnClickListener {

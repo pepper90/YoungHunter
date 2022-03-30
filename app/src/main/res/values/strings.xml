@@ -31,11 +31,11 @@
     <string name="fail2">Отговорихте правилно само на %d от общо %d въпроса.\nВашето време: %d</string>
     <string name="success1">Отговорихте правилно на %d от общо %d въпроса.\nВашето време: %d</string>
     <string name="success2">Отговорихте правилно на %d от общо %d въпроса.\nВашето време: %d</string>
-    <string name="dialogTitle1">КЪМ ГЛАВНО МЕНЮ</string>
-    <string name="dialogText1">Желаете ли да запазите текущия тест и да продължите по-късно?</string>
+    <string name="quitTitle">КЪМ ГЛАВНО МЕНЮ?</string>
+    <string name="quitText">Желаете ли да запазите текущия тест и да продължите по-късно?</string>
     <string name="toast">Натисете още веднъж за ИЗХОД.</string>
     <string name="timerText">00:00</string>
-    <string name="reload">ЗАРЕДИ НОВ ТЕСТ?</string>
+    <string name="reloadTitle">ЗАРЕДИ НОВ ТЕСТ?</string>
     <string name="reloadText">Текущите Ви отговори ще бъдат изтрити!</string>
     <string name="yes">ДА</string>
     <string name="no">НЕ</string>
