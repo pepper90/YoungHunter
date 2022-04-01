@@ -122,8 +122,6 @@ class QuizQuestionViewModel(
         private lateinit var timer: CountDownTimer
     }
 
-
-
     // Setting timer depending ot topic string from safeArgs
     private fun setTimer(topic: String) {
         COUNTDOWN_TIME = when (topic) {
@@ -132,8 +130,10 @@ class QuizQuestionViewModel(
         }
 
         timer(COUNTDOWN_TIME)
+        Log.d("TimerTesting", "Timer has started!")
     }
 
+    // Timer function
     private fun timer(timeLeft: Long) {
         timer = object : CountDownTimer(timeLeft, ONE_SECOND) {
 
@@ -148,19 +148,24 @@ class QuizQuestionViewModel(
             }
         }
         timer.start()
-        Log.d("TimerTesting", "Timer has started!")
     }
 
+    // Pause timer to avoid memory leaks. Also called in onPause.
     fun pauseTimer() {
         timer.cancel()
         Log.d("TimerTesting", "Timer has been cancelled! ${formattedTime(_currentTime.value!!)}")
     }
 
+    // Resume timer when screen is in focus. Also called in onResume.
+    // Prevents memory leaks.
     fun resumeTimer() {
-        timer(TIME_LEFT)
-        Log.d("TimerTesting", "Timer has been resumed! ${formattedTime(_currentTime.value!!)}")
+        if (_currentTime.value != null) {
+            timer(TIME_LEFT)
+            Log.d("TimerTesting", "Timer has been resumed! ${formattedTime(_currentTime.value!!)}")
+        }
     }
 
+    // Format time into readable string
     fun formattedTime(time: Long) : String {
         return DateUtils.formatElapsedTime(time)
     }
@@ -290,10 +295,5 @@ class QuizQuestionViewModel(
 
     fun doneNavigating() {
         _navigateToFinish.value = null
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        pauseTimer()
     }
 }

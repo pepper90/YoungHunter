@@ -126,6 +126,8 @@ class QuizQuestionFragment : Fragment() {
             alertDialog.dismiss()
             viewModel.resumeTimer()
         }
+
+        alertDialog.setCancelable(false)
         alertDialog.show()
     }
 
@@ -155,6 +157,17 @@ class QuizQuestionFragment : Fragment() {
             viewModel.resumeTimer()
         }
 
+        alertDialog.setCancelable(false)
         alertDialog.show()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        viewModel.pauseTimer()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.resumeTimer()
     }
 }
