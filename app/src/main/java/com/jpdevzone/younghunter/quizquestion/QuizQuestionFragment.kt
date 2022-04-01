@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.jpdevzone.younghunter.R
 import com.jpdevzone.younghunter.databinding.FragmentQuizQuestionBinding
-import com.jpdevzone.younghunter.setBackground
+import com.jpdevzone.younghunter.utils.setBackground
 
 
 class QuizQuestionFragment : Fragment() {

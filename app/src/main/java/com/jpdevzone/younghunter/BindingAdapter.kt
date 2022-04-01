@@ -1,15 +1,12 @@
 package com.jpdevzone.younghunter
 
-import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.google.android.material.button.MaterialButton
-import com.jpdevzone.younghunter.quizquestion.QuizQuestionFragmentDirections
+import com.jpdevzone.younghunter.utils.colorizeAnswer
 
 @BindingAdapter("setIcon")
 fun setIcon(view: ImageView, icon: Int) {

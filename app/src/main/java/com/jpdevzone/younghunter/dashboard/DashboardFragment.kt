@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.jpdevzone.younghunter.*
 import com.jpdevzone.younghunter.databinding.FragmentDashboardBinding
+import com.jpdevzone.younghunter.utils.setBackground
 
 class DashboardFragment : Fragment() {
 

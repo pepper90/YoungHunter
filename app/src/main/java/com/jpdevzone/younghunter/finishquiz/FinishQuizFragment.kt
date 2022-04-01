@@ -11,7 +11,7 @@ import com.jpdevzone.younghunter.R
 import com.jpdevzone.younghunter.databinding.FragmentFinishQuizBinding
 import com.jpdevzone.younghunter.databinding.FragmentHelpBinding
 import com.jpdevzone.younghunter.quizquestion.QuizQuestionFragmentDirections
-import com.jpdevzone.younghunter.setBackground
+import com.jpdevzone.younghunter.utils.setBackground
 
 class FinishQuizFragment : Fragment() {
 

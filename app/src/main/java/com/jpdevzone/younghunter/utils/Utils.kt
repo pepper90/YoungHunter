@@ -1,7 +1,8 @@
-package com.jpdevzone.younghunter
+package com.jpdevzone.younghunter.utils
 
 import android.graphics.Color
 import com.google.android.material.button.MaterialButton
+import com.jpdevzone.younghunter.R
 
 /*
 * Backgrounds
