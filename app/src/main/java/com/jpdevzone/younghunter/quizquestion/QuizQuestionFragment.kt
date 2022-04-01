@@ -103,6 +103,7 @@ class QuizQuestionFragment : Fragment() {
 
     // Show Reload dialog
     private fun showReloadDialog() {
+        viewModel.pauseTimer()
         val dialog = AlertDialog.Builder(requireContext())
         val dialogLayout = layoutInflater.inflate(R.layout.dialog_reload, null)
         dialog.setView(dialogLayout)
@@ -117,16 +118,19 @@ class QuizQuestionFragment : Fragment() {
         val no = dialogLayout.findViewById<TextView>(R.id.no_btn)
         no.setOnClickListener {
             alertDialog.dismiss()
+            viewModel.resumeTimer()
         }
 
         val dismiss = dialogLayout.findViewById<ImageView>(R.id.dismiss_dialog_iv)
         dismiss.setOnClickListener {
             alertDialog.dismiss()
+            viewModel.resumeTimer()
         }
         alertDialog.show()
     }
 
     private fun showQuitDialog() {
+        viewModel.pauseTimer()
         val dialog = AlertDialog.Builder(requireContext())
         val dialogLayout = layoutInflater.inflate(R.layout.dialog_quit, null)
         dialog.setView(dialogLayout)
@@ -148,6 +152,7 @@ class QuizQuestionFragment : Fragment() {
         val dismiss = dialogLayout.findViewById<ImageView>(R.id.dismiss_dialog_iv)
         dismiss.setOnClickListener {
             alertDialog.dismiss()
+            viewModel.resumeTimer()
         }
 
         alertDialog.show()

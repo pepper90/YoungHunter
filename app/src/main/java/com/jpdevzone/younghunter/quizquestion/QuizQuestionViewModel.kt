@@ -12,7 +12,6 @@ import com.jpdevzone.younghunter.database.Question
 import com.jpdevzone.younghunter.database.QuestionsDatabase
 import com.jpdevzone.younghunter.database.QuestionsRepository
 import kotlinx.coroutines.launch
-import kotlin.properties.Delegates
 
 class QuizQuestionViewModel(
     application: Application
@@ -118,28 +117,48 @@ class QuizQuestionViewModel(
         private const val ONE_SECOND = 1000L
         private const val COUNTDOWN_TIME_EXAM = 5400000L
         private const val COUNTDOWN_TIME_MINITEST = 1500000L
-        private var COUNTDOWN_TIME by Delegates.notNull<Long>()
+        private var COUNTDOWN_TIME: Long = 0
+        private var TIME_LEFT: Long = 0
+        private lateinit var timer: CountDownTimer
     }
+
+
 
     // Setting timer depending ot topic string from safeArgs
     private fun setTimer(topic: String) {
-        val timer: CountDownTimer
         COUNTDOWN_TIME = when (topic) {
             "exam" -> COUNTDOWN_TIME_EXAM
             else -> COUNTDOWN_TIME_MINITEST
         }
-        timer = object : CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
+
+        timer(COUNTDOWN_TIME)
+    }
+
+    private fun timer(timeLeft: Long) {
+        timer = object : CountDownTimer(timeLeft, ONE_SECOND) {
 
             override fun onTick(millisUntilFinished: Long) {
-                _currentTime.value = (millisUntilFinished / ONE_SECOND)
+                TIME_LEFT = millisUntilFinished
+                _currentTime.value = (TIME_LEFT / ONE_SECOND)
             }
 
             override fun onFinish() {
                 _currentTime.value = DONE
+                _navigateToFinish.value = true
             }
         }
-
         timer.start()
+        Log.d("TimerTesting", "Timer has started!")
+    }
+
+    fun pauseTimer() {
+        timer.cancel()
+        Log.d("TimerTesting", "Timer has been cancelled! ${formattedTime(_currentTime.value!!)}")
+    }
+
+    fun resumeTimer() {
+        timer(TIME_LEFT)
+        Log.d("TimerTesting", "Timer has been resumed! ${formattedTime(_currentTime.value!!)}")
     }
 
     fun formattedTime(time: Long) : String {
@@ -271,5 +290,10 @@ class QuizQuestionViewModel(
 
     fun doneNavigating() {
         _navigateToFinish.value = null
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        pauseTimer()
     }
 }
