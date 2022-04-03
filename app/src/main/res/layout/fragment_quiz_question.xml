@@ -103,8 +103,7 @@
                         android:layout_below="@id/category_time_tv"
                         android:layout_alignLeft="@id/arrow_back_iv"
                         android:layout_alignRight="@id/category_iv"
-                        android:layout_marginTop="@dimen/_8sdp"
-                        android:background="@color/white" />
+                        style="@style/Divider" />
 
                     <TextView
                         android:id="@+id/question_tv"

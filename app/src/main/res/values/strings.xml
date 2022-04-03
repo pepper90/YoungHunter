@@ -25,7 +25,7 @@
     <string name="result">РЕЗУЛТАТ</string>
     <string name="success">ПОЗДРАВЛЕНИЯ!</string>
     <string name="failure">ПРОДЪЛЖАВАЙТЕ ДА УЧИТЕ!</string>
-    <string name="score">Отговорихте правилно на 80 от общо 104 въпроса.\nВашето време: %d</string>
+    <string name="score">Отговорихте правилно на 80 от общо 104 въпроса.\n\nВашето време: %d</string>
     <string name="newTest">НОВ ТЕСТ</string>
     <string name="fail1">Отговорихте правилно само на %d от общо %d въпроса.\nВашето време: %d</string>
     <string name="fail2">Отговорихте правилно само на %d от общо %d въпроса.\nВашето време: %d</string>

@@ -27,6 +27,13 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <!-- COMMON STYLES -->
+    <!-- Divider line styles -->
+    <style name="Divider">
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
     <!--  DASHBOARD FRAGMENT RELATED STYLES  -->
     <!-- Help icon styles -->
     <style name="HelpIcon">
@@ -194,5 +201,41 @@
         <item name="android:layout_marginRight">@dimen/_5sdp</item>
     </style>
 
+    <!--  FINISH QUIZ FRAGMENT RELATED STYLES  -->
+    <!-- Header title -->
+    <style name="FinishHeaderTitle">
+        <item name="android:layout_marginTop">@dimen/_10sdp</item>
+        <item name="android:fontFamily">@font/oswald_regular</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_25ssp</item>
+    </style>
+
+    <!-- Message bubble - Title -->
+    <style name="FinishMessage">
+        <item name="android:layout_marginTop">@dimen/_5sdp</item>
+        <item name="android:background">@drawable/result_success_top</item>
+        <item name="android:fontFamily">@font/raleway_bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/_8sdp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_20ssp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Message bubble - Results -->
+    <style name="FinishResult">
+        <item name="android:background">@drawable/result_success_bottom</item>
+        <item name="android:fontFamily">@font/raleway_medium</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:padding">@dimen/_8sdp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_17ssp</item>
+    </style>
+
+    <style name="FinishButton">
+        <item name="android:background">@drawable/bg_button</item>
+        <item name="android:padding">@dimen/_15sdp</item>
+    </style>
 
 </resources>
