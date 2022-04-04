@@ -1,5 +1,5 @@
 ## Project Status
-This version is currently being updated: _polishing design & implementing MVVM_
+This version is currently being updated: _polishing design & implementing MVVM_ <br>
 For a working version of the app, please check versionCode6/versionName1.5
 
 # Young Hunter Quiz ![](https://img.shields.io/static/v1?style=plastic&label=Language&labelColor=212121&message=Kotlin&color=9719ff) ![](https://img.shields.io/static/v1?style=plastic&label=Technology&labelColor=212121&message=Android&color=#a4c639) ![](https://img.shields.io/static/v1?style=plastic&label=Layout&labelColor=212121&message=XML&color=ff0068)
