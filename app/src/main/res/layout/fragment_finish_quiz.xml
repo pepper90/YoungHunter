@@ -5,6 +5,9 @@
     tools:ignore="ContentDescription, RtlHardcoded, UselessParent" >
 
     <data>
+        <variable
+            name="vm"
+            type="com.jpdevzone.younghunter.finishquiz.FinishQuizViewModel" />
 
     </data>
 

@@ -29,7 +29,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
-                    android:contentDescription="@string/back"
                     android:src="@drawable/ic_backbutton"
                     android:layout_gravity="center_vertical"
                     android:paddingEnd="@dimen/_12sdp"

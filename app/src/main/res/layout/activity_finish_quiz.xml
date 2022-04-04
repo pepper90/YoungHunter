@@ -78,7 +78,6 @@
                 android:paddingRight="@dimen/_24sdp"
                 android:paddingTop="@dimen/_12sdp"
                 android:paddingBottom="@dimen/_12sdp"
-                android:text="@string/newTest"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_14ssp"
                 android:textStyle="bold"/>

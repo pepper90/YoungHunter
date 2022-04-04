@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">Млад ловец - тестове за решаване и самоподготовка</string>
+
+    <!-- DASHBOARD FRAGMENT STRINGS -->
+    <string name="module1">МОДУЛ 1 - ИЗПИТЕН ТЕСТ</string>
+    <string name="module2">МОДУЛ 2 - ТЕСТОВЕ ПО ТЕМИ</string>
     <string name="category">ТЕСТОВЕ ПО ТЕМИ</string>
     <string name="load_exam">ЗАПОЧНИ ТЕСТ</string>
+    <string name="examYoungHunter">ТЕСТ ЗА МЛАД ЛОВЕЦ</string>
     <string name="animals">ДИВЕЧОЗНАНИЕ</string>
     <string name="law">ЗАКОН ЗА ЛОВА</string>
     <string name="gameManagement">ГРИЖИ ЗА ДИВЕЧА</string>
@@ -9,46 +14,48 @@
     <string name="guns">ОРЪЖЕЗНАНИЕ</string>
     <string name="dogs">ЛОВНА КИНОЛОГИЯ</string>
     <string name="viruses">БОЛЕСТИ ПО ДИВЕЧА</string>
+    <string name="time_exam">104 въпроса / 90 минути</string>
+    <string name="time_mini_test">30 въпроса / 25 минути</string>
+    <string name="toast">Натисете още веднъж за ИЗХОД.</string>
+
+    <!-- INSTRUCTIONS FRAGMENT STRINGS -->
     <string name="help">ИНСТРУКЦИИ</string>
     <string name="help2">Добре дошли в първото мобилно приложение, разработено в помощ на младите кандидат-ловци в България.</string>
     <string name="help3">Приложението се състои от два модула и всеки въпрос има задължителен характер.</string>
     <string name="help4">Модул I \"Изпитен тест\" генерира 104 произволни въпроса, подобно на изпита, на който Ви предстои да се явите. Въпросите са подредени по раздели съгласно чл. 16а, ал.1 от ППЗЛОД. Всеки въпрос има по един верен отговор. За успешно издържан тест се счита този, на който сте дали 80 и повече верни отговора. В края на всеки тест ще можете да видите Вашия резултат.</string>
-    <string name="help5">В Модул II \"Тестове по теми\" въпросите са подредени по теми. Всеки нов тест генерира 30 произволни въпроса от съответната тема. За успешно издържан тест се счита този, на койте сте дали 25 и повече верни отговора. Отново в края на всеки тест ще можете да видите Вашия резултат.</string>
+    <string name="help5">В Модул II \"Тестове по теми\" въпросите са подредени по теми. Всеки нов тест генерира 30 произволни въпроса от съответната тема. За успешно издържан тест се счита този, на койте сте дали 23 и повече верни отговора. Отново в края на всеки тест ще можете да видите Вашия резултат.</string>
     <string name="help6">Съвет: започнете с тестовете по теми и щом се подготвите достатъчно, преминете към изпитните варианти в Модул I.</string>
     <string name="help7">Успех с подготовката и наслука!</string>
-    <string name="back">НАЗАД</string>
-    <string name="question">ВЪПРОС</string>
-    <string name="examYoungHunter">ТЕСТ ЗА МЛАД ЛОВЕЦ</string>
+
+    <!-- QUIZ FRAGMENT STRINGS -->
     <string name="nextQue">НАПРЕД</string>
-    <string name="finish">КРАЙ</string>
     <string name="mark">МАРКИРАЙ</string>
+    <string name="finish">КРАЙ</string>
+    <string name="position">%d / %d</string>
+
+    <!-- FINISH FRAGMENT STRINGS -->
     <string name="result">РЕЗУЛТАТ</string>
     <string name="success">ПОЗДРАВЛЕНИЯ!</string>
     <string name="failure">ПРОДЪЛЖАВАЙТЕ ДА УЧИТЕ!</string>
-    <string name="score">Отговорихте правилно на 80 от общо 104 въпроса.\n\nВашето време: %d</string>
-    <string name="newTest">НОВ ТЕСТ</string>
-    <string name="fail1">Отговорихте правилно само на %d от общо %d въпроса.\nВашето време: %d</string>
-    <string name="fail2">Отговорихте правилно само на %d от общо %d въпроса.\nВашето време: %d</string>
-    <string name="success1">Отговорихте правилно на %d от общо %d въпроса.\nВашето време: %d</string>
-    <string name="success2">Отговорихте правилно на %d от общо %d въпроса.\nВашето време: %d</string>
-    <string name="quitTitle">КЪМ ГЛАВНО МЕНЮ?</string>
-    <string name="quitText">Желаете ли да запазите текущия тест и да продължите по-късно?</string>
-    <string name="toast">Натисете още веднъж за ИЗХОД.</string>
-    <string name="timerText">00:00</string>
+    <string name="score">Отговорихте правилно на %d от общо %d въпроса.\n\nВашето време: %d</string>
+
+    <!-- RELOAD DIALOG STRINGS -->
     <string name="reloadTitle">ЗАРЕДИ НОВ ТЕСТ?</string>
     <string name="reloadText">Текущите Ви отговори ще бъдат изтрити!</string>
     <string name="yes">ДА</string>
     <string name="no">НЕ</string>
+
+    <!-- "TO MAIN MENU" DIALOG STRINGS -->
+    <string name="quitTitle">КЪМ ГЛАВНО МЕНЮ?</string>
+    <string name="quitText">Желаете ли да запазите текущия тест и да продължите по-късно?</string>
+
+
     <string name="loadNewTest">ЗАПОЧНИ НОВ ТЕСТ</string>
     <string name="continueTest30">ПРОДЪЛЖИ ТЕСТ\nВъпрос номер: %d/30\nОставащо време: %s</string>
     <string name="continueTest104">ПРОДЪЛЖИ ТЕСТ\nВъпрос номер: %d/104\nОставащо време: %s</string>
     <string name="timeRem">Оставащо време: %d</string>
-    <string name="time_exam">104 въпроса / 90 минути</string>
-    <string name="time_mini_test">30 въпроса / 25 минути</string>
-    <string name="module1">МОДУЛ 1 - ИЗПИТЕН ТЕСТ</string>
-    <string name="module2">МОДУЛ 2 - ТЕСТОВЕ ПО ТЕМИ</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="position">%d / %d</string>
+    <string name="timerText">00:00</string> <!-- Za triene -->
+
 
 </resources>

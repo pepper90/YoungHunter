@@ -72,7 +72,7 @@
                         android:layout_toLeftOf="@id/category_iv"
                         android:layout_toRightOf="@id/arrow_back_iv"
                         android:text="@{dashData.title}"
-                        tools:text="@string/examYoungHunter" />
+                        tools:text="ТЕСТ ЗА МЛАД ЛОВЕЦ" />
 
                     <TextView
                         android:id="@+id/category_time_tv"
@@ -161,7 +161,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@{vm.formattedTime(vm.currentTime)}"
-                            tools:text="@string/timerText" />
+                            tools:text="00:00" />
 
                     </LinearLayout>
 

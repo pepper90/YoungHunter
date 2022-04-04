@@ -32,13 +32,13 @@ class FinishQuiz : AppCompatActivity() {
                     binding.imgSuccess.setImageResource(R.drawable.dissatisfied)
                     binding.tvCongrats.setText(R.string.failure)
                     binding.tvCongrats.setBackgroundResource(R.drawable.result_failure_top)
-                    binding.tvScore.text = getString(R.string.fail1, correctAnswers, totalQuestions)
+//                    binding.tvScore.text = getString(R.string.fail1, correctAnswers, totalQuestions)
                     binding.tvScore.setBackgroundResource(R.drawable.result_failure_bottom)
                 } else {
                     binding.imgSuccess.setImageResource(R.drawable.satisfied)
                     binding.tvCongrats.setText(R.string.success)
                     binding.tvCongrats.setBackgroundResource(R.drawable.result_success_top)
-                    binding.tvScore.text = getString(R.string.success1, correctAnswers, totalQuestions)
+//                    binding.tvScore.text = getString(R.string.success1, correctAnswers, totalQuestions)
                     binding.tvScore.setBackgroundResource(R.drawable.result_success_bottom)
                 }
             }
@@ -47,13 +47,13 @@ class FinishQuiz : AppCompatActivity() {
                     binding.imgSuccess.setImageResource(R.drawable.dissatisfied)
                     binding.tvCongrats.setText(R.string.failure)
                     binding.tvCongrats.setBackgroundResource(R.drawable.result_failure_top)
-                    binding.tvScore.text = getString(R.string.fail2, correctAnswersExam, totalQuestions)
+//                    binding.tvScore.text = getString(R.string.fail2, correctAnswersExam, totalQuestions)
                     binding.tvScore.setBackgroundResource(R.drawable.result_failure_bottom)
                 } else {
                     binding.imgSuccess.setImageResource(R.drawable.satisfied)
                     binding.tvCongrats.setText(R.string.success)
                     binding.tvCongrats.setBackgroundResource(R.drawable.result_success_top)
-                    binding.tvScore.text = getString(R.string.success2, correctAnswersExam, totalQuestions)
+//                    binding.tvScore.text = getString(R.string.success2, correctAnswersExam, totalQuestions)
                     binding.tvScore.setBackgroundResource(R.drawable.result_success_bottom)
                 }
             }
