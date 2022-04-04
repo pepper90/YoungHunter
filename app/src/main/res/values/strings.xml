@@ -37,7 +37,7 @@
     <string name="result">РЕЗУЛТАТ</string>
     <string name="success">ПОЗДРАВЛЕНИЯ!</string>
     <string name="failure">ПРОДЪЛЖАВАЙТЕ ДА УЧИТЕ!</string>
-    <string name="score">Отговорихте правилно на %d от общо %d въпроса.\n\nВашето време: %d</string>
+    <string name="score">Отговорихте правилно на %d от общо %d въпроса.\n\nВашето време: %s</string>
 
     <!-- RELOAD DIALOG STRINGS -->
     <string name="reloadTitle">ЗАРЕДИ НОВ ТЕСТ?</string>

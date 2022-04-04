@@ -80,7 +80,11 @@ class QuizQuestionFragment : Fragment() {
         viewModel.navigateToFinish.observe(viewLifecycleOwner) {
             if (it == true) {
                 this.findNavController().navigate(
-                    QuizQuestionFragmentDirections.actionQuizQuestionFragmentToFinishQuizFragment()
+                    QuizQuestionFragmentDirections.actionQuizQuestionFragmentToFinishQuizFragment(
+                        viewModel.totalAnswers.value!!,
+                        viewModel.progressBarMax.value!!,
+                        viewModel.currentTime.value!!
+                    )
                 )
                 viewModel.doneNavigating()
             }

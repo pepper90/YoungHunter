@@ -62,5 +62,14 @@
         <action
             android:id="@+id/action_finishQuizFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
+        <argument
+            android:name="result"
+            app:argType="integer" />
+        <argument
+            android:name="max"
+            app:argType="integer" />
+        <argument
+            android:name="time"
+            app:argType="long" />
     </fragment>
 </navigation>

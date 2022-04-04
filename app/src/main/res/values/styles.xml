@@ -214,7 +214,6 @@
     <!-- Message bubble - Title -->
     <style name="FinishMessage">
         <item name="android:layout_marginTop">@dimen/_5sdp</item>
-        <item name="android:background">@drawable/result_success_top</item>
         <item name="android:fontFamily">@font/raleway_bold</item>
         <item name="android:gravity">center</item>
         <item name="android:padding">@dimen/_8sdp</item>
@@ -225,7 +224,6 @@
 
     <!-- Message bubble - Results -->
     <style name="FinishResult">
-        <item name="android:background">@drawable/result_success_bottom</item>
         <item name="android:fontFamily">@font/raleway_medium</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:padding">@dimen/_8sdp</item>
