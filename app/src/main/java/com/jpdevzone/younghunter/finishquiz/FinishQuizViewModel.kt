@@ -24,6 +24,10 @@ class FinishQuizViewModel(
     val maxQuestions: LiveData<Int>
         get() = _maxQuestions
 
+//    private val _limit = MediatorLiveData<Int>()
+//    val limit: LiveData<Int>
+//        get() = _limit
+
     init {
         _finalResult.value = finishResult
         _finalTime.value = finishTime
@@ -32,5 +36,12 @@ class FinishQuizViewModel(
 
     fun formattedTime(time: Long) : String {
         return DateUtils.formatElapsedTime(time)
+    }
+
+    fun passOrFail() : Boolean {
+        return when {
+            _finalResult.value!! >= _maxQuestions.value!! / 1.3 -> true
+            else -> false
+        }
     }
 }
