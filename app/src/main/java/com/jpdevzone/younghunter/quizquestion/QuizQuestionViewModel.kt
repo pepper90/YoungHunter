@@ -106,6 +106,11 @@ class QuizQuestionViewModel(
     val currentTime: LiveData<Long>
         get() = _currentTime
 
+    // Holds elapsed time value used in FinishQuizFragment
+    private val _elapsedTime = MutableLiveData<Long>()
+    val elapsedTime: LiveData<Long>
+        get() = _elapsedTime
+
     // Holds current time value
     private val _progressBarMax = MutableLiveData<Int>()
     val progressBarMax: LiveData<Int>
@@ -140,6 +145,7 @@ class QuizQuestionViewModel(
             override fun onTick(millisUntilFinished: Long) {
                 TIME_LEFT = millisUntilFinished
                 _currentTime.value = (TIME_LEFT / ONE_SECOND)
+                _elapsedTime.value = (COUNTDOWN_TIME - millisUntilFinished) / ONE_SECOND
             }
 
             override fun onFinish() {
@@ -269,6 +275,8 @@ class QuizQuestionViewModel(
     val totalAnswers: LiveData<Int>
         get() = _totalAnswers
 
+    // Checks if the selected answer is correct
+    // If true, increases the total correct answers by 1
     fun checkAnswer() {
         _correctAnswer.value = _question.value?.correctAnswer
 
@@ -282,10 +290,13 @@ class QuizQuestionViewModel(
      * NAVIGATION
      **/
 
+    // Holds value for navigating to FinishQuiz
+    // If true, navigation is triggered
     private val _navigateToFinish = MutableLiveData<Boolean?>()
     val navigateToFinish: LiveData<Boolean?>
         get() = _navigateToFinish
 
+    // Sets value to true & triggers navigation
     fun navigateToFinish() {
         // Prevent position > progressBar max
         // right before navigating to FinishFragment
@@ -293,6 +304,7 @@ class QuizQuestionViewModel(
         _navigateToFinish.value = true
     }
 
+    // Resets value to null
     fun doneNavigating() {
         _navigateToFinish.value = null
     }

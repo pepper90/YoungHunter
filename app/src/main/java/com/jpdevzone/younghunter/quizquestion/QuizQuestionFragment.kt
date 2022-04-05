@@ -83,7 +83,7 @@ class QuizQuestionFragment : Fragment() {
                     QuizQuestionFragmentDirections.actionQuizQuestionFragmentToFinishQuizFragment(
                         viewModel.totalAnswers.value!!,
                         viewModel.progressBarMax.value!!,
-                        viewModel.currentTime.value!!
+                        viewModel.elapsedTime.value!!
                     )
                 )
                 viewModel.doneNavigating()
