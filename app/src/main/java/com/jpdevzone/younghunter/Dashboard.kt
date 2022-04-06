@@ -51,11 +51,11 @@ class Dashboard : AppCompatActivity() {
         binding.dashBackground.setImageResource(backgrounds.random())
 
         //Sets Help button
-        binding.helpIcon.setOnClickListener{
-            val intent = Intent(this,Help::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        binding.helpIcon.setOnClickListener{
+//            val intent = Intent(this,Help::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 
         //Sets first button click
         binding.loadExam.setOnClickListener {
@@ -100,10 +100,10 @@ class Dashboard : AppCompatActivity() {
                val position = mySharedPreferences?.getInt(Constants.CURRENT_POSITION,1)
                val timer = mySharedPreferences?.getLong(Constants.TIMER,startTimeInMillisMini)
                dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
-               myIntent = Intent(this, QuizQuestionsHuntingLaw::class.java)
+//               myIntent = Intent(this, QuizQuestionsHuntingLaw::class.java)
                dashboardDialog()
            } else {
-               val intent = Intent(this, QuizQuestionsHuntingLaw::class.java)
+//               val intent = Intent(this, QuizQuestionsHuntingLaw::class.java)
                startActivity(intent)
                finish()
            }
@@ -117,10 +117,10 @@ class Dashboard : AppCompatActivity() {
                 val position = mySharedPreferences?.getInt(Constants.CURRENT_POSITION,1)
                 val timer = mySharedPreferences?.getLong(Constants.TIMER,startTimeInMillisMini)
                 dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
-                myIntent = Intent(this, QuizQuestionsGameManagement::class.java)
+//                myIntent = Intent(this, QuizQuestionsGameManagement::class.java)
                 dashboardDialog()
             } else {
-                val intent = Intent(this, QuizQuestionsGameManagement::class.java)
+//                val intent = Intent(this, QuizQuestionsGameManagement::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -134,10 +134,10 @@ class Dashboard : AppCompatActivity() {
                 val position = mySharedPreferences?.getInt(Constants.CURRENT_POSITION,1)
                 val timer = mySharedPreferences?.getLong(Constants.TIMER,startTimeInMillisMini)
                 dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
-                myIntent = Intent(this, QuizQuestionsHuntingMethods::class.java)
+//                myIntent = Intent(this, QuizQuestionsHuntingMethods::class.java)
                 dashboardDialog()
             } else {
-                val intent = Intent(this, QuizQuestionsHuntingMethods::class.java)
+//                val intent = Intent(this, QuizQuestionsHuntingMethods::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -151,10 +151,10 @@ class Dashboard : AppCompatActivity() {
                 val position = mySharedPreferences?.getInt(Constants.CURRENT_POSITION,1)
                 val timer = mySharedPreferences?.getLong(Constants.TIMER,startTimeInMillisMini)
                 dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
-                myIntent = Intent(this, QuizQuestionsGuns::class.java)
+//                myIntent = Intent(this, QuizQuestionsGuns::class.java)
                 dashboardDialog()
             } else {
-                val intent = Intent(this, QuizQuestionsGuns::class.java)
+//                val intent = Intent(this, QuizQuestionsGuns::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -168,10 +168,10 @@ class Dashboard : AppCompatActivity() {
                val position = mySharedPreferences?.getInt(Constants.CURRENT_POSITION,1)
                val timer = mySharedPreferences?.getLong(Constants.TIMER,startTimeInMillisMini)
                dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
-               myIntent = Intent(this, QuizQuestionsDogs::class.java)
+//               myIntent = Intent(this, QuizQuestionsDogs::class.java)
                dashboardDialog()
            } else {
-               val intent = Intent(this, QuizQuestionsDogs::class.java)
+//               val intent = Intent(this, QuizQuestionsDogs::class.java)
                startActivity(intent)
                finish()
            }
@@ -185,10 +185,10 @@ class Dashboard : AppCompatActivity() {
                 val position = mySharedPreferences?.getInt(Constants.CURRENT_POSITION,1)
                 val timer = mySharedPreferences?.getLong(Constants.TIMER,startTimeInMillisMini)
                 dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
-                myIntent = Intent(this, QuizQuestionsViruses::class.java)
+//                myIntent = Intent(this, QuizQuestionsViruses::class.java)
                 dashboardDialog()
             } else {
-                val intent = Intent(this, QuizQuestionsViruses::class.java)
+//                val intent = Intent(this, QuizQuestionsViruses::class.java)
                 startActivity(intent)
                 finish()
             }

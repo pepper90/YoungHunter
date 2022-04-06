@@ -153,14 +153,15 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
             override fun onFinish() {
                 if (mInterstitialAd != null) {
                     mInterstitialAd?.show(this@QuizQuestionsExam)
-                } else {
-                    val intent = Intent(this@QuizQuestionsExam, FinishQuiz::class.java)
-                    intent.putExtra(Constants.CORRECT_ANSWERS_EXAM, mCorrectAnswers)
-                    intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
-                    clearData()
-                    startActivity(intent)
-                    finish()
                 }
+//                else {
+//                    val intent = Intent(this@QuizQuestionsExam, FinishQuiz::class.java)
+//                    intent.putExtra(Constants.CORRECT_ANSWERS_EXAM, mCorrectAnswers)
+//                    intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+//                    clearData()
+//                    startActivity(intent)
+//                    finish()
+//                }
             }
         }.start()
     }
@@ -245,14 +246,15 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
                         else -> {
                             if (mInterstitialAd != null) {
                                 mInterstitialAd?.show(this)
-                            } else {
-                                val intent = Intent(this, FinishQuiz::class.java)
-                                intent.putExtra(Constants.CORRECT_ANSWERS_EXAM, mCorrectAnswers)
-                                intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
-                                clearData()
-                                startActivity(intent)
-                                finish()
                             }
+//                            else {
+//                                val intent = Intent(this, FinishQuiz::class.java)
+//                                intent.putExtra(Constants.CORRECT_ANSWERS_EXAM, mCorrectAnswers)
+//                                intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+//                                clearData()
+//                                startActivity(intent)
+//                                finish()
+//                            }
                         }
                     }
                 } else {
@@ -392,21 +394,21 @@ class QuizQuestionsExam : AppCompatActivity(), View.OnClickListener {
 
                 mInterstitialAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
                     override fun onAdDismissedFullScreenContent() {
-                        val intent = Intent(this@QuizQuestionsExam, FinishQuiz::class.java)
-                        intent.putExtra(Constants.CORRECT_ANSWERS_EXAM, mCorrectAnswers)
-                        intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
-                        clearData()
-                        startActivity(intent)
-                        finish()
+//                        val intent = Intent(this@QuizQuestionsExam, FinishQuiz::class.java)
+//                        intent.putExtra(Constants.CORRECT_ANSWERS_EXAM, mCorrectAnswers)
+//                        intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+//                        clearData()
+//                        startActivity(intent)
+//                        finish()
                     }
 
                     override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
-                        val intent = Intent(this@QuizQuestionsExam, FinishQuiz::class.java)
-                        intent.putExtra(Constants.CORRECT_ANSWERS_EXAM, mCorrectAnswers)
-                        intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
-                        clearData()
-                        startActivity(intent)
-                        finish()
+//                        val intent = Intent(this@QuizQuestionsExam, FinishQuiz::class.java)
+//                        intent.putExtra(Constants.CORRECT_ANSWERS_EXAM, mCorrectAnswers)
+//                        intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+//                        clearData()
+//                        startActivity(intent)
+//                        finish()
                     }
 
                     override fun onAdShowedFullScreenContent() {
