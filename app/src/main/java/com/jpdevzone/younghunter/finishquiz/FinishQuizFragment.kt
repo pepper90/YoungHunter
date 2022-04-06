@@ -1,9 +1,14 @@
 package com.jpdevzone.younghunter.finishquiz
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -11,6 +16,8 @@ import androidx.navigation.fragment.findNavController
 import com.jpdevzone.younghunter.R
 import com.jpdevzone.younghunter.databinding.FragmentFinishQuizBinding
 import com.jpdevzone.younghunter.utils.setBackground
+import com.jpdevzone.younghunter.utils.stringBuilder
+import es.dmoral.toasty.Toasty
 
 class FinishQuizFragment : Fragment() {
     private lateinit var binding : FragmentFinishQuizBinding
@@ -43,6 +50,39 @@ class FinishQuizFragment : Fragment() {
 
         // Sets back navigation
         binding.arrowBackIv.setOnClickListener {
+            navigateBack()
+        }
+
+        // Create share intent with result on click
+        binding.btnShare.setOnClickListener {
+            val shareIntent = Intent().apply {
+            this.action = Intent.ACTION_SEND
+            this.putExtra(
+                Intent.EXTRA_TEXT,
+                stringBuilder(
+                    binding.congratsTv.text.toString(),
+                    binding.scoreTv.text.toString()
+                )
+            )
+            this.type = "text/plain"
+        }
+            startActivity(shareIntent) }
+
+        // Copy result to clipboard on click
+        binding.btnCopy.setOnClickListener {
+            val clipboard = context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("result",
+                stringBuilder(
+                    binding.congratsTv.text.toString(),
+                    binding.scoreTv.text.toString()
+                )
+            )
+            clipboard.setPrimaryClip(clip)
+            Toasty.custom(requireContext(), R.string.copied, R.drawable.ic_copy, R.color.accent_gray, Toast.LENGTH_SHORT, true, true).show()
+        }
+
+        // Navigate to Dashboard on click
+        binding.btnContinue.setOnClickListener {
             navigateBack()
         }
 

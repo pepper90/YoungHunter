@@ -22,10 +22,27 @@ val backgrounds = arrayOf(
 
 val setBackground = backgrounds.random()
 
+/*
+* View Colorizer for options
+* */
+
 fun colorizeAnswer (view: MaterialButton, answer: Int, color: String) {
     when(answer){
         1 -> view.setBackgroundColor(Color.parseColor(color))
         2 -> view.setBackgroundColor(Color.parseColor(color))
         3 -> view.setBackgroundColor(Color.parseColor(color))
     }
+}
+
+/*
+* String builder for copy & share buttons
+* */
+
+fun stringBuilder(message: String, result: String) : CharSequence {
+    val data = StringBuilder()
+    data.append(message)
+    data.append("\n\n")
+    data.append(result)
+    data.append("\n\nМлад ловец - тестове за решаване и самоподготовка / Google Play: https://play.google.com/store/apps/details?id=com.jpdevzone.younghunter")
+    return data
 }
