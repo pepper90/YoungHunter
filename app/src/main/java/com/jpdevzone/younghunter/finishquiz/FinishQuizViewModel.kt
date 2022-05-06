@@ -40,7 +40,7 @@ class FinishQuizViewModel(
 
     fun passOrFail() : Boolean {
         return when {
-            _finalResult.value!! >= _maxQuestions.value!! / 1.3 -> true
+            _finalResult.value!! >= (_maxQuestions.value!! / 1.3).toInt() -> true
             else -> false
         }
     }
