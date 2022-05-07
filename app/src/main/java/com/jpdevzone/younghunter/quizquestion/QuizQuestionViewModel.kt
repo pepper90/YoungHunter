@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.jpdevzone.younghunter.database.Progress
 import com.jpdevzone.younghunter.database.Question
 import com.jpdevzone.younghunter.database.QuestionsDatabase
 import com.jpdevzone.younghunter.database.QuestionsRepository
@@ -283,6 +284,39 @@ class QuizQuestionViewModel(
         if (_selectedOptionIndex.value == _correctAnswer.value) {
             _totalAnswers.value = totalAnswers.value?.plus(1)
             Log.d("Correct answers", totalAnswers.value.toString())
+        }
+    }
+
+    /**
+     * PROGRESS SAVING & LOADING
+     **/
+
+    private val _progress = MutableLiveData<Progress?>()
+    val progress: LiveData<Progress?>
+        get() = _progress
+
+    fun saveProgress(topic: String) {
+        val progress = Progress(
+            topic,
+            _range.value,
+            _position.value,
+            _currentTime.value,
+            _totalAnswers.value
+        )
+        viewModelScope.launch {
+            repository.insertProgress(progress)
+        }
+    }
+
+    fun loadProgress(topic: String) {
+        viewModelScope.launch {
+            _progress.value = repository.loadProgress(topic)
+        }
+    }
+
+    fun clearProgress(topic: String) {
+        viewModelScope.launch {
+            repository.deleteProgress(topic)
         }
     }
 

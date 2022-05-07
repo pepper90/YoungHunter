@@ -145,12 +145,14 @@ class QuizQuestionFragment : Fragment() {
 
         val yes = dialogLayout.findViewById<TextView>(R.id.yes_btn)
         yes.setOnClickListener {
+            viewModel.saveProgress(args.dashData.topic)
             alertDialog.dismiss()
             navigateBack()
         }
 
         val no = dialogLayout.findViewById<TextView>(R.id.no_btn)
         no.setOnClickListener {
+            viewModel.clearProgress(args.dashData.topic)
             alertDialog.dismiss()
             navigateBack()
         }

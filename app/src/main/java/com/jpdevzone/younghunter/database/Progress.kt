@@ -7,8 +7,8 @@ import androidx.room.TypeConverters
 
 @Entity(tableName = "progress")
 class Progress (
-    @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    @PrimaryKey
+    val topic: String,
 
     @field:TypeConverters(IntTypeConverter::class)
     val range: List<Int>?,
@@ -21,7 +21,4 @@ class Progress (
 
     @ColumnInfo
     val correctAnswers: Int?,
-
-    @ColumnInfo
-    val topic: String?,
 )
