@@ -207,23 +207,23 @@ class Dashboard : AppCompatActivity() {
         dialog.setView(dialogLayout)
         val alertDialog = dialog.create()
 
-        val title = dialogLayout.findViewById<TextView>(R.id.tv_dialogTitle)
-        title.text = dialogTitle
+//        val title = dialogLayout.findViewById<TextView>(R.id.tv_dialogTitle)
+//        title.text = dialogTitle
 
 
 
-        val continueTest = dialogLayout.findViewById<TextView>(R.id.tv_continueTest)
+//        val continueTest = dialogLayout.findViewById<TextView>(R.id.tv_continueTest)
         val ss1 = SpannableString(dialogString)
         ss1.setSpan(RelativeSizeSpan(1.3f),0,13, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         ss1.setSpan(StyleSpan(Typeface.BOLD),0,13,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        continueTest.text = ss1
+//        continueTest.text = ss1
 
-        continueTest.setOnClickListener{
-            alertDialog.dismiss()
-            val intent = myIntent
-            startActivity(intent)
-            finish()
-        }
+//        continueTest.setOnClickListener{
+//            alertDialog.dismiss()
+//            val intent = myIntent
+//            startActivity(intent)
+//            finish()
+//        }
 
         val startNewTest = dialogLayout.findViewById<TextView>(R.id.tv_startNewTest)
         val ss2 = SpannableString(startNewTest.text)
@@ -242,10 +242,10 @@ class Dashboard : AppCompatActivity() {
             finish()
         }
 
-        val dismiss = dialogLayout.findViewById<ImageView>(R.id.iv_dismiss)
-        dismiss.setOnClickListener {
-            alertDialog.dismiss()
-        }
+//        val dismiss = dialogLayout.findViewById<ImageView>(R.id.iv_dismiss)
+//        dismiss.setOnClickListener {
+//            alertDialog.dismiss()
+//        }
 
         alertDialog.show()
     }

@@ -322,10 +322,10 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
 //            alertDialog.dismiss()
 //        }
 
-        val dismiss = dialogLayout.findViewById<ImageView>(R.id.iv_dismiss)
-        dismiss.setOnClickListener {
-            alertDialog.dismiss()
-        }
+//        val dismiss = dialogLayout.findViewById<ImageView>(R.id.iv_dismiss)
+//        dismiss.setOnClickListener {
+//            alertDialog.dismiss()
+//        }
 
         alertDialog.show()
     }
@@ -356,10 +356,10 @@ class QuizQuestionsAnimals : AppCompatActivity(), View.OnClickListener {
 //            finish()
 //        }
 
-        val dismiss = dialogLayout.findViewById<ImageView>(R.id.iv_dismiss)
-        dismiss.setOnClickListener {
-            alertDialog.dismiss()
-        }
+//        val dismiss = dialogLayout.findViewById<ImageView>(R.id.iv_dismiss)
+//        dismiss.setOnClickListener {
+//            alertDialog.dismiss()
+//        }
 
         alertDialog.show()
     }

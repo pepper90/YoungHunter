@@ -25,6 +25,7 @@
         <item name="android:windowBackground">@null</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
+
     </style>
 
     <!-- COMMON STYLES -->
@@ -231,9 +232,38 @@
         <item name="android:textSize">@dimen/_17ssp</item>
     </style>
 
+    <!-- Share / Copy / Continue buttons -->
     <style name="FinishButton">
         <item name="android:background">@drawable/bg_button</item>
         <item name="android:padding">@dimen/_15sdp</item>
+    </style>
+
+    <!-- Dashboard dialog style -->
+    <style name="Dashboard_Dialog">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/border</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/_11sdp</item>
+    </style>
+
+    <!-- Dashboard dialog title style -->
+    <style name="Dashboard_Dialog_Title">
+        <item name="android:fontFamily">@font/oswald_regular</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_18ssp</item>
+    </style>
+
+    <style name="Dashboard_Dialog_Buttons">
+        <item name="android:layout_marginLeft">@dimen/_8sdp</item>
+        <item name="android:layout_marginRight">@dimen/_8sdp</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:background">@drawable/border_next</item>
+        <item name="android:fontFamily">@font/raleway_medium</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/_13sdp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
     </style>
 
 </resources>

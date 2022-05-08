@@ -26,6 +26,7 @@ class QuizQuestionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_quiz_question, container, false)
+
         viewModel = ViewModelProvider(
             this,
             QuizQuestionViewModelFactory(requireActivity().application))[QuizQuestionViewModel::class.java]

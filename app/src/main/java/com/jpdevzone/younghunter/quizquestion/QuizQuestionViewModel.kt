@@ -25,6 +25,7 @@ class QuizQuestionViewModel(
     * QUESTION
     **/
 
+    // Holds a list of question ids
     private val _range = MutableLiveData<List<Int>>()
 
     // Holds current question & options
@@ -296,12 +297,8 @@ class QuizQuestionViewModel(
     }
 
     /**
-     * PROGRESS SAVING & LOADING
+     * PROGRESS SAVING & CLEARING
      **/
-
-    private val _progress = MutableLiveData<Progress?>()
-    val progress: LiveData<Progress?>
-        get() = _progress
 
     fun saveProgress(topic: String) {
         val progress = Progress(
@@ -313,12 +310,6 @@ class QuizQuestionViewModel(
         )
         viewModelScope.launch {
             repository.insertProgress(progress)
-        }
-    }
-
-    fun loadProgress(topic: String) {
-        viewModelScope.launch {
-            _progress.value = repository.loadProgress(topic)
         }
     }
 

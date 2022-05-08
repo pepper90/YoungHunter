@@ -4,9 +4,9 @@ import android.graphics.Color
 import com.google.android.material.button.MaterialButton
 import com.jpdevzone.younghunter.R
 
-/*
+/**
 * Backgrounds
-* */
+**/
 
 val backgrounds = arrayOf(
     R.drawable.backimg_one,
@@ -22,9 +22,9 @@ val backgrounds = arrayOf(
 
 val setBackground = backgrounds.random()
 
-/*
+/**
 * View Colorizer for options
-* */
+**/
 
 fun colorizeAnswer (view: MaterialButton, answer: Int, color: String) {
     when(answer){
@@ -34,9 +34,9 @@ fun colorizeAnswer (view: MaterialButton, answer: Int, color: String) {
     }
 }
 
-/*
+/**
 * String builder for copy & share buttons
-* */
+**/
 
 fun stringBuilder(message: String, result: String) : CharSequence {
     val data = StringBuilder()
