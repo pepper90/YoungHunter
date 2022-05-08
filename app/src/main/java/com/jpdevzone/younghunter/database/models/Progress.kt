@@ -1,9 +1,10 @@
-package com.jpdevzone.younghunter.database
+package com.jpdevzone.younghunter.database.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
+import com.jpdevzone.younghunter.database.converters.IntTypeConverter
 
 @Entity(tableName = "progress")
 class Progress (

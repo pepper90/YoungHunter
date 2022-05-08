@@ -4,6 +4,8 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.jpdevzone.younghunter.database.models.Progress
+import com.jpdevzone.younghunter.database.models.Question
 
 @Dao
 interface QuestionsDatabaseDao {

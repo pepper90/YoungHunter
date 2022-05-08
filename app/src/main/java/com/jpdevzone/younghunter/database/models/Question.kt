@@ -1,4 +1,4 @@
-package com.jpdevzone.younghunter.database
+package com.jpdevzone.younghunter.database.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

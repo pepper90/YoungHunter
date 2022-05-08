@@ -8,8 +8,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.jpdevzone.younghunter.database.Progress
-import com.jpdevzone.younghunter.database.Question
+import com.jpdevzone.younghunter.database.models.Progress
+import com.jpdevzone.younghunter.database.models.Question
 import com.jpdevzone.younghunter.database.QuestionsDatabase
 import com.jpdevzone.younghunter.database.QuestionsRepository
 import kotlinx.coroutines.launch
@@ -26,8 +26,6 @@ class QuizQuestionViewModel(
     **/
 
     private val _range = MutableLiveData<List<Int>>()
-    val range: LiveData<List<Int>>
-        get() = _range
 
     // Holds current question & options
     private val _question = MutableLiveData<Question>()
@@ -73,9 +71,19 @@ class QuizQuestionViewModel(
         setTimer(topic)
     }
 
-    fun loadQuestion(id: Int) {
+    // Loads question based on range
+    private fun loadQuestion(id: Int) {
         viewModelScope.launch {
             _question.value = repository.getQuestion(id)
+        }
+    }
+
+    // Load next question or finish quiz based on range size
+    fun loadOrFinish(position: Int) {
+        if (position <= _range.value?.size!!) {
+            loadQuestion(_range.value!![position.minus(1)])
+        } else {
+            navigateToFinish()
         }
     }
 

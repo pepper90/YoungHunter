@@ -1,7 +1,5 @@
 package com.jpdevzone.younghunter
 
-import com.jpdevzone.younghunter.database.Question
-
 object Constants {
 
     const val SHARED_PREFERENCES_ANIMALS = "shared_preferences_animals"

@@ -1,4 +1,4 @@
-package com.jpdevzone.younghunter.database
+package com.jpdevzone.younghunter.database.converters
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson

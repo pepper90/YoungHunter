@@ -66,12 +66,7 @@ class QuizQuestionFragment : Fragment() {
     // Loads next question
     private fun loadQuestion() {
         viewModel.position.observe(viewLifecycleOwner) { position ->
-            val range = viewModel.range.value
-            if (position <= range!!.size) {
-                viewModel.loadQuestion(range[position.minus(1)])
-            } else {
-                viewModel.navigateToFinish()
-            }
+            viewModel.loadOrFinish(position)
         }
     }
 

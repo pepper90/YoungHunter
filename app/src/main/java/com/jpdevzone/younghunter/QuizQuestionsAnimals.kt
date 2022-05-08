@@ -19,7 +19,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.jpdevzone.younghunter.database.Question
+import com.jpdevzone.younghunter.database.models.Question
 import java.util.*
 import kotlin.collections.ArrayList
 

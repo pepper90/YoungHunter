@@ -1,5 +1,8 @@
 package com.jpdevzone.younghunter.database
 
+import com.jpdevzone.younghunter.database.models.Progress
+import com.jpdevzone.younghunter.database.models.Question
+
 class QuestionsRepository(
     private val database: QuestionsDatabase
 ) {
