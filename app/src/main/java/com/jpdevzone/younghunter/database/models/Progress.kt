@@ -1,15 +1,12 @@
 package com.jpdevzone.younghunter.database.models
 
-import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.jpdevzone.younghunter.database.converters.IntTypeConverter
-import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = "progress")
-@Parcelize
 class Progress (
     @PrimaryKey
     val topic: String,
@@ -25,4 +22,4 @@ class Progress (
 
     @ColumnInfo
     val correctAnswers: Int?,
-) : Parcelable
+)
