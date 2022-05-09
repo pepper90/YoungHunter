@@ -1,4 +1,4 @@
-package com.jpdevzone.younghunter.quizquestion
+package com.jpdevzone.younghunter.savedquiz
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,24 +13,26 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.jpdevzone.younghunter.R
-import com.jpdevzone.younghunter.databinding.FragmentQuizQuestionBinding
+import com.jpdevzone.younghunter.databinding.FragmentSavedQuizBinding
 import com.jpdevzone.younghunter.utils.setBackground
 
+class SavedQuizFragment : Fragment() {
 
-class QuizQuestionFragment : Fragment() {
-    private lateinit var binding : FragmentQuizQuestionBinding
-    private lateinit var viewModel: QuizQuestionViewModel
-    private lateinit var args: QuizQuestionFragmentArgs
+    private lateinit var binding : FragmentSavedQuizBinding
+    private lateinit var viewModel: SavedQuizViewModel
+    private lateinit var args: SavedQuizFragmentArgs
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_quiz_question, container, false)
+        // Inflate the layout for this fragment
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_saved_quiz, container, false)
 
         viewModel = ViewModelProvider(
             this,
-            QuizQuestionViewModelFactory(requireActivity().application))[QuizQuestionViewModel::class.java]
+            SavedQuizViewModelFactory(requireActivity().application)
+        )[SavedQuizViewModel::class.java]
 
         binding.vm = viewModel
 
@@ -40,7 +42,7 @@ class QuizQuestionFragment : Fragment() {
         binding.quizQuestionBackground.setImageResource(setBackground)
 
         // Gets arguments from Bundle and bind them to xml
-        args = QuizQuestionFragmentArgs.fromBundle(requireArguments())
+        args = SavedQuizFragmentArgs.fromBundle(requireArguments())
         binding.dashData = args.dashData
 
         // Setup quiz environment based on topic from safeArgs
@@ -55,11 +57,11 @@ class QuizQuestionFragment : Fragment() {
 
         // Sets back navigation
         binding.arrowBackIv.setOnClickListener {
-            showQuitDialog()
+             showQuitDialog()
         }
 
         binding.reloadIv.setOnClickListener {
-            showReloadDialog()
+             showReloadDialog()
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
@@ -72,7 +74,9 @@ class QuizQuestionFragment : Fragment() {
     // Loads next question
     private fun loadQuestion() {
         viewModel.position.observe(viewLifecycleOwner) { position ->
-            viewModel.loadOrFinish(position)
+            if (position != null) {
+                viewModel.loadOrFinish(position)
+            }
         }
     }
 
@@ -81,12 +85,13 @@ class QuizQuestionFragment : Fragment() {
         viewModel.navigateToFinish.observe(viewLifecycleOwner) {
             if (it == true) {
                 this.findNavController().navigate(
-                    QuizQuestionFragmentDirections.actionQuizQuestionFragmentToFinishQuizFragment(
+                    SavedQuizFragmentDirections.actionSavedQuizFragmentToFinishQuizFragment(
                         viewModel.totalAnswers.value!!,
                         viewModel.progressBarMax.value!!,
                         viewModel.elapsedTime.value!!
                     )
                 )
+                viewModel.clearProgress(args.dashData.topic)
                 viewModel.doneNavigating()
             }
         }
@@ -94,15 +99,16 @@ class QuizQuestionFragment : Fragment() {
 
     // Reload QuizQuestionFragment
     private fun reload() {
+        viewModel.clearProgress(args.dashData.topic)
         this.findNavController().navigate(
-            QuizQuestionFragmentDirections.actionQuizQuestionFragmentSelf(args.dashData)
+            SavedQuizFragmentDirections.actionSavedQuizFragmentToQuizQuestionFragment(args.dashData)
         )
     }
 
     // Navigate to DashboardFragment
     private fun navigateBack() {
         this.findNavController().navigate(
-            QuizQuestionFragmentDirections.actionQuizQuestionFragmentToDashboardFragment()
+            SavedQuizFragmentDirections.actionSavedQuizFragmentToDashboardFragment()
         )
     }
 

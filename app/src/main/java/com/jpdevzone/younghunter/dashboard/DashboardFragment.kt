@@ -14,7 +14,6 @@ import androidx.navigation.fragment.findNavController
 import com.jpdevzone.younghunter.R
 import com.jpdevzone.younghunter.databinding.FragmentDashboardBinding
 import com.jpdevzone.younghunter.utils.setBackground
-import kotlin.time.measureTime
 
 class DashboardFragment : Fragment() {
     private lateinit var binding : FragmentDashboardBinding
@@ -53,7 +52,7 @@ class DashboardFragment : Fragment() {
         }
 
         binding.animals.setOnClickListener {
-            navigate(
+            navigateToSavedQuiz(
                 DashboardData(
                     R.string.animals,
                     R.string.time_mini_test,
@@ -182,6 +181,15 @@ class DashboardFragment : Fragment() {
         this.findNavController().navigate(
             DashboardFragmentDirections
                 .actionDashboardFragmentToQuizQuestionFragment(
+                    data
+                )
+        )
+    }
+
+    private fun navigateToSavedQuiz(data: DashboardData) {
+        this.findNavController().navigate(
+            DashboardFragmentDirections
+                .actionDashboardFragmentToSavedQuizFragment(
                     data
                 )
         )

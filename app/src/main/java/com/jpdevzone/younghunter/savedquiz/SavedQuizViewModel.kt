@@ -1,4 +1,4 @@
-package com.jpdevzone.younghunter.quizquestion
+package com.jpdevzone.younghunter.savedquiz
 
 import android.app.Application
 import android.os.CountDownTimer
@@ -8,13 +8,13 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.jpdevzone.younghunter.database.models.Progress
-import com.jpdevzone.younghunter.database.models.Question
 import com.jpdevzone.younghunter.database.QuestionsDatabase
 import com.jpdevzone.younghunter.database.QuestionsRepository
+import com.jpdevzone.younghunter.database.models.Progress
+import com.jpdevzone.younghunter.database.models.Question
 import kotlinx.coroutines.launch
 
-class QuizQuestionViewModel(
+class SavedQuizViewModel(
     application: Application
 ) : AndroidViewModel(application) {
 
@@ -22,11 +22,11 @@ class QuizQuestionViewModel(
     private val repository = QuestionsRepository(database)
 
     /**
-    * QUESTION
-    **/
+     * SAVED QUESTION
+     **/
 
     // Holds a list of question ids
-    private val range = MutableLiveData<List<Int>>()
+    private val range = MutableLiveData<List<Int>?>()
 
     // Holds current question & options
     private val _question = MutableLiveData<Question?>()
@@ -35,41 +35,14 @@ class QuizQuestionViewModel(
 
     // Gets question from repository
     fun setupEnvironment(topic: String) {
-        when (topic) {
-            "exam" -> {
-                range.value = IntRange(1, 522).shuffled().take(47) +
-                               IntRange(523, 591).shuffled().take(7) +
-                               IntRange(592, 680).shuffled().take(11) +
-                               IntRange(681, 812).shuffled().take(12) +
-                               IntRange(813, 856).shuffled().take(5) +
-                               IntRange(857, 929).shuffled().take(9) +
-                               IntRange(930, 960).shuffled().take(9) +
-                               IntRange(961, 972).shuffled().take(4)
-            }
-            "animals" -> {
-                range.value = IntRange(1, 522).shuffled().take(30)
-            }
-            "law" -> {
-                range.value = IntRange(523, 591).shuffled().take(30)
-            }
-            "gameManagement" -> {
-                range.value = IntRange(592, 680).shuffled().take(30)
-            }
-            "huntingMethods" -> {
-                range.value = IntRange(681, 812).shuffled().take(30)
-            }
-            "guns" -> {
-                range.value = IntRange(813, 856).shuffled().take(30)
-            }
-            "dogs" -> {
-                range.value = IntRange(857, 929).shuffled().take(30)
-            }
-            "viruses" -> {
-                range.value = IntRange(930, 960).shuffled().take(30)
-            }
+        viewModelScope.launch {
+            range.value = repository.loadProgress(topic).range
+            _position.value = repository.loadProgress(topic).position
+            savedTime.value = repository.loadProgress(topic).time
+            _totalAnswers.value = repository.loadProgress(topic).correctAnswers
+            setTimer(topic)
         }
         setProgressBarMax(topic)
-        setTimer(topic)
     }
 
     // Loads question based on range
@@ -79,7 +52,6 @@ class QuizQuestionViewModel(
         }
     }
 
-    // Load next question or finish quiz based on range size
     fun loadOrFinish(position: Int) {
         if (position <= range.value?.size!!) {
             loadQuestion(range.value!![position.minus(1)])
@@ -89,17 +61,13 @@ class QuizQuestionViewModel(
     }
 
     /**
-    * POSITION
-    **/
+     * SAVED POSITION
+     **/
 
     // Holds current question position & progress position
-    private val _position = MutableLiveData<Int>()
-    val position: LiveData<Int>
+    private val _position = MutableLiveData<Int?>()
+    val position: LiveData<Int?>
         get() = _position
-
-    init {
-        _position.value = 1
-    }
 
     // Position increment
     fun next() {
@@ -108,8 +76,11 @@ class QuizQuestionViewModel(
     }
 
     /**
-    * TIMER & PROGRESS BAR
-    **/
+     * TIMER & PROGRESS BAR
+     **/
+
+    // Holds saved time value from Db
+    private val savedTime = MutableLiveData<Long?>()
 
     // Holds current time value
     private val _currentTime = MutableLiveData<Long?>()
@@ -132,19 +103,20 @@ class QuizQuestionViewModel(
         private const val ONE_SECOND = 1000L
         private const val COUNTDOWN_TIME_EXAM = 5400000L
         private const val COUNTDOWN_TIME_MINITEST = 1500000L
-        private var COUNTDOWN_TIME: Long = 0
+        private var MAX_TIME: Long? = 0
+        private var COUNTDOWN_TIME: Long? = 0
         private var TIME_LEFT: Long = 0
         private lateinit var timer: CountDownTimer
     }
 
     // Setting timer depending ot topic string from safeArgs
     private fun setTimer(topic: String) {
-        COUNTDOWN_TIME = when (topic) {
+        MAX_TIME = when (topic) {
             "exam" -> COUNTDOWN_TIME_EXAM
             else -> COUNTDOWN_TIME_MINITEST
         }
-
-        timer(COUNTDOWN_TIME)
+        COUNTDOWN_TIME = savedTime.value
+        COUNTDOWN_TIME?.let { timer(it) }
         Log.d("TimerTesting", "Timer has started!")
     }
 
@@ -155,7 +127,7 @@ class QuizQuestionViewModel(
             override fun onTick(millisUntilFinished: Long) {
                 TIME_LEFT = millisUntilFinished
                 _currentTime.value = (TIME_LEFT / ONE_SECOND)
-                _elapsedTime.value = (COUNTDOWN_TIME - millisUntilFinished) / ONE_SECOND
+                _elapsedTime.value = (MAX_TIME?.minus(millisUntilFinished))?.div(ONE_SECOND)
             }
 
             override fun onFinish() {
@@ -195,8 +167,8 @@ class QuizQuestionViewModel(
     }
 
     /**
-    * OPTION STATES & INDEXES (clicked or not)
-    **/
+     * OPTION STATES & INDEXES (clicked or not)
+     **/
 
     // Hold value fro Option One
     private val _optionOneState = MutableLiveData<Boolean?>()
@@ -266,8 +238,8 @@ class QuizQuestionViewModel(
     }
 
     /**
-    * CHECK ANSWER LOGIC
-    **/
+     * CHECK ANSWER LOGIC
+     **/
 
     // Holds the correctAnswer value from _question.value.correctAnswer
     private val _correctAnswer = MutableLiveData<Int?>()
@@ -281,8 +253,8 @@ class QuizQuestionViewModel(
         get() = _selectedOptionIndex
 
     // Holds the total number of correct answers
-    private val _totalAnswers = MutableLiveData(0)
-    val totalAnswers: LiveData<Int>
+    private val _totalAnswers = MutableLiveData<Int?>()
+    val totalAnswers: LiveData<Int?>
         get() = _totalAnswers
 
     // Checks if the selected answer is correct
@@ -330,7 +302,7 @@ class QuizQuestionViewModel(
         get() = _navigateToFinish
 
     // Sets value to true & triggers navigation
-    private fun navigateToFinish() {
+    fun navigateToFinish() {
         // Prevent position > progressBar max
         // right before navigating to FinishFragment
         _position.value = _position.value?.minus(1)
