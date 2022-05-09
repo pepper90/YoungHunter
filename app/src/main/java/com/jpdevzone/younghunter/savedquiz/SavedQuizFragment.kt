@@ -60,10 +60,12 @@ class SavedQuizFragment : Fragment() {
              showQuitDialog()
         }
 
+        // Sets reload button
         binding.reloadIv.setOnClickListener {
              showReloadDialog()
         }
 
+        // Handles onBackPressed
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             showQuitDialog()
         }
@@ -120,18 +122,21 @@ class SavedQuizFragment : Fragment() {
         dialog.setView(dialogLayout)
         val alertDialog = dialog.create()
 
+        // redirects to QuizQuestionFragment & loads a fresh test
         val yes = dialogLayout.findViewById<TextView>(R.id.yes_btn)
         yes.setOnClickListener {
             alertDialog.dismiss()
             reload()
         }
 
+        // cancels dialog and resumes timer
         val no = dialogLayout.findViewById<TextView>(R.id.no_btn)
         no.setOnClickListener {
             alertDialog.dismiss()
             viewModel.resumeTimer()
         }
 
+        // cancels dialog and resumes timer
         val dismiss = dialogLayout.findViewById<ImageView>(R.id.dismiss_dialog_iv)
         dismiss.setOnClickListener {
             alertDialog.dismiss()
@@ -142,6 +147,7 @@ class SavedQuizFragment : Fragment() {
         alertDialog.show()
     }
 
+    // Shows Quit dialog
     private fun showQuitDialog() {
         viewModel.pauseTimer()
         val dialog = AlertDialog.Builder(requireContext())
@@ -149,7 +155,7 @@ class SavedQuizFragment : Fragment() {
         dialog.setView(dialogLayout)
         val alertDialog = dialog.create()
 
-
+        // saves data to DB & navigates back to dashboard
         val yes = dialogLayout.findViewById<TextView>(R.id.yes_btn)
         yes.setOnClickListener {
             viewModel.saveProgress(args.dashData.topic)
@@ -157,6 +163,7 @@ class SavedQuizFragment : Fragment() {
             navigateBack()
         }
 
+        // clear data from DB & navigates back to dashboard
         val no = dialogLayout.findViewById<TextView>(R.id.no_btn)
         no.setOnClickListener {
             viewModel.clearProgress(args.dashData.topic)
@@ -164,6 +171,7 @@ class SavedQuizFragment : Fragment() {
             navigateBack()
         }
 
+        // cancels dialog and resumes timer
         val dismiss = dialogLayout.findViewById<ImageView>(R.id.dismiss_dialog_iv)
         dismiss.setOnClickListener {
             alertDialog.dismiss()
