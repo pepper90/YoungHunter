@@ -13,15 +13,21 @@
         <action
             android:id="@+id/action_dashboardFragment_to_helpFragment"
             app:destination="@id/helpFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/dashboardFragment"
             app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_dashboardFragment_to_quizQuestionFragment"
             app:destination="@id/quizQuestionFragment"
             app:launchSingleTop="true"
+            app:popUpTo="@id/dashboardFragment"
             app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_dashboardFragment_to_savedQuizFragment"
-            app:destination="@id/savedQuizFragment" />
+            app:destination="@id/savedQuizFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/dashboardFragment"
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
@@ -33,7 +39,7 @@
             android:id="@+id/action_helpFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment"
             app:launchSingleTop="true"
-            app:popUpTo="@id/my_nav"
+            app:popUpTo="@id/dashboardFragment"
             app:popUpToInclusive="false" />
     </fragment>
 
@@ -55,14 +61,14 @@
             android:id="@+id/action_quizQuestionFragment_to_finishQuizFragment"
             app:destination="@id/finishQuizFragment"
             app:launchSingleTop="true"
-            app:popUpTo="@id/quizQuestionFragment"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/dashboardFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_quizQuestionFragment_self"
             app:destination="@id/quizQuestionFragment"
             app:launchSingleTop="true"
-            app:popUpTo="@id/quizQuestionFragment"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/dashboardFragment"
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
@@ -74,8 +80,8 @@
             android:id="@+id/action_finishQuizFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment"
             app:launchSingleTop="true"
-            app:popUpTo="@id/dashboardFragment"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/my_nav"
+            app:popUpToInclusive="false" />
         <argument
             android:name="result"
             app:argType="integer" />
@@ -96,12 +102,21 @@
             app:argType="com.jpdevzone.younghunter.dashboard.DashboardData" />
         <action
             android:id="@+id/action_savedQuizFragment_to_finishQuizFragment"
-            app:destination="@id/finishQuizFragment" />
+            app:destination="@id/finishQuizFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/dashboardFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_savedQuizFragment_to_quizQuestionFragment"
-            app:destination="@id/quizQuestionFragment" />
+            app:destination="@id/quizQuestionFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/dashboardFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_savedQuizFragment_to_dashboardFragment"
-            app:destination="@id/dashboardFragment" />
+            app:destination="@id/dashboardFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/my_nav"
+            app:popUpToInclusive="false" />
     </fragment>
 </navigation>
