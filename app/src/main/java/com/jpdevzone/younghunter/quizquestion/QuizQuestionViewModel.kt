@@ -26,7 +26,7 @@ class QuizQuestionViewModel(
     **/
 
     // Holds a list of question ids
-    private val _range = MutableLiveData<List<Int>>()
+    private val range = MutableLiveData<List<Int>>()
 
     // Holds current question & options
     private val _question = MutableLiveData<Question>()
@@ -37,7 +37,7 @@ class QuizQuestionViewModel(
     fun setupEnvironment(topic: String) {
         when (topic) {
             "exam" -> {
-                _range.value = IntRange(1, 522).shuffled().take(47) +
+                range.value = IntRange(1, 522).shuffled().take(47) +
                                IntRange(523, 591).shuffled().take(7) +
                                IntRange(592, 680).shuffled().take(11) +
                                IntRange(681, 812).shuffled().take(12) +
@@ -47,25 +47,25 @@ class QuizQuestionViewModel(
                                IntRange(961, 972).shuffled().take(4)
             }
             "animals" -> {
-                _range.value = IntRange(1, 522).shuffled().take(30)
+                range.value = IntRange(1, 522).shuffled().take(30)
             }
             "law" -> {
-                _range.value = IntRange(523, 591).shuffled().take(30)
+                range.value = IntRange(523, 591).shuffled().take(30)
             }
             "gameManagement" -> {
-                _range.value = IntRange(592, 680).shuffled().take(30)
+                range.value = IntRange(592, 680).shuffled().take(30)
             }
             "huntingMethods" -> {
-                _range.value = IntRange(681, 812).shuffled().take(30)
+                range.value = IntRange(681, 812).shuffled().take(30)
             }
             "guns" -> {
-                _range.value = IntRange(813, 856).shuffled().take(30)
+                range.value = IntRange(813, 856).shuffled().take(30)
             }
             "dogs" -> {
-                _range.value = IntRange(857, 929).shuffled().take(30)
+                range.value = IntRange(857, 929).shuffled().take(30)
             }
             "viruses" -> {
-                _range.value = IntRange(930, 960).shuffled().take(30)
+                range.value = IntRange(930, 960).shuffled().take(30)
             }
         }
         setProgressBarMax(topic)
@@ -81,8 +81,8 @@ class QuizQuestionViewModel(
 
     // Load next question or finish quiz based on range size
     fun loadOrFinish(position: Int) {
-        if (position <= _range.value?.size!!) {
-            loadQuestion(_range.value!![position.minus(1)])
+        if (position <= range.value?.size!!) {
+            loadQuestion(range.value!![position.minus(1)])
         } else {
             navigateToFinish()
         }
@@ -303,7 +303,7 @@ class QuizQuestionViewModel(
     fun saveProgress(topic: String) {
         val progress = Progress(
             topic,
-            _range.value,
+            range.value,
             _position.value,
             _currentTime.value,
             _totalAnswers.value
