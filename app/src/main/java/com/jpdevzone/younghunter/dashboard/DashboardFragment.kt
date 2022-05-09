@@ -1,11 +1,6 @@
 package com.jpdevzone.younghunter.dashboard
 
-import android.graphics.Typeface
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.style.RelativeSizeSpan
-import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,18 +11,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.jpdevzone.younghunter.*
-import com.jpdevzone.younghunter.database.models.Progress
+import com.jpdevzone.younghunter.R
 import com.jpdevzone.younghunter.databinding.FragmentDashboardBinding
-import com.jpdevzone.younghunter.databinding.FragmentQuizQuestionBinding
-import com.jpdevzone.younghunter.quizquestion.QuizQuestionViewModel
-import com.jpdevzone.younghunter.quizquestion.QuizQuestionViewModelFactory
 import com.jpdevzone.younghunter.utils.setBackground
+import kotlin.time.measureTime
 
 class DashboardFragment : Fragment() {
     private lateinit var binding : FragmentDashboardBinding
     private lateinit var viewModel: DashboardViewModel
-    private var dashboardData: DashboardData? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,15 +53,14 @@ class DashboardFragment : Fragment() {
         }
 
         binding.animals.setOnClickListener {
-//            navigate(
-//                DashboardData(
-//                    R.string.animals,
-//                    R.string.time_mini_test,
-//                    R.drawable.ic_animals,
-//                    "animals"
-//                )
-//            )
-            dashboardDialog()
+            navigate(
+                DashboardData(
+                    R.string.animals,
+                    R.string.time_mini_test,
+                    R.drawable.ic_animals,
+                    "animals"
+                )
+            )
         }
 
         binding.law.setOnClickListener {
@@ -139,28 +129,26 @@ class DashboardFragment : Fragment() {
             )
         }
 
-        observeForDialog(dashboardData)
-
         return binding.root
     }
 
-    private fun observeForDialog(data: DashboardData?) {
-        viewModel.showDialog.observe(viewLifecycleOwner) {
-            if (it == true) {
-                dashboardDialog()
-            }
-            viewModel.resetDialog()
-        }
+//    binding.animals.setOnClickListener {
+//        viewModel.progressAnimals()
+//        if (viewModel.progress.value != null) {
+//            dashboardDialog(R.string.animals)
+//        } else {
+//            navigate(
+//                DashboardData(
+//                    R.string.animals,
+//                    R.string.time_mini_test,
+//                    R.drawable.ic_animals,
+//                    "animals"
+//                )
+//            )
+//        }
+//    }
 
-        viewModel.navigateToQuiz.observe(viewLifecycleOwner) {
-            if (it == true) {
-                navigate(data!!)
-            }
-            viewModel.onQuizNavigationComplete()
-        }
-    }
-
-    private fun dashboardDialog() {
+    private fun dashboardDialog(title: Int) {
         val dialog = AlertDialog.Builder(requireContext(), R.style.DialogSlideAnim)
         val dialogLayout = layoutInflater.inflate(R.layout.dialog_dashboard, null)
         dialog.setView(dialogLayout)
@@ -171,7 +159,7 @@ class DashboardFragment : Fragment() {
         val continueTest = dialogLayout.findViewById<TextView>(R.id.old_test_tv)
         val dismiss = dialogLayout.findViewById<ImageView>(R.id.dismiss_iv)
 
-        category.text = ""
+        category.text = getString(title)
 
         continueTest.setOnClickListener{
             alertDialog.dismiss()
@@ -182,9 +170,11 @@ class DashboardFragment : Fragment() {
         }
 
         dismiss.setOnClickListener {
+            viewModel.clearProgress()
             alertDialog.dismiss()
         }
 
+        alertDialog.setCancelable(false)
         alertDialog.show()
     }
 

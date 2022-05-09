@@ -23,36 +23,13 @@ class DashboardViewModel(
      **/
 
     private val _progressExam = MutableLiveData<Progress?>()
-    val progressExam: LiveData<Progress?>
-        get() = _progressExam
-
     private val _progressAnimals = MutableLiveData<Progress?>()
-    val progressAnimals: LiveData<Progress?>
-        get() = _progressAnimals
-
     private val _progressLaw = MutableLiveData<Progress?>()
-    val progressLaw: LiveData<Progress?>
-        get() = _progressLaw
-
     private val _progressGameManagement = MutableLiveData<Progress?>()
-    val progressGameManagement: LiveData<Progress?>
-        get() = _progressGameManagement
-
     private val _progressHuntingMethods = MutableLiveData<Progress?>()
-    val progressHuntingMethods: LiveData<Progress?>
-        get() = _progressHuntingMethods
-
     private val _progressGuns = MutableLiveData<Progress?>()
-    val progressGuns: LiveData<Progress?>
-        get() = _progressGuns
-
     private val _progressDogs = MutableLiveData<Progress?>()
-    val progressDogs: LiveData<Progress?>
-        get() = _progressDogs
-
     private val _progressViruses = MutableLiveData<Progress?>()
-    val progressViruses: LiveData<Progress?>
-        get() = _progressViruses
 
     private fun loadProgress() {
         viewModelScope.launch {
@@ -67,43 +44,20 @@ class DashboardViewModel(
         }
     }
 
-    /**
-    * DASHBOARD DIALOG
-    **/
+    private val _progress = MutableLiveData<Progress?>()
+    val progress: LiveData<Progress?>
+        get() = _progress
 
-    private val _showDialog = MutableLiveData<Boolean?>()
-    val showDialog: LiveData<Boolean?>
-        get() = _showDialog
-
-    fun showDialog() {
-        _showDialog.value = true
+    fun progressAnimals() {
+        _progress.value = _progressAnimals.value
     }
 
-    fun resetDialog() {
-        _showDialog.value = null
+    fun progressLaw() {
+        _progress.value = _progressLaw.value
     }
 
-    /**
-     * NAVIGATION
-     **/
-
-    private val _navigateToQuiz = MutableLiveData<Boolean?>()
-    val navigateToQuiz: LiveData<Boolean?>
-        get() = _navigateToQuiz
-
-    fun navigateToQuiz() {
-        _navigateToQuiz.value = true
-    }
-
-    fun onQuizNavigationComplete() {
-        _navigateToQuiz.value = null
-    }
-
-    fun navigation(progress: Progress) {
-        when (progress) {
-            null -> navigateToQuiz()
-            else -> showDialog()
-        }
+    fun clearProgress() {
+        _progress.value = null
     }
 
     init {
