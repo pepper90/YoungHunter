@@ -48,6 +48,10 @@ class DashboardViewModel(
     val progress: LiveData<Progress?>
         get() = _progress
 
+    fun progressExam() {
+        _progress.value = _progressExam.value
+    }
+
     fun progressAnimals() {
         _progress.value = _progressAnimals.value
     }
@@ -56,8 +60,34 @@ class DashboardViewModel(
         _progress.value = _progressLaw.value
     }
 
-    fun clearProgress() {
+    fun progressGameManagement() {
+        _progress.value = _progressGameManagement.value
+    }
+
+    fun progressHuntingMethods() {
+        _progress.value = _progressHuntingMethods.value
+    }
+
+    fun progressGuns() {
+        _progress.value = _progressGuns.value
+    }
+
+    fun progressDogs() {
+        _progress.value = _progressDogs.value
+    }
+
+    fun progressViruses() {
+        _progress.value = _progressViruses.value
+    }
+
+    fun clearProgressValue() {
         _progress.value = null
+    }
+
+    fun clearProgressFromDb(topic: String) {
+        viewModelScope.launch {
+            repository.deleteProgress(topic)
+        }
     }
 
     init {

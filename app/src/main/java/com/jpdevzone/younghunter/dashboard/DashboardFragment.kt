@@ -12,12 +12,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.jpdevzone.younghunter.R
+import com.jpdevzone.younghunter.database.models.Progress
 import com.jpdevzone.younghunter.databinding.FragmentDashboardBinding
 import com.jpdevzone.younghunter.utils.setBackground
 
 class DashboardFragment : Fragment() {
     private lateinit var binding : FragmentDashboardBinding
     private lateinit var viewModel: DashboardViewModel
+    private lateinit var dashboardData: DashboardData
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +43,7 @@ class DashboardFragment : Fragment() {
         }
 
         binding.loadExam.setOnClickListener {
-            navigate(
+            navigateToNewQuiz(
                 DashboardData(
                     R.string.examYoungHunter,
                     R.string.time_exam,
@@ -52,18 +54,21 @@ class DashboardFragment : Fragment() {
         }
 
         binding.animals.setOnClickListener {
-            navigateToSavedQuiz(
-                DashboardData(
-                    R.string.animals,
-                    R.string.time_mini_test,
-                    R.drawable.ic_animals,
-                    "animals"
-                )
-            )
+            viewModel.progressAnimals()
+            dashboardData = DashboardData(
+                                R.string.animals,
+                                R.string.time_mini_test,
+                                R.drawable.ic_animals,
+                                "animals"
+                            )
+            conditionalNavigation(
+                viewModel.progress.value,
+                dashboardData,
+                R.string.animals)
         }
 
         binding.law.setOnClickListener {
-            navigate(
+            navigateToNewQuiz(
                 DashboardData(
                     R.string.law,
                     R.string.time_mini_test,
@@ -74,7 +79,7 @@ class DashboardFragment : Fragment() {
         }
 
         binding.gameManagement.setOnClickListener {
-            navigate(
+            navigateToNewQuiz(
                 DashboardData(
                     R.string.gameManagement,
                     R.string.time_mini_test,
@@ -85,7 +90,7 @@ class DashboardFragment : Fragment() {
         }
 
         binding.huntingMethods.setOnClickListener {
-            navigate(
+            navigateToNewQuiz(
                 DashboardData(
                     R.string.huntingMethods,
                     R.string.time_mini_test,
@@ -96,7 +101,7 @@ class DashboardFragment : Fragment() {
         }
 
         binding.guns.setOnClickListener {
-            navigate(
+            navigateToNewQuiz(
                 DashboardData(
                     R.string.guns,
                     R.string.time_mini_test,
@@ -107,7 +112,7 @@ class DashboardFragment : Fragment() {
         }
 
         binding.dogs.setOnClickListener {
-            navigate(
+            navigateToNewQuiz(
                 DashboardData(
                     R.string.dogs,
                     R.string.time_mini_test,
@@ -118,7 +123,7 @@ class DashboardFragment : Fragment() {
         }
 
         binding.viruses.setOnClickListener {
-            navigate(
+            navigateToNewQuiz(
                 DashboardData(
                     R.string.viruses,
                     R.string.time_mini_test,
@@ -147,7 +152,15 @@ class DashboardFragment : Fragment() {
 //        }
 //    }
 
-    private fun dashboardDialog(title: Int) {
+    private fun conditionalNavigation(progress: Progress?, data: DashboardData, title: Int) {
+        if (progress != null) {
+            dashboardDialog(title, data)
+        } else {
+            navigateToNewQuiz(data)
+        }
+    }
+
+    private fun dashboardDialog(title: Int, data: DashboardData) {
         val dialog = AlertDialog.Builder(requireContext(), R.style.DialogSlideAnim)
         val dialogLayout = layoutInflater.inflate(R.layout.dialog_dashboard, null)
         dialog.setView(dialogLayout)
@@ -162,14 +175,18 @@ class DashboardFragment : Fragment() {
 
         continueTest.setOnClickListener{
             alertDialog.dismiss()
+            navigateToSavedQuiz(data)
         }
 
         startNewTest.setOnClickListener {
             alertDialog.dismiss()
+            viewModel.clearProgressValue()
+            viewModel.clearProgressFromDb(data.topic)
+            navigateToNewQuiz(data)
         }
 
         dismiss.setOnClickListener {
-            viewModel.clearProgress()
+            viewModel.clearProgressValue()
             alertDialog.dismiss()
         }
 
@@ -177,7 +194,7 @@ class DashboardFragment : Fragment() {
         alertDialog.show()
     }
 
-    private fun navigate(data: DashboardData) {
+    private fun navigateToNewQuiz(data: DashboardData) {
         this.findNavController().navigate(
             DashboardFragmentDirections
                 .actionDashboardFragmentToQuizQuestionFragment(
