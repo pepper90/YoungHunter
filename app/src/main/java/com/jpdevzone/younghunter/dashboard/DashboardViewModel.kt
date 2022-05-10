@@ -1,6 +1,7 @@
 package com.jpdevzone.younghunter.dashboard
 
 import android.app.Application
+import android.text.format.DateUtils
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,6 +11,7 @@ import com.jpdevzone.younghunter.database.QuestionsRepository
 import com.jpdevzone.younghunter.database.models.Progress
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.*
 
 class DashboardViewModel(
     application: Application
@@ -88,6 +90,13 @@ class DashboardViewModel(
         viewModelScope.launch {
             repository.deleteProgress(topic)
         }
+    }
+
+    // Format time into readable string
+    fun toTime(timer: Long) : String {
+        val minutes: Int = ((timer / 1000) / 60).toInt()
+        val seconds: Int = ((timer / 1000) % 60).toInt()
+        return (String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds))
     }
 
     init {

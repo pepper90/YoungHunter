@@ -64,7 +64,7 @@ class Dashboard : AppCompatActivity() {
                 dialogTitle = getString(R.string.examYoungHunter)
                 val position = mySharedPreferences?.getInt(Constants.CURRENT_POSITION,1)
                 val timer = mySharedPreferences?.getLong(Constants.TIMER,startTimeInMillisMaxi)
-                dialogString = getString(R.string.continueTest104, position,toTime(timer!!))
+//                dialogString = getString(R.string.continueTest104, position,toTime(timer!!))
                 myIntent = Intent(this, QuizQuestionsExam::class.java)
                 dashboardDialog()
             } else {
@@ -81,7 +81,7 @@ class Dashboard : AppCompatActivity() {
                 dialogTitle = getString(R.string.animals)
                 val position = mySharedPreferences?.getInt(Constants.CURRENT_POSITION,1)
                 val timer = mySharedPreferences?.getLong(Constants.TIMER,startTimeInMillisMini)
-                dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
+//                dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
                 myIntent = Intent(this, QuizQuestionsAnimals::class.java)
                 dashboardDialog()
             } else {
@@ -99,7 +99,7 @@ class Dashboard : AppCompatActivity() {
                dialogTitle = getString(R.string.law)
                val position = mySharedPreferences?.getInt(Constants.CURRENT_POSITION,1)
                val timer = mySharedPreferences?.getLong(Constants.TIMER,startTimeInMillisMini)
-               dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
+//               dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
 //               myIntent = Intent(this, QuizQuestionsHuntingLaw::class.java)
                dashboardDialog()
            } else {
@@ -116,7 +116,7 @@ class Dashboard : AppCompatActivity() {
                 dialogTitle = getString(R.string.gameManagement)
                 val position = mySharedPreferences?.getInt(Constants.CURRENT_POSITION,1)
                 val timer = mySharedPreferences?.getLong(Constants.TIMER,startTimeInMillisMini)
-                dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
+//                dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
 //                myIntent = Intent(this, QuizQuestionsGameManagement::class.java)
                 dashboardDialog()
             } else {
@@ -133,7 +133,7 @@ class Dashboard : AppCompatActivity() {
                 dialogTitle = getString(R.string.huntingMethods)
                 val position = mySharedPreferences?.getInt(Constants.CURRENT_POSITION,1)
                 val timer = mySharedPreferences?.getLong(Constants.TIMER,startTimeInMillisMini)
-                dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
+//                dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
 //                myIntent = Intent(this, QuizQuestionsHuntingMethods::class.java)
                 dashboardDialog()
             } else {
@@ -150,7 +150,7 @@ class Dashboard : AppCompatActivity() {
                 dialogTitle = getString(R.string.guns)
                 val position = mySharedPreferences?.getInt(Constants.CURRENT_POSITION,1)
                 val timer = mySharedPreferences?.getLong(Constants.TIMER,startTimeInMillisMini)
-                dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
+//                dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
 //                myIntent = Intent(this, QuizQuestionsGuns::class.java)
                 dashboardDialog()
             } else {
@@ -167,7 +167,7 @@ class Dashboard : AppCompatActivity() {
                dialogTitle = getString(R.string.dogs)
                val position = mySharedPreferences?.getInt(Constants.CURRENT_POSITION,1)
                val timer = mySharedPreferences?.getLong(Constants.TIMER,startTimeInMillisMini)
-               dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
+//               dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
 //               myIntent = Intent(this, QuizQuestionsDogs::class.java)
                dashboardDialog()
            } else {
@@ -184,7 +184,7 @@ class Dashboard : AppCompatActivity() {
                 dialogTitle = getString(R.string.viruses)
                 val position = mySharedPreferences?.getInt(Constants.CURRENT_POSITION,1)
                 val timer = mySharedPreferences?.getLong(Constants.TIMER,startTimeInMillisMini)
-                dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
+//                dialogString = getString(R.string.continueTest30, position,toTime(timer!!))
 //                myIntent = Intent(this, QuizQuestionsViruses::class.java)
                 dashboardDialog()
             } else {

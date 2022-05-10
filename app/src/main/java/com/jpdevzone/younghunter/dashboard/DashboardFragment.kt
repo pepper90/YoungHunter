@@ -1,6 +1,11 @@
 package com.jpdevzone.younghunter.dashboard
 
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.RelativeSizeSpan
+import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,6 +39,12 @@ class DashboardFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         binding.dashboardBackground.setImageResource(setBackground)
 
         binding.dashboardHelp.setOnClickListener {
@@ -45,11 +56,11 @@ class DashboardFragment : Fragment() {
         binding.loadExam.setOnClickListener {
             viewModel.progressExam()
             dashboardData = DashboardData(
-                                R.string.examYoungHunter,
-                                R.string.time_exam,
-                                R.drawable.ic_exam,
-                                "exam"
-                            )
+                R.string.examYoungHunter,
+                R.string.time_exam,
+                R.drawable.ic_exam,
+                "exam"
+            )
             conditionalNavigation(
                 viewModel.progress.value,
                 dashboardData,
@@ -60,11 +71,11 @@ class DashboardFragment : Fragment() {
         binding.animals.setOnClickListener {
             viewModel.progressAnimals()
             dashboardData = DashboardData(
-                                R.string.animals,
-                                R.string.time_mini_test,
-                                R.drawable.ic_animals,
-                                "animals"
-                            )
+                R.string.animals,
+                R.string.time_mini_test,
+                R.drawable.ic_animals,
+                "animals"
+            )
             conditionalNavigation(
                 viewModel.progress.value,
                 dashboardData,
@@ -74,11 +85,11 @@ class DashboardFragment : Fragment() {
         binding.law.setOnClickListener {
             viewModel.progressLaw()
             dashboardData = DashboardData(
-                                R.string.law,
-                                R.string.time_mini_test,
-                                R.drawable.ic_law,
-                                "law"
-                            )
+                R.string.law,
+                R.string.time_mini_test,
+                R.drawable.ic_law,
+                "law"
+            )
             conditionalNavigation(
                 viewModel.progress.value,
                 dashboardData,
@@ -89,11 +100,11 @@ class DashboardFragment : Fragment() {
         binding.gameManagement.setOnClickListener {
             viewModel.progressGameManagement()
             dashboardData = DashboardData(
-                                R.string.gameManagement,
-                                R.string.time_mini_test,
-                                R.drawable.ic_animalcare,
-                                "gameManagement"
-                            )
+                R.string.gameManagement,
+                R.string.time_mini_test,
+                R.drawable.ic_animalcare,
+                "gameManagement"
+            )
             conditionalNavigation(
                 viewModel.progress.value,
                 dashboardData,
@@ -104,11 +115,11 @@ class DashboardFragment : Fragment() {
         binding.huntingMethods.setOnClickListener {
             viewModel.progressHuntingMethods()
             dashboardData = DashboardData(
-                                R.string.huntingMethods,
-                                R.string.time_mini_test,
-                                R.drawable.ic_hunting,
-                                "huntingMethods"
-                            )
+                R.string.huntingMethods,
+                R.string.time_mini_test,
+                R.drawable.ic_hunting,
+                "huntingMethods"
+            )
             conditionalNavigation(
                 viewModel.progress.value,
                 dashboardData,
@@ -119,11 +130,11 @@ class DashboardFragment : Fragment() {
         binding.guns.setOnClickListener {
             viewModel.progressGuns()
             dashboardData = DashboardData(
-                                R.string.guns,
-                                R.string.time_mini_test,
-                                R.drawable.ic_guns,
-                                "guns"
-                            )
+                R.string.guns,
+                R.string.time_mini_test,
+                R.drawable.ic_guns,
+                "guns"
+            )
             conditionalNavigation(
                 viewModel.progress.value,
                 dashboardData,
@@ -134,11 +145,11 @@ class DashboardFragment : Fragment() {
         binding.dogs.setOnClickListener {
             viewModel.progressDogs()
             dashboardData = DashboardData(
-                                R.string.dogs,
-                                R.string.time_mini_test,
-                                R.drawable.ic_dogs,
-                                "dogs"
-                            )
+                R.string.dogs,
+                R.string.time_mini_test,
+                R.drawable.ic_dogs,
+                "dogs"
+            )
             conditionalNavigation(
                 viewModel.progress.value,
                 dashboardData,
@@ -149,30 +160,28 @@ class DashboardFragment : Fragment() {
         binding.viruses.setOnClickListener {
             viewModel.progressViruses()
             dashboardData = DashboardData(
-                                R.string.viruses,
-                                R.string.time_mini_test,
-                                R.drawable.ic_virus,
-                                "viruses"
-                            )
+                R.string.viruses,
+                R.string.time_mini_test,
+                R.drawable.ic_virus,
+                "viruses"
+            )
             conditionalNavigation(
                 viewModel.progress.value,
                 dashboardData,
                 R.string.viruses
             )
         }
-
-        return binding.root
     }
 
     private fun conditionalNavigation(progress: Progress?, data: DashboardData, title: Int) {
         if (progress != null) {
-            dashboardDialog(title, data)
+            dashboardDialog(title, data, progress)
         } else {
             navigateToNewQuiz(data)
         }
     }
 
-    private fun dashboardDialog(title: Int, data: DashboardData) {
+    private fun dashboardDialog(title: Int, data: DashboardData, progress: Progress?) {
         val dialog = AlertDialog.Builder(requireContext(), R.style.DialogSlideAnim)
         val dialogLayout = layoutInflater.inflate(R.layout.dialog_dashboard, null)
         dialog.setView(dialogLayout)
@@ -182,8 +191,23 @@ class DashboardFragment : Fragment() {
         val startNewTest = dialogLayout.findViewById<TextView>(R.id.new_test_tv)
         val continueTest = dialogLayout.findViewById<TextView>(R.id.old_test_tv)
         val dismiss = dialogLayout.findViewById<ImageView>(R.id.dismiss_iv)
+        val max = when (data.topic) {
+            "exam" -> 104
+            else -> 30
+        }
+        val string = getString(R.string.continueTest, progress?.position, max, viewModel.toTime(progress?.time!!))
 
         category.text = getString(title)
+
+        val ss1 = SpannableString(startNewTest.text)
+        ss1.setSpan(RelativeSizeSpan(1.3f),0,16, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        ss1.setSpan(StyleSpan(Typeface.BOLD),0,16, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        startNewTest.text = ss1
+
+        val ss2 = SpannableString(string)
+        ss2.setSpan(RelativeSizeSpan(1.3f),0,13, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        ss2.setSpan(StyleSpan(Typeface.BOLD),0,13,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        continueTest.text = ss2
 
         continueTest.setOnClickListener{
             alertDialog.dismiss()
