@@ -1,7 +1,6 @@
 package com.jpdevzone.younghunter.dashboard
 
 import android.app.Application
-import android.text.format.DateUtils
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.jpdevzone.younghunter.database.QuestionsDatabase
 import com.jpdevzone.younghunter.database.QuestionsRepository
 import com.jpdevzone.younghunter.database.models.Progress
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
 
