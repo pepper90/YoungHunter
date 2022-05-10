@@ -43,13 +43,17 @@ class DashboardFragment : Fragment() {
         }
 
         binding.loadExam.setOnClickListener {
-            navigateToNewQuiz(
-                DashboardData(
-                    R.string.examYoungHunter,
-                    R.string.time_exam,
-                    R.drawable.ic_exam,
-                    "exam"
-                )
+            viewModel.progressExam()
+            dashboardData = DashboardData(
+                                R.string.examYoungHunter,
+                                R.string.time_exam,
+                                R.drawable.ic_exam,
+                                "exam"
+                            )
+            conditionalNavigation(
+                viewModel.progress.value,
+                dashboardData,
+                R.string.examYoungHunter
             )
         }
 
@@ -68,89 +72,97 @@ class DashboardFragment : Fragment() {
         }
 
         binding.law.setOnClickListener {
-            navigateToNewQuiz(
-                DashboardData(
-                    R.string.law,
-                    R.string.time_mini_test,
-                    R.drawable.ic_law,
-                    "law"
-                )
+            viewModel.progressLaw()
+            dashboardData = DashboardData(
+                                R.string.law,
+                                R.string.time_mini_test,
+                                R.drawable.ic_law,
+                                "law"
+                            )
+            conditionalNavigation(
+                viewModel.progress.value,
+                dashboardData,
+                R.string.law
             )
         }
 
         binding.gameManagement.setOnClickListener {
-            navigateToNewQuiz(
-                DashboardData(
-                    R.string.gameManagement,
-                    R.string.time_mini_test,
-                    R.drawable.ic_animalcare,
-                    "gameManagement"
-                )
+            viewModel.progressGameManagement()
+            dashboardData = DashboardData(
+                                R.string.gameManagement,
+                                R.string.time_mini_test,
+                                R.drawable.ic_animalcare,
+                                "gameManagement"
+                            )
+            conditionalNavigation(
+                viewModel.progress.value,
+                dashboardData,
+                R.string.gameManagement
             )
         }
 
         binding.huntingMethods.setOnClickListener {
-            navigateToNewQuiz(
-                DashboardData(
-                    R.string.huntingMethods,
-                    R.string.time_mini_test,
-                    R.drawable.ic_hunting,
-                    "huntingMethods"
-                )
+            viewModel.progressHuntingMethods()
+            dashboardData = DashboardData(
+                                R.string.huntingMethods,
+                                R.string.time_mini_test,
+                                R.drawable.ic_hunting,
+                                "huntingMethods"
+                            )
+            conditionalNavigation(
+                viewModel.progress.value,
+                dashboardData,
+                R.string.huntingMethods
             )
         }
 
         binding.guns.setOnClickListener {
-            navigateToNewQuiz(
-                DashboardData(
-                    R.string.guns,
-                    R.string.time_mini_test,
-                    R.drawable.ic_guns,
-                    "guns"
-                )
+            viewModel.progressGuns()
+            dashboardData = DashboardData(
+                                R.string.guns,
+                                R.string.time_mini_test,
+                                R.drawable.ic_guns,
+                                "guns"
+                            )
+            conditionalNavigation(
+                viewModel.progress.value,
+                dashboardData,
+                R.string.guns
             )
         }
 
         binding.dogs.setOnClickListener {
-            navigateToNewQuiz(
-                DashboardData(
-                    R.string.dogs,
-                    R.string.time_mini_test,
-                    R.drawable.ic_dogs,
-                    "dogs"
-                )
+            viewModel.progressDogs()
+            dashboardData = DashboardData(
+                                R.string.dogs,
+                                R.string.time_mini_test,
+                                R.drawable.ic_dogs,
+                                "dogs"
+                            )
+            conditionalNavigation(
+                viewModel.progress.value,
+                dashboardData,
+                R.string.dogs
             )
         }
 
         binding.viruses.setOnClickListener {
-            navigateToNewQuiz(
-                DashboardData(
-                    R.string.viruses,
-                    R.string.time_mini_test,
-                    R.drawable.ic_virus,
-                    "viruses"
-                )
+            viewModel.progressViruses()
+            dashboardData = DashboardData(
+                                R.string.viruses,
+                                R.string.time_mini_test,
+                                R.drawable.ic_virus,
+                                "viruses"
+                            )
+            conditionalNavigation(
+                viewModel.progress.value,
+                dashboardData,
+                R.string.viruses
             )
         }
 
         return binding.root
     }
-
-//    binding.animals.setOnClickListener {
-//        viewModel.progressAnimals()
-//        if (viewModel.progress.value != null) {
-//            dashboardDialog(R.string.animals)
-//        } else {
-//            navigate(
-//                DashboardData(
-//                    R.string.animals,
-//                    R.string.time_mini_test,
-//                    R.drawable.ic_animals,
-//                    "animals"
-//                )
-//            )
-//        }
-//    }
 
     private fun conditionalNavigation(progress: Progress?, data: DashboardData, title: Int) {
         if (progress != null) {
