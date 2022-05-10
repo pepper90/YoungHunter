@@ -4,6 +4,7 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.play.core.review.ReviewManagerFactory
 import com.jpdevzone.younghunter.R
 import com.jpdevzone.younghunter.databinding.FragmentFinishQuizBinding
 import com.jpdevzone.younghunter.utils.setBackground
@@ -86,6 +88,11 @@ class FinishQuizFragment : Fragment() {
             navigateBack()
         }
 
+        // Checks device API & triggers in-app review flow
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            inAppReview()
+        }
+
         return binding.root
     }
 
@@ -94,5 +101,18 @@ class FinishQuizFragment : Fragment() {
         this.findNavController().navigate(
             FinishQuizFragmentDirections.actionFinishQuizFragmentToDashboardFragment()
         )
+    }
+
+    // Handles in-app reviews
+    private fun inAppReview() {
+        val reviewManager = ReviewManagerFactory.create(requireContext())
+        val requestReviewFlow = reviewManager.requestReviewFlow()
+        requestReviewFlow.addOnCompleteListener { request ->
+            if (request.isSuccessful) {
+                val reviewInfo = request.result
+                val flow = reviewManager.launchReviewFlow(requireActivity(), reviewInfo)
+                flow.addOnCompleteListener {}
+            }
+        }
     }
 }
