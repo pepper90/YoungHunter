@@ -38,6 +38,12 @@ class SavedQuizFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         // Sets random background
         binding.quizQuestionBackground.setImageResource(setBackground)
 
@@ -57,20 +63,18 @@ class SavedQuizFragment : Fragment() {
 
         // Sets back navigation
         binding.arrowBackIv.setOnClickListener {
-             showQuitDialog()
+            showQuitDialog()
         }
 
         // Sets reload button
         binding.reloadIv.setOnClickListener {
-             showReloadDialog()
+            showReloadDialog()
         }
 
         // Handles onBackPressed
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             showQuitDialog()
         }
-
-        return binding.root
     }
 
     // Loads next question

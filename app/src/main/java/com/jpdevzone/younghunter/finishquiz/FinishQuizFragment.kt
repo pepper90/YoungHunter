@@ -32,6 +32,7 @@ class FinishQuizFragment : Fragment() {
     ): View {
         binding  = DataBindingUtil.inflate(inflater,R.layout.fragment_finish_quiz, container, false)
 
+        // Gets arguments from Bundle
         args = FinishQuizFragmentArgs.fromBundle(requireArguments())
 
         viewModel = ViewModelProvider(
@@ -47,6 +48,12 @@ class FinishQuizFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         // Sets random background
         binding.finishQuizBackground.setImageResource(setBackground)
 
@@ -58,16 +65,16 @@ class FinishQuizFragment : Fragment() {
         // Create share intent with result on click
         binding.btnShare.setOnClickListener {
             val shareIntent = Intent().apply {
-            this.action = Intent.ACTION_SEND
-            this.putExtra(
-                Intent.EXTRA_TEXT,
-                stringBuilder(
-                    binding.congratsTv.text.toString(),
-                    binding.scoreTv.text.toString()
+                this.action = Intent.ACTION_SEND
+                this.putExtra(
+                    Intent.EXTRA_TEXT,
+                    stringBuilder(
+                        binding.congratsTv.text.toString(),
+                        binding.scoreTv.text.toString()
+                    )
                 )
-            )
-            this.type = "text/plain"
-        }
+                this.type = "text/plain"
+            }
             startActivity(shareIntent) }
 
         // Copy result to clipboard on click
@@ -92,8 +99,6 @@ class FinishQuizFragment : Fragment() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             inAppReview()
         }
-
-        return binding.root
     }
 
     // Navigate to DashboardFragment

@@ -36,6 +36,12 @@ class QuizQuestionFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         // Sets random background
         binding.quizQuestionBackground.setImageResource(setBackground)
 
@@ -67,8 +73,6 @@ class QuizQuestionFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             showQuitDialog()
         }
-
-        return binding.root
     }
 
     // Loads next question
