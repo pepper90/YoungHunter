@@ -45,14 +45,17 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Sets random background
         binding.dashboardBackground.setImageResource(setBackground)
 
+        // Sets help button click listener
         binding.dashboardHelp.setOnClickListener {
             this.findNavController().navigate(
                 DashboardFragmentDirections.actionDashboardFragmentToHelpFragment()
             )
         }
 
+        // Click listeners for different categories
         binding.loadExam.setOnClickListener {
             viewModel.progressExam()
             dashboardData = DashboardData(
@@ -173,6 +176,7 @@ class DashboardFragment : Fragment() {
         }
     }
 
+    // Sets navigation based on Db progress availability
     private fun conditionalNavigation(progress: Progress?, data: DashboardData, title: Int) {
         if (progress != null) {
             dashboardDialog(title, data, progress)
@@ -181,6 +185,7 @@ class DashboardFragment : Fragment() {
         }
     }
 
+    // Loads dialog window
     private fun dashboardDialog(title: Int, data: DashboardData, progress: Progress?) {
         val dialog = AlertDialog.Builder(requireContext(), R.style.DialogSlideAnim)
         val dialogLayout = layoutInflater.inflate(R.layout.dialog_dashboard, null)
@@ -230,6 +235,7 @@ class DashboardFragment : Fragment() {
         alertDialog.show()
     }
 
+    // Navigates to a new test
     private fun navigateToNewQuiz(data: DashboardData) {
         this.findNavController().navigate(
             DashboardFragmentDirections
@@ -239,6 +245,7 @@ class DashboardFragment : Fragment() {
         )
     }
 
+    // Navigates to a previously saved test inside Db
     private fun navigateToSavedQuiz(data: DashboardData) {
         this.findNavController().navigate(
             DashboardFragmentDirections
