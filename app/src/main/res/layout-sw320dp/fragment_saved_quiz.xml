@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ContentDescription, RtlHardcoded, UnusedAttribute, UselessParent">
+
+    <data>
+        <variable
+            name="dashData"
+            type="com.jpdevzone.younghunter.dashboard.DashboardData" />
+
+        <variable
+            name="vm"
+            type="com.jpdevzone.younghunter.savedquiz.SavedQuizViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/quiz_question_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/backimg_one" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/_16sdp"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/category_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_230sdp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/border">
+
+                    <ImageView
+                        android:id="@+id/arrow_back_iv"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_alignTop="@id/category_tv"
+                        android:layout_alignBottom="@id/category_time_tv"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        app:srcCompat="@drawable/ic_arrow_back" />
+
+                    <TextView
+                        android:id="@+id/category_tv"
+                        style="@style/QuizHeaderTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_toLeftOf="@id/category_iv"
+                        android:layout_toRightOf="@id/arrow_back_iv"
+                        android:text="@{dashData.title}"
+                        tools:text="ТЕСТ ЗА МЛАД ЛОВЕЦ" />
+
+                    <TextView
+                        android:id="@+id/category_time_tv"
+                        style="@style/QuizHeaderSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/category_tv"
+                        android:layout_toLeftOf="@id/category_iv"
+                        android:layout_toRightOf="@id/arrow_back_iv"
+                        android:text="@{dashData.subtitle}"
+                        tools:text="@string/time_exam" />
+
+                    <ImageView
+                        android:id="@+id/category_iv"
+                        setIcon="@{dashData.icon}"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_alignTop="@id/category_tv"
+                        android:layout_alignBottom="@id/category_time_tv"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        tools:src="@drawable/ic_exam" />
+
+                    <View
+                        android:id="@+id/divider"
+                        style="@style/Divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_below="@id/category_time_tv"
+                        android:layout_alignLeft="@id/arrow_back_iv"
+                        android:layout_alignRight="@id/category_iv" />
+
+                    <TextView
+                        android:id="@+id/question_tv"
+                        style="@style/QuestionField"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/progress_bar_ll"
+                        android:layout_below="@id/divider"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="true"
+                        android:text="@{vm.question.question}"
+                        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+
+                    <LinearLayout
+                        android:id="@+id/progress_bar_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/reload_iv"
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:alpha="0.8"
+                            android:gravity="center"
+                            android:src="@drawable/ic_reload"
+                            tools:ignore="ContentDescription" />
+
+                        <ProgressBar
+                            android:id="@+id/progressBar"
+                            style="@style/ProgressBar"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:max="@{vm.progressBarMax}"
+                            android:progress="@{vm.position}" />
+
+                        <TextView
+                            android:id="@+id/progress_tv"
+                            style="@style/ProgressText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{@string/position(vm.position, vm.progressBarMax)}"
+                            tools:text="0/104" />
+
+                        <TextView
+                            android:id="@+id/timer"
+                            style="@style/QuizTimer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{vm.formattedTime(vm.currentTime)}"
+                            tools:text="00:00" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/answers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/category_info"
+                    android:layout_marginTop="@dimen/_5sdp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/option_one_tv"
+                        style="@style/QuestionOptions"
+                        correctAnswer="@{vm.correctAnswer}"
+                        optionIndex="@{vm.optionOneIndex}"
+                        selectedOptionIndex="@{vm.selectedOptionIndex}"
+                        setOptionState="@{vm.optionOneState}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:enabled="@{vm.correctAnswer != null ? false : true}"
+                        android:onClick="@{() -> vm.onOptionOneSelected()}"
+                        android:text="@{vm.question.optionOne}"
+                        tools:text="получаване на удостоверение от Държавана изпитна комисия" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/option_two_tv"
+                        style="@style/QuestionOptions"
+                        correctAnswer="@{vm.correctAnswer}"
+                        optionIndex="@{vm.optionTwoIndex}"
+                        selectedOptionIndex="@{vm.selectedOptionIndex}"
+                        setOptionState="@{vm.optionTwoState}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/option_one_tv"
+                        android:layout_centerHorizontal="true"
+                        android:enabled="@{vm.correctAnswer != null ? false : true}"
+                        android:onClick="@{() -> vm.onOptionTwoSelected()}"
+                        android:text="@{vm.question.optionTwo}"
+                        tools:text="от Държавана изпитна комисия"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/option_three_tv"
+                        style="@style/QuestionOptions"
+                        correctAnswer="@{vm.correctAnswer}"
+                        optionIndex="@{vm.optionThreeIndex}"
+                        selectedOptionIndex="@{vm.selectedOptionIndex}"
+                        setOptionState="@{vm.optionThreeState}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/option_two_tv"
+                        android:layout_centerHorizontal="true"
+                        android:enabled="@{vm.correctAnswer != null ? false : true}"
+                        android:onClick="@{() -> vm.onOptionThreeSelected()}"
+                        android:text="@{vm.question.optionThree}"
+                        tools:text="получаване на удостоверение от Държавана изпитна комисия"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/next_tv"
+                        style="@style/QuizButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/option_three_tv"
+                        android:layout_centerHorizontal="true"
+                        android:enabled="@{vm.selectedOptionIndex != null ? true : false}"
+                        android:onClick="@{() -> vm.correctAnswer == null ? vm.checkAnswer() : vm.next()}"
+                        android:text="@{vm.correctAnswer == null ? @string/mark : @string/nextQue }"
+                        tools:text="МАРКИРАЙ"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
