@@ -22,6 +22,7 @@ class DashboardViewModel(
      * PROGRESS LOADING
      **/
 
+    // These variables hold progress values by category from Db
     private val _progressExam = MutableLiveData<Progress?>()
     private val _progressAnimals = MutableLiveData<Progress?>()
     private val _progressLaw = MutableLiveData<Progress?>()
@@ -31,6 +32,7 @@ class DashboardViewModel(
     private val _progressDogs = MutableLiveData<Progress?>()
     private val _progressViruses = MutableLiveData<Progress?>()
 
+    // Loads progress values by category from Db
     private fun loadProgress() {
         viewModelScope.launch {
             _progressExam.value = repository.loadProgress("exam")
@@ -44,10 +46,12 @@ class DashboardViewModel(
         }
     }
 
+    // Holds progress value which is in focus
     private val _progress = MutableLiveData<Progress?>()
     val progress: LiveData<Progress?>
         get() = _progress
 
+    // These functions give swap values of in-focus progress
     fun progressExam() {
         _progress.value = _progressExam.value
     }
@@ -80,15 +84,21 @@ class DashboardViewModel(
         _progress.value = _progressViruses.value
     }
 
+    // Clear in-focus progress value
     fun clearProgressValue() {
         _progress.value = null
     }
 
+    // Clears progress form Db
     fun clearProgressFromDb(topic: String) {
         viewModelScope.launch {
             repository.deleteProgress(topic)
         }
     }
+
+    /**
+     * TIME FORMATTING FOR DASHBOARD POPUP WINDOW
+     **/
 
     // Format time into readable string
     fun toTime(timer: Long) : String {
