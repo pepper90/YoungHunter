@@ -24,8 +24,12 @@
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/selected_option.xml" value="0.17533783783783785" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/drawable/wrong_option.xml" value="0.127" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/font/acme.xml" value="0.16041666666666668" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout-sw320dp/fragment_dashboard.xml" value="0.264" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout-sw480dp/fragment_dashboard.xml" value="0.1" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout-sw600dp/fragment_dashboard.xml" value="0.1576797385620915" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout-sw600dp/fragment_finish_quiz.xml" value="0.176" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout-sw600dp/fragment_quiz_question.xml" value="0.2" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout-sw720dp/fragment_dashboard.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/activity_dashboard.xml" value="0.2" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/activity_finish_quiz.xml" value="0.2" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/activity_fragment_container.xml" value="0.25226449275362317" />
@@ -36,7 +40,7 @@
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/dialog_dashboard.xml" value="0.17633726201269265" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/dialog_quit.xml" value="0.20863616930312098" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/dialog_reload.xml" value="0.264" />
-        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/fragment_dashboard.xml" value="0.264" />
+        <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/fragment_dashboard.xml" value="0.5303347280334728" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/fragment_finish_quiz.xml" value="0.264" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/fragment_help.xml" value="0.176" />
         <entry key="..\:/AndroidProjects/YoungHunter/app/src/main/res/layout/fragment_quiz_question.xml" value="0.2" />

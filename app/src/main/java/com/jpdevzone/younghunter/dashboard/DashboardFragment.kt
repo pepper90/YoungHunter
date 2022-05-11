@@ -11,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -20,6 +22,7 @@ import com.jpdevzone.younghunter.R
 import com.jpdevzone.younghunter.database.models.Progress
 import com.jpdevzone.younghunter.databinding.FragmentDashboardBinding
 import com.jpdevzone.younghunter.utils.setBackground
+import es.dmoral.toasty.Toasty
 
 class DashboardFragment : Fragment() {
     private lateinit var binding : FragmentDashboardBinding
@@ -174,6 +177,11 @@ class DashboardFragment : Fragment() {
                 R.string.viruses
             )
         }
+
+        // Handles onBackPressed
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            onBackPressed()
+        }
     }
 
     // Sets navigation based on Db progress availability
@@ -253,6 +261,17 @@ class DashboardFragment : Fragment() {
                     data
                 )
         )
+    }
+
+    private var counter = 0
+    fun onBackPressed() {
+        counter++
+        if (counter==1) {
+            Toasty.custom(requireContext(), R.string.toast,R.drawable.ic_exit,R.color.black,
+                Toast.LENGTH_LONG,true, true).show()
+        }else {
+            requireActivity().onBackPressed()
+        }
     }
 
 }
