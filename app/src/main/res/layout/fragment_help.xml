@@ -68,9 +68,9 @@
                         android:layout_toRightOf="@id/arrow_back_iv"
                         android:fontFamily="@font/oswald_regular"
                         android:gravity="center"
+                        android:text="@string/help"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_23ssp"
-                        android:text="@string/help" />
+                        android:textSize="@dimen/_23ssp" />
 
                     <ImageView
                         android:id="@+id/help_iv"
@@ -118,8 +118,8 @@
                         android:layout_alignEnd="@+id/tv_help_text"
                         android:layout_alignRight="@+id/tv_help_text"
                         android:fontFamily="@font/raleway_regular"
-                        android:padding="@dimen/_5sdp"
                         android:gravity="center"
+                        android:padding="@dimen/_5sdp"
                         android:text="@string/help3"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_15ssp" />

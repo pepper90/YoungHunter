@@ -63,13 +63,9 @@
 
                 <RelativeLayout
                     android:id="@+id/loadExam"
+                    style="@style/Dashboard_Buttons"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_70sdp"
-                    android:layout_marginHorizontal="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_marginBottom="@dimen/_15sdp"
-                    android:background="@drawable/border"
-                    android:gravity="center_vertical">
+                    android:layout_height="@dimen/_70sdp">
 
                     <TextView
                         android:id="@+id/load_exam_tv"
@@ -90,10 +86,8 @@
 
                     <ImageView
                         android:id="@+id/load_exam_iv"
-                        android:layout_width="@dimen/_50sdp"
-                        android:layout_height="@dimen/_50sdp"
+                        style="@style/Dashboard_Icons"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="@dimen/_17sdp"
                         android:src="@drawable/ic_exam" />
 
                 </RelativeLayout>
@@ -103,16 +97,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:text="@string/module2" />
 
                 <RelativeLayout
                     android:id="@+id/animals"
+                    style="@style/Dashboard_Buttons"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_70sdp"
-                    android:layout_marginHorizontal="@dimen/_20sdp"
-                    android:layout_marginVertical="@dimen/_5sdp"
-                    android:background="@drawable/border"
-                    android:gravity="center_vertical">
+                    android:layout_height="@dimen/_70sdp">
 
                     <TextView
                         android:id="@+id/animals_tv"
@@ -133,22 +125,17 @@
 
                     <ImageView
                         android:id="@+id/animals_iv"
-                        android:layout_width="@dimen/_50sdp"
-                        android:layout_height="@dimen/_50sdp"
+                        style="@style/Dashboard_Icons"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="@dimen/_17sdp"
                         android:src="@drawable/ic_animals" />
 
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/law"
+                    style="@style/Dashboard_Buttons"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_70sdp"
-                    android:layout_marginHorizontal="@dimen/_20sdp"
-                    android:layout_marginVertical="@dimen/_5sdp"
-                    android:background="@drawable/border"
-                    android:gravity="center_vertical">
+                    android:layout_height="@dimen/_70sdp" >
 
                     <TextView
                         android:id="@+id/law_tv"
@@ -169,22 +156,17 @@
 
                     <ImageView
                         android:id="@+id/law_iv"
-                        android:layout_width="@dimen/_50sdp"
-                        android:layout_height="@dimen/_50sdp"
+                        style="@style/Dashboard_Icons"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="@dimen/_17sdp"
                         android:src="@drawable/ic_law" />
 
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/gameManagement"
+                    style="@style/Dashboard_Buttons"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_70sdp"
-                    android:layout_marginHorizontal="@dimen/_20sdp"
-                    android:layout_marginVertical="@dimen/_5sdp"
-                    android:background="@drawable/border"
-                    android:gravity="center_vertical">
+                    android:layout_height="@dimen/_70sdp">
 
                     <TextView
                         android:id="@+id/game_management_tv"
@@ -205,22 +187,17 @@
 
                     <ImageView
                         android:id="@+id/game_management_iv"
-                        android:layout_width="@dimen/_50sdp"
-                        android:layout_height="@dimen/_50sdp"
+                        style="@style/Dashboard_Icons"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="@dimen/_17sdp"
                         android:src="@drawable/ic_animalcare" />
 
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/huntingMethods"
+                    style="@style/Dashboard_Buttons"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_70sdp"
-                    android:layout_marginHorizontal="@dimen/_20sdp"
-                    android:layout_marginVertical="@dimen/_5sdp"
-                    android:background="@drawable/border"
-                    android:gravity="center_vertical">
+                    android:layout_height="@dimen/_70sdp">
 
                     <TextView
                         android:id="@+id/hunting_methods_tv"
@@ -241,22 +218,17 @@
 
                     <ImageView
                         android:id="@+id/hunting_methods_iv"
-                        android:layout_width="@dimen/_50sdp"
-                        android:layout_height="@dimen/_50sdp"
+                        style="@style/Dashboard_Icons"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="@dimen/_17sdp"
                         android:src="@drawable/ic_hunting" />
 
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/guns"
+                    style="@style/Dashboard_Buttons"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_70sdp"
-                    android:layout_marginHorizontal="@dimen/_20sdp"
-                    android:layout_marginVertical="@dimen/_5sdp"
-                    android:background="@drawable/border"
-                    android:gravity="center_vertical">
+                    android:layout_height="@dimen/_70sdp">
 
                     <TextView
                         android:id="@+id/guns_tv"
@@ -277,22 +249,17 @@
 
                     <ImageView
                         android:id="@+id/guns_iv"
-                        android:layout_width="@dimen/_50sdp"
-                        android:layout_height="@dimen/_50sdp"
+                        style="@style/Dashboard_Icons"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="@dimen/_17sdp"
                         android:src="@drawable/ic_guns" />
 
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/dogs"
+                    style="@style/Dashboard_Buttons"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_70sdp"
-                    android:layout_marginHorizontal="@dimen/_20sdp"
-                    android:layout_marginVertical="@dimen/_5sdp"
-                    android:background="@drawable/border"
-                    android:gravity="center_vertical">
+                    android:layout_height="@dimen/_70sdp">
 
                     <TextView
                         android:id="@+id/dogs_tv"
@@ -313,22 +280,17 @@
 
                     <ImageView
                         android:id="@+id/dogs_iv"
-                        android:layout_width="@dimen/_50sdp"
-                        android:layout_height="@dimen/_50sdp"
+                        style="@style/Dashboard_Icons"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="@dimen/_17sdp"
                         android:src="@drawable/ic_dogs" />
 
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/viruses"
+                    style="@style/Dashboard_Buttons"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_70sdp"
-                    android:layout_marginHorizontal="@dimen/_20sdp"
-                    android:layout_marginVertical="@dimen/_5sdp"
-                    android:background="@drawable/border"
-                    android:gravity="center_vertical">
+                    android:layout_height="@dimen/_70sdp">
 
                     <TextView
                         android:id="@+id/viruses_tv"
@@ -349,17 +311,12 @@
 
                     <ImageView
                         android:id="@+id/viruses_iv"
-                        android:layout_width="@dimen/_50sdp"
-                        android:layout_height="@dimen/_50sdp"
+                        style="@style/Dashboard_Icons"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="@dimen/_17sdp"
                         android:src="@drawable/ic_virus" />
 
                 </RelativeLayout>
-
-
             </LinearLayout>
-
         </androidx.core.widget.NestedScrollView>
 
         <com.google.android.gms.ads.AdView
@@ -368,10 +325,10 @@
             android:layout_height="wrap_content"
             app:adSize="BANNER"
             app:adUnitId="ca-app-pub-7588987461083278/8606880386"
-            app:layout_constraintTop_toBottomOf="@id/dashboard_scrollview"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dashboard_scrollview" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

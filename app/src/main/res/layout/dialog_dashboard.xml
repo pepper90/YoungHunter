@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Dashboard_Dialog"
     android:layout_width="@dimen/_270sdp"
     android:layout_height="wrap_content"
-    tools:ignore="ContentDescription"
-    style="@style/Dashboard_Dialog">
+    tools:ignore="ContentDescription">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,25 +25,25 @@
 
         <TextView
             android:id="@+id/new_test_tv"
+            style="@style/Dashboard_Dialog_Buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/loadNewTest"
             app:layout_constraintBottom_toTopOf="@id/old_test_tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title_tv"
-            style="@style/Dashboard_Dialog_Buttons" />
+            app:layout_constraintTop_toBottomOf="@id/title_tv" />
 
         <TextView
             android:id="@+id/old_test_tv"
+            style="@style/Dashboard_Dialog_Buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/new_test_tv"
             app:layout_constraintStart_toStartOf="@+id/new_test_tv"
             app:layout_constraintTop_toBottomOf="@+id/new_test_tv"
-            tools:text="@string/continueTest"
-            style="@style/Dashboard_Dialog_Buttons" />
+            tools:text="@string/continueTest" />
 
         <ImageView
             android:id="@+id/dismiss_iv"
