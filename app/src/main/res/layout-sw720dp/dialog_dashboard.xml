@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Dashboard_Dialog"
+    android:layout_width="@dimen/_270sdp"
+    android:layout_height="wrap_content"
+    tools:ignore="ContentDescription">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="ContentDescription">
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/Dashboard_Dialog_Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/tv_startNewTest"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dismiss_iv"
+            tools:text="@string/examYoungHunter" />
+
+        <TextView
+            android:id="@+id/new_test_tv"
+            style="@style/Dashboard_Dialog_Buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/loadNewTest"
+            app:layout_constraintBottom_toTopOf="@id/old_test_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_tv" />
+
+        <TextView
+            android:id="@+id/old_test_tv"
+            style="@style/Dashboard_Dialog_Buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/new_test_tv"
+            app:layout_constraintStart_toStartOf="@+id/new_test_tv"
+            app:layout_constraintTop_toBottomOf="@+id/new_test_tv"
+            tools:text="@string/continueTest" />
+
+        <ImageView
+            android:id="@+id/dismiss_iv"
+            android:layout_width="@dimen/_11sdp"
+            android:layout_height="@dimen/_11sdp"
+            android:src="@drawable/ic_close"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

@@ -32,7 +32,7 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/_16sdp"
+            android:layout_margin="@dimen/_14sdp"
             android:overScrollMode="never"
             android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -47,7 +47,7 @@
                 <RelativeLayout
                     android:id="@+id/category_info"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_230sdp"
+                    android:layout_height="@dimen/_190sdp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
@@ -55,8 +55,8 @@
 
                     <ImageView
                         android:id="@+id/arrow_back_iv"
-                        android:layout_width="@dimen/_40sdp"
-                        android:layout_height="@dimen/_40sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
                         android:layout_alignTop="@id/category_tv"
                         android:layout_alignBottom="@id/category_time_tv"
                         android:layout_alignParentLeft="true"
@@ -88,8 +88,8 @@
                     <ImageView
                         android:id="@+id/category_iv"
                         setIcon="@{dashData.icon}"
-                        android:layout_width="@dimen/_50sdp"
-                        android:layout_height="@dimen/_50sdp"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
                         android:layout_alignTop="@id/category_tv"
                         android:layout_alignBottom="@id/category_time_tv"
                         android:layout_alignParentRight="true"
@@ -115,7 +115,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentRight="true"
                         android:text="@{vm.question.question}"
-                        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+                        tools:text="Lorem ipsum dohhhhh hhhhhh hhhhhhh hhhlor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
 
                     <LinearLayout
                         android:id="@+id/progress_bar_ll"
@@ -131,8 +131,8 @@
 
                         <ImageView
                             android:id="@+id/reload_iv"
-                            android:layout_width="@dimen/_25sdp"
-                            android:layout_height="@dimen/_25sdp"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
                             android:alpha="0.8"
                             android:gravity="center"
                             android:src="@drawable/ic_reload"
@@ -172,7 +172,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/category_info"
-                    android:layout_marginTop="@dimen/_5sdp">
+                    android:layout_marginTop="@dimen/_4sdp">
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/option_one_tv"
