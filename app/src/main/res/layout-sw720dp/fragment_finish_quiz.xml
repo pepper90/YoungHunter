@@ -30,7 +30,7 @@
             android:id="@+id/finish_info"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/_16sdp"
+            android:layout_margin="@dimen/_20sdp"
             android:background="@drawable/border"
             app:layout_constraintBottom_toTopOf="@id/finish_quiz_ad"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,8 +39,8 @@
 
             <ImageView
                 android:id="@+id/arrow_back_iv"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/result_tv"
                 app:layout_constraintEnd_toStartOf="@+id/result_tv"
                 app:layout_constraintStart_toStartOf="parent"
@@ -59,8 +59,8 @@
 
             <ImageView
                 android:id="@+id/result_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
                 android:src="@drawable/ic_result"
                 app:layout_constraintBottom_toBottomOf="@+id/result_tv"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -79,9 +79,9 @@
 
             <ImageView
                 android:id="@+id/success_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:src="@{vm.passOrFail() ? @drawable/satisfied : @drawable/dissatisfied}"
                 app:layout_constraintEnd_toEndOf="@+id/divider"
                 app:layout_constraintStart_toStartOf="@+id/divider"

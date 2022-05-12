@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Dashboard_Dialog"
-    android:layout_width="@dimen/_270sdp"
+    android:layout_width="@dimen/_230sdp"
     android:layout_height="wrap_content"
     tools:ignore="ContentDescription">
 

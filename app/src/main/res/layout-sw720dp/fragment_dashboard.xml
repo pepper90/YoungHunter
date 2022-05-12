@@ -51,7 +51,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_40sdp"
                 android:orientation="vertical">
 
                 <TextView
@@ -65,7 +68,7 @@
                     android:id="@+id/loadExam"
                     style="@style/Dashboard_Buttons"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_70sdp">
+                    android:layout_height="@dimen/_50sdp">
 
                     <TextView
                         android:id="@+id/load_exam_tv"
@@ -87,7 +90,6 @@
                     <ImageView
                         android:id="@+id/load_exam_iv"
                         style="@style/Dashboard_Icons"
-                        android:layout_alignParentRight="true"
                         android:src="@drawable/ic_exam" />
 
                 </RelativeLayout>
@@ -104,7 +106,7 @@
                     android:id="@+id/animals"
                     style="@style/Dashboard_Buttons"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_70sdp">
+                    android:layout_height="@dimen/_50sdp">
 
                     <TextView
                         android:id="@+id/animals_tv"
@@ -135,7 +137,7 @@
                     android:id="@+id/law"
                     style="@style/Dashboard_Buttons"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_70sdp" >
+                    android:layout_height="@dimen/_50sdp" >
 
                     <TextView
                         android:id="@+id/law_tv"
@@ -166,7 +168,7 @@
                     android:id="@+id/gameManagement"
                     style="@style/Dashboard_Buttons"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_70sdp">
+                    android:layout_height="@dimen/_50sdp">
 
                     <TextView
                         android:id="@+id/game_management_tv"
@@ -197,7 +199,7 @@
                     android:id="@+id/huntingMethods"
                     style="@style/Dashboard_Buttons"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_70sdp">
+                    android:layout_height="@dimen/_50sdp">
 
                     <TextView
                         android:id="@+id/hunting_methods_tv"
@@ -228,7 +230,7 @@
                     android:id="@+id/guns"
                     style="@style/Dashboard_Buttons"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_70sdp">
+                    android:layout_height="@dimen/_50sdp">
 
                     <TextView
                         android:id="@+id/guns_tv"
@@ -259,7 +261,7 @@
                     android:id="@+id/dogs"
                     style="@style/Dashboard_Buttons"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_70sdp">
+                    android:layout_height="@dimen/_50sdp">
 
                     <TextView
                         android:id="@+id/dogs_tv"
@@ -290,7 +292,7 @@
                     android:id="@+id/viruses"
                     style="@style/Dashboard_Buttons"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_70sdp">
+                    android:layout_height="@dimen/_50sdp">
 
                     <TextView
                         android:id="@+id/viruses_tv"

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/ReloadDialog"
-    android:layout_width="@dimen/_270sdp"
+    android:layout_width="@dimen/_230sdp"
     android:layout_height="wrap_content"
     tools:ignore="ContentDescription">
 
@@ -16,12 +16,12 @@
         app:layout_constraintBottom_toTopOf="@+id/reload_iv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/dismiss_dialog_iv" />
 
     <ImageView
         android:id="@+id/reload_iv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
         android:contentDescription="@string/reloadTitle"
         app:layout_constraintBottom_toTopOf="@+id/dialog_text_tv"
         app:layout_constraintEnd_toEndOf="parent"
