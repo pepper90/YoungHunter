@@ -54,4 +54,7 @@
     <string name="loadNewTest">ЗАПОЧНИ НОВ ТЕСТ</string>
     <string name="continueTest">ПРОДЪЛЖИ ТЕСТ\nВъпрос номер: %d/%d\nОставащо време: %s</string>
     <string name="timeRem">Оставащо време: %d</string>
+
+    <!-- ADS -->
+    <string name="noAdLoaded">Неуспешна реклама</string>
 </resources>
