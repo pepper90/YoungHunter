@@ -26,7 +26,9 @@ class QuizQuestionViewModel(
     **/
 
     // Holds a list of question ids
-    private val range = MutableLiveData<List<Int>>()
+    private val _range = MutableLiveData<List<Int>>()
+    val range: LiveData<List<Int>>
+        get() = _range
 
     // Holds current question & options
     private val _question = MutableLiveData<Question?>()
@@ -37,7 +39,7 @@ class QuizQuestionViewModel(
     fun setupEnvironment(topic: String) {
         when (topic) {
             "exam" -> {
-                range.value = IntRange(1, 522).shuffled().take(47) +
+                _range.value = IntRange(1, 522).shuffled().take(47) +
                                IntRange(523, 591).shuffled().take(7) +
                                IntRange(592, 680).shuffled().take(11) +
                                IntRange(681, 812).shuffled().take(12) +
@@ -47,25 +49,25 @@ class QuizQuestionViewModel(
                                IntRange(961, 972).shuffled().take(4)
             }
             "animals" -> {
-                range.value = IntRange(1, 522).shuffled().take(30)
+                _range.value = IntRange(1, 522).shuffled().take(30)
             }
             "law" -> {
-                range.value = IntRange(523, 591).shuffled().take(30)
+                _range.value = IntRange(523, 591).shuffled().take(30)
             }
             "gameManagement" -> {
-                range.value = IntRange(592, 680).shuffled().take(30)
+                _range.value = IntRange(592, 680).shuffled().take(30)
             }
             "huntingMethods" -> {
-                range.value = IntRange(681, 812).shuffled().take(30)
+                _range.value = IntRange(681, 812).shuffled().take(30)
             }
             "guns" -> {
-                range.value = IntRange(813, 856).shuffled().take(30)
+                _range.value = IntRange(813, 856).shuffled().take(30)
             }
             "dogs" -> {
-                range.value = IntRange(857, 929).shuffled().take(30)
+                _range.value = IntRange(857, 929).shuffled().take(30)
             }
             "viruses" -> {
-                range.value = IntRange(930, 960).shuffled().take(30)
+                _range.value = IntRange(930, 960).shuffled().take(30)
             }
         }
         setProgressBarMax(topic)
@@ -130,8 +132,8 @@ class QuizQuestionViewModel(
     companion object {
         private const val DONE = 0L
         private const val ONE_SECOND = 1000L
-        private const val COUNTDOWN_TIME_EXAM = 5400000L
-        private const val COUNTDOWN_TIME_MINITEST = 1500000L
+        private const val COUNTDOWN_TIME_EXAM = 5401000L
+        private const val COUNTDOWN_TIME_MINITEST = 1501000L
         private var COUNTDOWN_TIME: Long = 0
         private var TIME_LEFT: Long = 0
         private lateinit var timer: CountDownTimer
@@ -331,9 +333,6 @@ class QuizQuestionViewModel(
 
     // Sets value to true & triggers navigation
     private fun navigateToFinish() {
-        // Prevent position > progressBar max
-        // right before navigating to FinishFragment
-        _position.value = _position.value?.minus(1)
         _navigateToFinish.value = true
     }
 

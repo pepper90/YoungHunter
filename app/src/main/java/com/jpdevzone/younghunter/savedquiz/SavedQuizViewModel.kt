@@ -26,7 +26,9 @@ class SavedQuizViewModel(
      **/
 
     // Holds a list of question ids
-    private val range = MutableLiveData<List<Int>?>()
+    private val _range = MutableLiveData<List<Int>?>()
+    val range: LiveData<List<Int>?>
+        get() = _range
 
     // Holds current question & options
     private val _question = MutableLiveData<Question?>()
@@ -36,7 +38,7 @@ class SavedQuizViewModel(
     // Gets question from repository
     fun setupEnvironment(topic: String) {
         viewModelScope.launch {
-            range.value = repository.loadProgress(topic).range
+            _range.value = repository.loadProgress(topic).range
             _position.value = repository.loadProgress(topic).position
             savedTime.value = repository.loadProgress(topic).time
             _totalAnswers.value = repository.loadProgress(topic).correctAnswers
@@ -101,8 +103,8 @@ class SavedQuizViewModel(
     companion object {
         private const val DONE = 0L
         private const val ONE_SECOND = 1000L
-        private const val COUNTDOWN_TIME_EXAM = 5400000L
-        private const val COUNTDOWN_TIME_MINITEST = 1500000L
+        private const val COUNTDOWN_TIME_EXAM = 5401000L
+        private const val COUNTDOWN_TIME_MINITEST = 1501000L
         private var MAX_TIME: Long? = 0
         private var COUNTDOWN_TIME: Long? = 0
         private var TIME_LEFT: Long = 0
@@ -303,9 +305,6 @@ class SavedQuizViewModel(
 
     // Sets value to true & triggers navigation
     fun navigateToFinish() {
-        // Prevent position > progressBar max
-        // right before navigating to FinishFragment
-        _position.value = _position.value?.minus(1)
         _navigateToFinish.value = true
     }
 

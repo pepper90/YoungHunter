@@ -152,7 +152,7 @@
                             style="@style/ProgressText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{@string/position(vm.position, vm.progressBarMax)}"
+                            android:text="@{(vm.position &lt;= vm.range.size) ? @string/position(vm.position, vm.progressBarMax) : @string/position(0, vm.progressBarMax)}"
                             tools:text="0/104" />
 
                         <TextView
@@ -231,7 +231,7 @@
                         android:layout_centerHorizontal="true"
                         android:enabled="@{vm.selectedOptionIndex != null ? true : false}"
                         android:onClick="@{() -> vm.correctAnswer == null ? vm.checkAnswer() : vm.next()}"
-                        android:text="@{vm.correctAnswer == null ? @string/mark : @string/nextQue }"
+                        android:text="@{(vm.position >= vm.range.size &amp;&amp; vm.correctAnswer != null) | (vm.position > vm.range.size &amp;&amp; vm.correctAnswer == null) ? @string/finish : vm.correctAnswer == null ? @string/mark : @string/nextQue}"
                         tools:text="МАРКИРАЙ"/>
 
                 </RelativeLayout>
