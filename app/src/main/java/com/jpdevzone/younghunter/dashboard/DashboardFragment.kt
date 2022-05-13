@@ -274,7 +274,7 @@ class DashboardFragment : Fragment() {
     }
 
     private var counter = 0
-    fun onBackPressed() {
+    private fun onBackPressed() {
         counter++
         if (counter==1) {
             Toasty.custom(requireContext(), R.string.toast,R.drawable.ic_exit,R.color.black,
