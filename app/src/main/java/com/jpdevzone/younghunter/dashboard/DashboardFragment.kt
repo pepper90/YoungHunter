@@ -18,6 +18,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.jpdevzone.younghunter.R
 import com.jpdevzone.younghunter.database.models.Progress
 import com.jpdevzone.younghunter.databinding.FragmentDashboardBinding
@@ -28,6 +31,7 @@ class DashboardFragment : Fragment() {
     private lateinit var binding : FragmentDashboardBinding
     private lateinit var viewModel: DashboardViewModel
     private lateinit var dashboardData: DashboardData
+    lateinit var mAdView : AdView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +45,12 @@ class DashboardFragment : Fragment() {
         )[DashboardViewModel::class.java]
 
         binding.lifecycleOwner = viewLifecycleOwner
+
+        //Activates adds
+        MobileAds.initialize(requireContext()) {}
+        mAdView = binding.dashboardAd
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
 
         return binding.root
     }
