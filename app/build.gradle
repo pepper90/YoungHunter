@@ -8,13 +8,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 32
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.jpdevzone.younghunter"
         minSdkVersion 16
-        targetSdkVersion 31
+        targetSdkVersion 32
         versionCode 6
         versionName "1.5"
         multiDexEnabled true
@@ -50,7 +50,6 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.6.0'
@@ -75,5 +74,4 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.0-beta01'
     implementation 'com.google.android.play:review:2.0.0'
     implementation 'com.google.android.play:review-ktx:2.0.0'
-
 }
