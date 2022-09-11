@@ -23,7 +23,6 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.jpdevzone.younghunter.R
 import com.jpdevzone.younghunter.databinding.FragmentQuizQuestionBinding
 import com.jpdevzone.younghunter.utils.setBackground
-import es.dmoral.toasty.Toasty
 
 
 class QuizQuestionFragment : Fragment() {
@@ -198,7 +197,7 @@ class QuizQuestionFragment : Fragment() {
     private fun loadAd() {
         val adRequest = AdRequest.Builder().build()
 
-        InterstitialAd.load(requireContext(),"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(requireContext(),"ca-app-pub-7588987461083278/1993662779", adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 Log.d("AdMob", adError.message)
                 mInterstitialAd = null
@@ -233,8 +232,7 @@ class QuizQuestionFragment : Fragment() {
             }
             mInterstitialAd?.show(requireActivity())
         } else {
-            Toasty.custom(requireContext(), R.string.noAdLoaded,R.drawable.ic_no_ads,R.color.black,
-                Toast.LENGTH_LONG,true, true).show()
+            Toast.makeText(requireContext(), R.string.noAdLoaded, Toast.LENGTH_SHORT).show()
         }
     }
 

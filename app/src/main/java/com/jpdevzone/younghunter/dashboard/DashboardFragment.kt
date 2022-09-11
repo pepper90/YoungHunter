@@ -1,5 +1,6 @@
 package com.jpdevzone.younghunter.dashboard
 
+import android.app.Activity
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.SpannableString
@@ -11,8 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.addCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -21,17 +20,20 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.tasks.Task
+import com.google.android.play.core.review.ReviewInfo
+import com.google.android.play.core.review.ReviewManager
+import com.google.android.play.core.review.ReviewManagerFactory
 import com.jpdevzone.younghunter.R
 import com.jpdevzone.younghunter.database.models.Progress
 import com.jpdevzone.younghunter.databinding.FragmentDashboardBinding
 import com.jpdevzone.younghunter.utils.setBackground
-import es.dmoral.toasty.Toasty
 
 class DashboardFragment : Fragment() {
     private lateinit var binding : FragmentDashboardBinding
     private lateinit var viewModel: DashboardViewModel
     private lateinit var dashboardData: DashboardData
-    lateinit var mAdView : AdView
+    private lateinit var mAdView : AdView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -188,10 +190,7 @@ class DashboardFragment : Fragment() {
             )
         }
 
-        // Handles onBackPressed
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            onBackPressed()
-        }
+        rateApp(requireActivity())
     }
 
     // Sets navigation based on Db progress availability
@@ -273,15 +272,18 @@ class DashboardFragment : Fragment() {
         )
     }
 
-    private var counter = 0
-    private fun onBackPressed() {
-        counter++
-        if (counter==1) {
-            Toasty.custom(requireContext(), R.string.toast,R.drawable.ic_exit,R.color.black,
-                Toast.LENGTH_LONG,true, true).show()
-        }else {
-            requireActivity().onBackPressed()
+    // Handles in-app reviews
+    private fun rateApp(activity: Activity){
+        val manager: ReviewManager = ReviewManagerFactory.create(activity.applicationContext)
+        val request: Task<ReviewInfo> = manager.requestReviewFlow()
+        request.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                // We can get the ReviewInfo object
+                val reviewInfo: ReviewInfo = task.result
+                val flow: Task<Void> =
+                    manager.launchReviewFlow(activity, reviewInfo)
+                flow.addOnCompleteListener { }
+            }
         }
     }
-
 }

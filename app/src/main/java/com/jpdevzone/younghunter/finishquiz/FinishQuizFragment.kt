@@ -4,7 +4,6 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,12 +13,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.android.play.core.review.ReviewManagerFactory
 import com.jpdevzone.younghunter.R
 import com.jpdevzone.younghunter.databinding.FragmentFinishQuizBinding
 import com.jpdevzone.younghunter.utils.setBackground
 import com.jpdevzone.younghunter.utils.stringBuilder
-import es.dmoral.toasty.Toasty
 
 class FinishQuizFragment : Fragment() {
     private lateinit var binding : FragmentFinishQuizBinding
@@ -87,17 +84,12 @@ class FinishQuizFragment : Fragment() {
                 )
             )
             clipboard.setPrimaryClip(clip)
-            Toasty.custom(requireContext(), R.string.copied, R.drawable.ic_copy, R.color.accent_gray, Toast.LENGTH_SHORT, true, true).show()
+            Toast.makeText(requireContext(), R.string.copied, Toast.LENGTH_SHORT).show()
         }
 
         // Navigate to Dashboard on click
         binding.btnContinue.setOnClickListener {
             navigateBack()
-        }
-
-        // Checks device API & triggers in-app review flow
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            inAppReview()
         }
     }
 
@@ -106,18 +98,5 @@ class FinishQuizFragment : Fragment() {
         this.findNavController().navigate(
             FinishQuizFragmentDirections.actionFinishQuizFragmentToDashboardFragment()
         )
-    }
-
-    // Handles in-app reviews
-    private fun inAppReview() {
-        val reviewManager = ReviewManagerFactory.create(requireContext())
-        val requestReviewFlow = reviewManager.requestReviewFlow()
-        requestReviewFlow.addOnCompleteListener { request ->
-            if (request.isSuccessful) {
-                val reviewInfo = request.result
-                val flow = reviewManager.launchReviewFlow(requireActivity(), reviewInfo)
-                flow.addOnCompleteListener {}
-            }
-        }
     }
 }
